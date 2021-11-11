@@ -1,26 +1,70 @@
-<div>
-<select>
-    <option>Day 1</option>
-    <option>Day 2</option>
-    <option>Day 3</option>
-</select>
+<div id="dashboard-parent">
+    <h3 id="current-date">dd/mm/yyyy</h3>
+    <div id="dashboard-body">
+        <div id="body-left">
+            <h2 id="already-in">เข้ากะแล้ว<br>35/40</h2>
+            <div id="department-list">
+                <div class="d-list"></div>
+                <div class="d-list"></div>
+                <div class="d-list"></div>
+                <div class="d-list"></div>
+                <div class="d-list"></div>
+                <div class="d-list"></div>
+                <div class="d-list"></div>
+            </div>
+            <h2 id="manage-shift-btn">manage shift</h2>
+        </div>
+        <div id="body-right">
+            <div id=r-table-header>
+                <h3 id="actual">actual</h3>
+                <h3 id= "plan">plan</h3>
+                
+                <select id="date-select">
+                    <option>Day 1</option>
+                    <option>Day 2</option>
+                    <option>Day 3</option>
+                </select>
 
-<select>
-    <option>Shift 1</option>
-    <option>Shift 2</option>
-    <option>Shift 3</option>
-    <option>Shift 4</option>
-</select>
-</div>
-<div>
-<table>
-    <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Status</th>
-        <th>Time</th>
-        <th>Ot</th>
-    </tr>
-    
-</table>
-</div>
+                <select id="shift-select">
+                    <option>Shift 1</option>
+                    <option>Shift 2</option>
+                    <option>Shift 3</option>
+                    <option>Shift 4</option>
+                </select>
+            </div>
+            
+            <table id="data-table">
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Status</th>
+                    <th>Time</th>
+                    <th>Ot</th>
+                </tr>
+                <tr class="data">
+                    <td>TEST</td>
+                    <td>TEST</td>
+                    <td>TEST</td>
+                    <td>TEST</td>
+                    <td>TEST</td>
+                </tr>
+                <tr class="data">
+                    <td>@@@TEST@@</td>
+                    <td>TEST</td>
+                    <td>TEST</td>
+                    <td>TEST</td>
+                    <td>TEST</td>                    
+                </tr>
+                </tr>
+                <tr class="data">
+                    <td>@@TEST@@</td>
+                    <td>TEST</td>
+                    <td>TEST</td>
+                    <td>TEST</td>
+                    <td>TEST</td>
+                </tr>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div
