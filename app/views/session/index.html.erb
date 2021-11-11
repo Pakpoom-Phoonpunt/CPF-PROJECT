@@ -2,8 +2,7 @@
 <div id="login-parent"><%= form_tag '/login' do %>
     <div id="login-input">Username:<br> <%= text_field_tag :username %></div>
     <div id="login-input">Password:<br> <%= password_field_tag :password %></div>
-    <div id="login-btn"><%= submit_tag "Log In"%><br></div>
-    <%= link_to "Sign Up", new_account_path%>
+    <div id="login-btn"><%= submit_tag "Login"%><br></div>
+    <%= link_to "Sign Up", new_account_path, id: "sign-up"%>
     <%= javascript_pack_tag 'test' %>
-    </div>
 <%end%></div>

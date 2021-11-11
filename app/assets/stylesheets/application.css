@@ -13,9 +13,15 @@
  *= require_tree .
  *= require_self
  */
+
 :root{
     padding: 0;
     margin: 0;
+    font-family: sans-serif;
+    --black-color: #333;
+    --primary-color:  rgb(46, 255, 168);
+    --secondary-color:  rgb(41, 226, 149);
+    --accent-color: #FF567A;
 }
  #login-text{
      text-align: center;
@@ -31,18 +37,35 @@
 #login-btn, #sign-up{
     margin: 1rem;
 }
+#login-btn input{
+  border-radius: 15px;
+  border-color: #333;
+  background-color: var(--primary-color);
+  max-height: 2.5em;
+  padding:.4em .5em;
+}
+#login-btn input:hover{
+  border-color: var(--accent-color);
+  cursor: pointer;
+}
+#login-btn input[type="submit"]{
+  font-size: 1rem;
+  letter-spacing: .3ch;
+}
 #sign-up{
-    color: #FF567A;
+    color: var(--accent-color);
     text-decoration: none;
 }
 #username, #password{
     display: block;
+    height: 1.5rem;
+    max-width: 100%;
     border-radius: 12px;
 }
  ul {
     list-style-type: none;
     overflow: hidden;
-    background-color: #333;
+    background-color: var(--black-color);
   }
   
   li {
