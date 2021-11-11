@@ -1,8 +1,6 @@
 class AccountsController < ApplicationController
     def index
-        
         puts session[:user_id]
-        @current_user ||= Account.find_by(:id => session[:user_id])
     end
     def new
         @user = Account.new
@@ -19,10 +17,15 @@ class AccountsController < ApplicationController
     end
     
     def show
-        @user = Account.find(params[:id])
+        
     end
     private
     def user_params
         params.require(:user).permit(:username, :password)
+    end
+
+    def dashboard
+        @factory = @current_user.factory
+        @department = @factory.department
     end
 end

@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   
   resources :accounts
 
+  get '/accounts/:id/dashboard' , to: "accounts#dashboard"
+
   get '/login' , to: "session#index"
   post '/login', to: "session#create"
   post '/logout', to: 'session#destroy'

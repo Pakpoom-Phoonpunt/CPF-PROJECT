@@ -15,10 +15,10 @@ module NavigationHelpers
 
     when /^the home\s?page$/
       '/'
-    when /^the login page$/
+    when /^the login\s?page$/
       '/login'
-    when /^the profile page$/
-      '/'
+    when /^the profile\s?page$/
+      '/accounts/#{Account.last.id}'
 
     #when /^the Edit Existing Movie page/
     #  "/movies/#{Movie.last.id}/edit"

@@ -1,8 +1,7 @@
 class SessionController < ApplicationController
-  def index
 
-  end
-  
+  skip_before_action :set_current_user
+
   def create
     @user = Account.find_by(username: params[:username])
     # puts "------------------------------------------------"
@@ -12,7 +11,7 @@ class SessionController < ApplicationController
     if(@user)
       if (@user.password == params[:password])
         session[:user_id] = @user.id
-        redirect_to accounts_path
+        redirect_to account_path(@user)
       else
         message = "Something wrong"
         flash[:notice] = 'Something wrong'
@@ -23,4 +22,11 @@ class SessionController < ApplicationController
       redirect_to login_path, :flash => { :notice => message }
     end
   end
+
+  def destroy
+    session.delete(:user_id)
+    flash[:notice] = 'Logged out successfully.'
+    redirect_to "/login"
+  end
+
 end
