@@ -19,8 +19,10 @@
     font-family: sans-serif;
     --dark-color: #333;
     --bright-color: rgb(250, 250, 250);
-    --primary-color:  rgb(46, 255, 168);
-    --secondary-color:  rgb(41, 226, 149);
+    --bg-color: #54436B;
+    --primary-color:  #50CB93;
+    --secondary-color:  #71EFA3;
+    --light-color: #ACFFAD;
     --accent-color: #FF567A;
     --default-radius: 12px;
     --medium-radius: 15px;
@@ -49,8 +51,9 @@
 #login-btn input{
   border-radius: 15px;
   border-color: #333;
-  background-color: var(--primary-color);
+  background-color: var(--secondary-color);
   max-height: 2.5em;
+  width: 10em;
   padding:.4em .5em;
 }
 #login-btn input:hover{
@@ -94,6 +97,7 @@
   }
 
   /*================DASHBOARD PAGE================*/
+
 #dashboard-parent{
   width:100vw;
   display: flex;
@@ -102,24 +106,27 @@
 #dashboard-body{
   display:flex;
   flex-direction: row;
+  justify-content: space-between;
   background: var(--bright-color);
   padding: 10px 20px 10px 20px;
-  border-collapse: collapse;
+  border-collapse: none;
 }
-#body-left, #body-right{
-  flex:50%;
+#body-right{
+  flex: 50%;
 }
 #current-date{
   padding: 1rem 0 1rem 0;
   text-align: center;
 }
 
-/*LEFT SIDE BODY*/
+/*================LEFT SIDE BODY================*/
 
 #body-left{
   border: 1px solid var(--dark-color);
+  border-right: none;
   border-radius:var(--default-radius) 0 0 var(--default-radius);
   margin-right: .5rem;
+  width: 30vw;
 }
 #already-in{
   display: block;
@@ -137,7 +144,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  background-color: var(--dark-color);
+  background-color: var(--bg-color);
   margin: .5rem 0 0 2rem;
   width: 10rem;
   height: 30rem;
@@ -150,7 +157,7 @@
   margin: 1rem 0 1rem 0;
 }
 .d-list:hover{
-  background-color: var(--accent-color);
+  background-color: var(--primary-color);
   color: var(--bright-color);
 }
 #manage-shift-btn{
@@ -172,13 +179,14 @@
   cursor:pointer;
 }
 
-/*RIGHT SIDE BODY*/
+/*================RIGHT SIDE BODY================*/
 
 #body-right{
   display:flex;
   flex-direction: column;
   padding: 0 1rem 0 1rem;
   border: 1px solid black;
+  border-left: none;
   border-radius: 0 var(--default-radius) var(--default-radius) 0;
 }
 #r-table-header{
