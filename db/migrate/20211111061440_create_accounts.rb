@@ -5,6 +5,7 @@ class CreateAccounts < ActiveRecord::Migration[6.1]
       t.string 'username'
       t.string 'password'
       t.string 'role'
+      t.string 'status'
 
       t.references 'department'
       t.references 'factory'

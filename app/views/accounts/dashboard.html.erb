@@ -1,18 +1,16 @@
 <div id="dashboard-parent">
-    <h3 id="current-date">dd/mm/yyyy</h3>
+    <h3 id="current-date"><%= javascript_pack_tag 'time'%></h3>
     <div id="dashboard-body">
         <div id="body-left">
-            <h2 id="already-in">เข้ากะแล้ว<br>35/40</h2>
+            <h2 id="already-in">เข้ากะแล้ว<br><%= @tasks.length%>/40</h2>
             <div id="department-list">
-                <div class="d-list"></div>
-                <div class="d-list"></div>
-                <div class="d-list"></div>
-                <div class="d-list"></div>
-                <div class="d-list"></div>
-                <div class="d-list"></div>
-                <div class="d-list"></div>
+                <% @department.each do |d|%>
+                    <div class="d-list">
+                        <%= link_to "#{d.name}", "/accounts/#{current_user.id}/dashboard/#{d.name}"%>
+                    </div>
+                <%end%>
             </div>
-            <h2 id="manage-shift-btn">manage shift</h2>
+            <%= button_to "Manage Shift", tasks_manage_path(@current_user) %> 
         </div>
         <div id="body-right">
             <div id=r-table-header>
@@ -38,32 +36,23 @@
                     <th>Id</th>
                     <th>Name</th>
                     <th>Status</th>
-                    <th>Time</th>
+                    <th>Start</th>
+                    <th>End</th>
                     <th>Ot</th>
                 </tr>
-                <tr class="data">
-                    <td>TEST</td>
-                    <td>TEST</td>
-                    <td>TEST</td>
-                    <td>TEST</td>
-                    <td>TEST</td>
-                </tr>
-                <tr class="data">
-                    <td>@@@TEST@@</td>
-                    <td>TEST</td>
-                    <td>TEST</td>
-                    <td>TEST</td>
-                    <td>TEST</td>                    
-                </tr>
-                </tr>
-                <tr class="data">
-                    <td>@@TEST@@</td>
-                    <td>TEST</td>
-                    <td>TEST</td>
-                    <td>TEST</td>
-                    <td>TEST</td>
-                </tr>
-                </tr>
+                <%if @tasks%>
+                <% @tasks.each do |t|%>
+                    <tr class="data">
+                        <td><%= t.account.id%></td>
+                        <td><%=t.account.name%></td>
+                        <td><%= t.account.status%></td>
+                        <td><%= t.startTime.strftime("%H:%M")%></td>
+                        <td><%= t.endTime.strftime("%H:%M")%></td>
+                        <td><%= t.ot%></td>
+                    </tr>
+                <%end%>
+                <%end%>
+                </div>
             </table>
         </div>
     </div>

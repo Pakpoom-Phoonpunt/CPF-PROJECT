@@ -12,20 +12,29 @@ class AccountsController < ApplicationController
             session[:user_id] = @user.id
             redirect_to root_path 
         else
-            reder :new
+            render :new
         end
     end
     
     def show
         
     end
+    
+    def dashboard
+        task_list
+        @factory = @current_user.factory
+        @department = @factory.departments.all
+    end
+
+    def task_list
+        if params[:department]
+            @tasks = Department.get_tasklist(params[:department])
+        else
+            @tasks = []
+        end
+    end 
     private
     def user_params
         params.require(:user).permit(:username, :password)
-    end
-
-    def dashboard
-        @factory = @current_user.factory
-        @department = @factory.department
     end
 end
