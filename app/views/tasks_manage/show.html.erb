@@ -1,6 +1,6 @@
 <h1>Manage</h1>
 <div>
-    <input type="text" placeholder="Enter worker's name"/>
+    <input type="text" placeholder="Enter worker's name" />
     <button>Search</button>
     <h3 class="detail">แผนก.. กะ..<h3>
     <button>Save</button>
@@ -11,15 +11,19 @@
         <h2>All Worker</h2>
         <table id="data-table">
             <tr>
-                <th><input type="checkbox"/></th>
+                <th><input type="checkbox" id="selectAll"/></th>
                 <th>ID</th>
                 <th>Name</th>
             </tr>
-            <tr class="data">
-                <td><input type="checkbox"/></td>
-                <td>test</td>
-                <td>Test test</td>
-            </tr>
+            <%if @free_workers%>
+                <% @free_workers.each do |w|%>
+                    <tr class="data">
+                        <td><input type="checkbox" id="fbox"/></td>
+                        <td><%= w.id%></td>
+                        <td><%= w.name%></td>
+                    </tr>
+                <%end%>
+                <%end%>
         </table>
     </div>
     <div id="body-right">
@@ -29,6 +33,7 @@
                 <th><input type="checkbox"/></th>
                 <th>ID</th>
                 <th>Name</th>
+                <th>OT</th>
             </tr>
             <tr class="data">
                 <td><input type="checkbox"/></td>
