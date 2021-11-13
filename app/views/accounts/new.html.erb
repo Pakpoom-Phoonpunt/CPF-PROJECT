@@ -1,5 +1,12 @@
 <h1>Register</h1>
 
-<%= form_for @user do |f|%>
+<%= form_with url: "/accounts" , method: :post do |f| %>
+    <%= f.label :username , "Username" %>
+    <%= f.text_field  :username %>
+    <%= f.label :password , "Password"%>
+    <%= f.password_field  :password %>
+    <%= f.label :factory , "Factory"%>
+    <%= f.select  :factory , @factorysNameList%><br>
+    <%= f.submit "Create Account"%>
 
 <% end %>

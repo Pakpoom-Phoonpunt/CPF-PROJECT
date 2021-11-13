@@ -4,13 +4,13 @@
         <div id="body-left">
             <h2 id="already-in">เข้ากะแล้ว<br><%= @tasks.length%>/40</h2>
             <div id="department-list">
-                <% @department.each do |d|%>
+                <% @departments.each do |d|%>
                     <div class="d-list">
                         <%= link_to "#{d.name}", "/accounts/#{current_user.id}/dashboard/#{d.name}"%>
                     </div>
                 <%end%>
             </div>
-            <%= button_to "Manage Shift", tasks_manage_path(@current_user) %> 
+            <%= link_to "Manage Shift", "/accounts/#{current_user.id}/dashboard/#{@departmentId}/mange_shift" %> 
         </div>
         <div id="body-right">
             <div id=r-table-header>
@@ -35,7 +35,6 @@
                 <tr>
                     <th>Id</th>
                     <th>Name</th>
-                    <th>Status</th>
                     <th>Start</th>
                     <th>End</th>
                     <th>Ot</th>
@@ -45,9 +44,8 @@
                     <tr class="data">
                         <td><%= t.account.id%></td>
                         <td><%=t.account.name%></td>
-                        <td><%= t.account.status%></td>
-                        <td><%= t.startTime.strftime("%H:%M")%></td>
-                        <td><%= t.endTime.strftime("%H:%M")%></td>
+                        <td><%= t.get_time(t.startTime)%></td>
+                        <td><%= t.get_time(t.endTime)%></td>
                         <td><%= t.ot%></td>
                     </tr>
                 <%end%>

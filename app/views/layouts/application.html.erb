@@ -16,7 +16,12 @@
   <% if @current_user%>
     <div><h1>Welcome <%=@current_user.name%></h1>
     <ul>
-      <li><%= link_to "Dashboard" , "/accounts/#{current_user.id}/dashboard"%></li>
+      <% if @current_user.role == "Manager"%>
+        <li><%= link_to "Dashboard" , "/accounts/#{current_user.id}/dashboard"%></li>
+      <%end%>
+      <% if @current_user.role == "Admin"%>
+        <li><%= link_to "Manage User" , "/accounts/#{current_user.id}/adminmanagepage"%></li>
+      <%end%>
       <li><%= link_to "#{@current_user.name}" , account_path(@current_user)%> </li>
       <li><%= link_to 'Log Out', logout_path, :method => :post%></li>
     </ul>

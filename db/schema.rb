@@ -17,12 +17,10 @@ ActiveRecord::Schema.define(version: 2021_11_11_061534) do
     t.string "username"
     t.string "password"
     t.string "role"
-    t.string "status"
-    t.integer "department_id"
+    t.boolean "free"
     t.integer "factory_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["department_id"], name: "index_accounts_on_department_id"
     t.index ["factory_id"], name: "index_accounts_on_factory_id"
   end
 

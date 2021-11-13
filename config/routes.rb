@@ -5,8 +5,10 @@ Rails.application.routes.draw do
 
   get '/accounts/:id/dashboard' , to: "accounts#dashboard"
   get '/accounts/:id/dashboard/:department' , to: "accounts#dashboard"
+  get '/accounts/:id/dashboard/:departmentId/mange_shift', to: "accounts#manage_shift"
+  get '/accounts/:id/adminmanagepage' , to: "accounts#adminmanage"
 
-  post '/tasks_manage/:id', to: "tasks_manage#show"
+  get '/tasks_manage/:departmentId', to: "tasks_manage#show"
 
   get '/login' , to: "session#index"
   post '/login', to: "session#create"
