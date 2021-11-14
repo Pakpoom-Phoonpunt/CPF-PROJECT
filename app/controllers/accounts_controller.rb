@@ -42,14 +42,14 @@ class AccountsController < ApplicationController
         
     end
     
-    def manage_shift
-        if !params[:departmentId]
-            id = 0
-        else
-            id = params[:departmentId]
-        end
-        redirect_to "/tasks_manage/#{id}"
-    end
+    # def manage_shift
+    #     puts "----------------------------------------"
+    #     puts "wow"
+    #     puts "----------------------------------------"
+    #     if !params[:departmentId].empty?
+    #         redirect_to "/tasks_manage/#{paramsp[:departmentId]}"
+    #     end
+    # end
     
     def dashboard
         task_list

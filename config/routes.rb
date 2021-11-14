@@ -5,7 +5,6 @@ Rails.application.routes.draw do
 
   get '/accounts/:id/dashboard' , to: "accounts#dashboard"
   get '/accounts/:id/dashboard/:department' , to: "accounts#dashboard"
-  get '/accounts/:id/dashboard/:departmentId/mange_shift', to: "accounts#manage_shift"
   get '/accounts/:id/adminmanagepage' , to: "accounts#adminmanage"
 
   get '/tasks_manage/:departmentId', to: "tasks_manage#show"
