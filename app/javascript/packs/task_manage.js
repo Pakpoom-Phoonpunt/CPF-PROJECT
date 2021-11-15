@@ -19,15 +19,20 @@ $(document).ready(function(){
 
     $("#transfer-btn").on("click", function() {
         console.log("เข้า")
+
+        // collect selected workers
+        let workers_list = $('#table-left .checked');
+        console.log(workers_list);
+
+
+
         let data = {"test": "korrawee"}
         $.ajax({
             type: "GET",
-            url: '/tasks_manage/tranfer',
+            url: window.location.href,
             dataType: "script",
             data: data,
             success:function(data){
-                console.log("hello");
-                console.log(data);
             }
         });
     });

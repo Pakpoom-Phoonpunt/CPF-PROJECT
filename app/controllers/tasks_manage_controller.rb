@@ -26,12 +26,5 @@ class TasksManageController < ApplicationController
           format.js {}
           format.json {}
         end
-    end
-    def tranfer
-      puts "hiiiiiiiii"
-      respond_to do |format|
-        format.js {render :action => "user" }
-      end
-    end
-    
+    end    
 end
