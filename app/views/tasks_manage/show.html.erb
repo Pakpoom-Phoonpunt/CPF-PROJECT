@@ -1,45 +1,58 @@
-<h1>Manage</h1>
-<div>
-    <input type="text" placeholder="Enter worker's name" />
-    <button>Search</button>
-    <h3 class="detail">แผนก.. กะ..<h3>
-    <button>Save</button>
-    <button>Delete</button>
+<div class="manage-shift-header-page">
+    <%= javascript_pack_tag 'task_manage'%>
+    <div id="search-section">
+        <input type="text" placeholder="Enter worker's name" />
+        <button id="search">Search</button>
+    </div>
+    <div id= "depart-shift-section">
+        <h3 id="detail">แผนก.. กะ..<h3>
+    </div>
+    <div id="save-delete-section">
+        <button id="save">Save</button>
+        <button id="delete">Delete</button>
+    </div>
 </div>
-<div id="dashboard-body">
-    <div id="body-right">
+
+<div id="manage-shift-body">
+    <div id="table-left" class="manage-shift-table">
         <h2>All Worker</h2>
         <table id="data-table">
             <tr>
-                <th><input type="checkbox" id="selectAll"/></th>
+                <th><input type="checkbox" class="check-all" id="left-check-all"/></th>
                 <th>ID</th>
                 <th>Name</th>
             </tr>
             <%if @free_workers%>
                 <% @free_workers.each do |w|%>
                     <tr class="data">
-                        <td><input type="checkbox" id="fbox"/></td>
+                        <td><input type="checkbox" id="left-checkbox"/> </td>
                         <td><%= w.id%></td>
                         <td><%= w.name%></td>
                     </tr>
                 <%end%>
-                <%end%>
+            <%end%>
         </table>
     </div>
-    <div id="body-right">
+    <%= button_to ">>", "/tasks_manage/#{@departmentId}", :id => "transfer-btn", method: :get, remote: true %>
+    <div id="table-right">
         <h2>Worker in shift</h2>
         <table id="data-table">
             <tr>
-                <th><input type="checkbox"/></th>
+                <th><input type="checkbox" class="check-all" id="right-check-all"/><%= javascript_pack_tag 'checkAll'%></th>
                 <th>ID</th>
                 <th>Name</th>
                 <th>OT</th>
             </tr>
-            <tr class="data">
-                <td><input type="checkbox"/></td>
-                <td>test</td>
-                <td>Test test</td>
-            </tr>
+            <%if @task_list%>
+                <% @task_list.each do |t|%>
+                    <tr class="data">
+                        <td><input type="checkbox" id="right-checkbox"/> </td>
+                        <td><%= t.account_id%></td>
+                        <td><%= t.get_owner_name%></td>
+                        <td><%= t.ot%></td>
+                    </tr>
+                <%end%>
+                <%end%>
         </table>
     </div>
 </div>

@@ -5,7 +5,11 @@ function checkTime(i) {
     return i;
   }
   function startTime() {
+    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+  ];
     var today = new Date();
+    console.log(today.getMonth());
     var date = today.getDate();
     var month = today.getMonth();
     var year = today.getFullYear();   
@@ -16,9 +20,13 @@ function checkTime(i) {
     // add a zero in front of numbers<10
     minute = checkTime(minute);
     second = checkTime(second);
-    document.getElementById('current-date').innerHTML =  weekday[0] +" "+ date +"-"+month+"-"+year + " | " + "Time: "+ hour + ":" + minute + ":" + second;
-    t = setTimeout(function() {
-      startTime()
-    }, 500);
+    try {
+      document.getElementById('current-date').innerHTML =  weekday[0] +" "+ date +"-"+monthNames[month]+"-"+year + " | " + "Time: "+ hour + ":" + minute + ":" + second;
+      t = setTimeout(function() {
+        startTime()
+      }, 500);
+    } catch (error) {
+  
+    }
   }
   startTime();

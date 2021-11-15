@@ -56,6 +56,7 @@ class AccountsController < ApplicationController
         @factory = @current_user.factory
         @departments = @factory.departments.all
         @departmentId = Department.get_departmentId(params[:department])
+        puts (@department_id)
     end
 
     def task_list

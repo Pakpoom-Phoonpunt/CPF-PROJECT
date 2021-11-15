@@ -9,4 +9,11 @@ class Task < ApplicationRecord
             return ""
         end
     end
+    def self.get_tasks(department)
+        return Task.where(:department_id => department)
+    end
+
+    def get_owner_name
+        return Account.get_name(self.account_id)
+    end
 end

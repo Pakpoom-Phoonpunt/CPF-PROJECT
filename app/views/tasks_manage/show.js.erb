@@ -1,0 +1,4 @@
+data = $('#table-left .checked');
+console.log(data);
+$('#table-right #data-table').append("<tr><%= j render partial: 'user', collection: @user, locals: {data:" + data + "} %></tr>");
+console.log("done in js.erb");

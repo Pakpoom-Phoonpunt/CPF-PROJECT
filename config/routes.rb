@@ -7,8 +7,10 @@ Rails.application.routes.draw do
   get '/accounts/:id/dashboard/:department' , to: "accounts#dashboard"
   get '/accounts/:id/adminmanagepage' , to: "accounts#adminmanage"
 
-  get '/tasks_manage/:departmentId', to: "tasks_manage#show"
-
+  get '/tasks_manage/:id', to: "tasks_manage#show"
+  get '/tasks_manage/tranfer', to: "tasks_manage#tranfer"
+  
+  get '/tasks_manage/', to: "tasks_manage#transfer"
   get '/login' , to: "session#index"
   post '/login', to: "session#create"
   post '/logout', to: 'session#destroy'

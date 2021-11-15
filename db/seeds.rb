@@ -7,4 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 factory = Factory.create(name:"CPF")
 department = Department.create(name:"chicken", factory_id: factory.id)
-user= Account.create(username: "1", password: "1", factory_id: factory.id)
+user= Account.create(name: "Im ma Manager", username: "manager", password: "1", factory_id: factory.id, role: "Manager")
+
+user2= Account.create(name: "Im ma Admin", username: "admin", password: "1", factory_id: factory.id, role: "Admin")

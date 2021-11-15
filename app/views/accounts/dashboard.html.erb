@@ -2,25 +2,24 @@
     <h3 id="current-date"><%= javascript_pack_tag 'time'%></h3>
     <div id="dashboard-body">
         <div id="body-left">
-            <h2 id="already-in">เข้ากะแล้ว<br><%= @tasks.length%>/40</h2>
+            <h2 id="already-in">Checked in<p id= "num"><%= @tasks.length%>/40</p></h2>
             <div id="department-list">
                 <% @departments.each do |d|%>
-                    <div class="d-list">
-                        <%= link_to "#{d.name}", "/accounts/#{current_user.id}/dashboard/#{d.name}"%>
-                    </div>
+                    <%= button_to "#{d.name}", "/accounts/#{current_user.id}/dashboard/#{d.name}", :class => "d-list", method: :get %>
                 <%end%>
             </div>
-            <%= link_to "Manage Shift", "/tasks_manage/#{@departmentId}/" %> 
+            <%= link_to "Manage Shift", "/tasks_manage/#{@departmentId}/", :id=>"manage-shift-btn"%> 
         </div>
         <div id="body-right">
             <div id=r-table-header>
-                <h3 id="actual">actual</h3>
-                <h3 id= "plan">plan</h3>
+                <h3 id="actual">Actual</h3>
+                <h3 id= "plan">Plan</h3>
                 
                 <select id="date-select">
                     <option>Day 1</option>
                     <option>Day 2</option>
                     <option>Day 3</option>
+                    <option>Day 4</option>
                 </select>
 
                 <select id="shift-select">
@@ -35,9 +34,9 @@
                 <tr>
                     <th>Id</th>
                     <th>Name</th>
-                    <th>Start</th>
-                    <th>End</th>
-                    <th>Ot</th>
+                    <th>Start time</th>
+                    <th>End time</th>
+                    <th>Over time</th>
                 </tr>
                 <%if @tasks%>
                 <% @tasks.each do |t|%>
