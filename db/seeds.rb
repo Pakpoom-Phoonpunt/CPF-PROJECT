@@ -1,12 +1,45 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 factory = Factory.create(name:"CPF")
-department = Department.create(name:"chicken", factory_id: factory.id)
-user= Account.create(name: "Im ma Manager", username: "manager", password: "1", factory_id: factory.id, role: "Manager")
+department = Department.create(name:"KFC", factory_id: factory.id)
+department = Department.create(name:"CFK", factory_id: factory.id)
 
-user2= Account.create(name: "Im ma Admin", username: "admin", password: "1", factory_id: factory.id, role: "Admin")
+user= Account.create(name: "สมบัติ วันพีช", username: "manager", password: "1", factory_id: factory.id, role: "Manager")
+
+user2= Account.create(name: "ภาภูมิโตะ ปูปะโตะ", username: "admin", password: "1", factory_id: factory.id, role: "Admin")
+
+user3= Account.create(name: "สมชาย รักดี", username: "Worker1", password: "1", factory_id: factory.id, role: "Worker", free: true)
+user4= Account.create(name: "สมบูรณ์ ซีอิ้วขาว", username: "Worker2", password: "1", factory_id: factory.id, role: "Worker", free: true)
+user5= Account.create(name: "จัตุรงค์ บรรจงยิง", username: "Worker3", password: "1", factory_id: factory.id, role: "Worker", free: true)
+user6= Account.create(name: "อาหลิว เต๋อหัว", username: "Worker4", password: "1", factory_id: factory.id, role: "Worker", free: true)
+user7= Account.create(name: "นงรัก ไม่รัก", username: "Worker5", password: "1", factory_id: factory.id, role: "Woker", free: true)
+user8= Account.create(name: "จอร์น หมั่นเพียร", username: "Worker6", password: "1", factory_id: factory.id, role: "Worker", free: true)
+user9= Account.create(name: "เจซสิก้า ปากหาร", username: "Worker7", password: "1", factory_id: factory.id, role: "Worker", free: true)
+user10= Account.create(name: "สมหวัง ชายโสด", username: "Worker8", password: "1", factory_id: factory.id, role: "Worker", free: true)
+
+user11= Account.create(name: "อนามัย อนามุย", username: "Worker9", password: "1", factory_id: factory.id, role: "Worker", free: true)
+user12= Account.create(name: "หมูหัน พันแล๋ป", username: "Worker10", password: "1", factory_id: factory.id, role: "Worker", free: true)
+user13= Account.create(name: "แดง หลังอาน", username: "Worker11", password: "1", factory_id: factory.id, role: "Worker", free: true)
+user14= Account.create(name: "เขียว รักพืซ", username: "Worker12", password: "1", factory_id: factory.id, role: "Worker", free: true)
+user15= Account.create(name: "เชอรี่ สามโคก", username: "Worker13", password: "1", factory_id: factory.id, role: "Woker", free: true)
+user16= Account.create(name: "ตี้กแตน ชนแล้วด่า", username: "Worker14", password: "1", factory_id: factory.id, role: "Worker", free: true)
+user17= Account.create(name: "แพนเค้ก", username: "Worker15", password: "1", factory_id: factory.id, role: "Worker", free: true)
+user18= Account.create(name: "พิเชต บุรุตวิทย์", username: "Worker16", password: "1", factory_id: factory.id, role: "Worker", free: true)
+
+task1 = Task.create(account_id: user3.id, department_id: department.id, day: Time.parse('16-11-2021'), shift: "1", ot: 2, startTime: Time.now)
+task2 = Task.create(account_id: user4.id, department_id: department.id, day: Time.parse('16-11-2021'), shift: "1", ot: 2, startTime: Time.now)
+task3 = Task.create(account_id: user5.id, department_id: department.id, day: Time.parse('16-11-2021'), shift: "1", ot: 2, startTime: Time.now)
+task4 = Task.create(account_id: user6.id, department_id: department.id, day: Time.parse('16-11-2021'), shift: "1", ot: 2, startTime: Time.now)
+
+task5 = Task.create(account_id: user7.id, department_id: department.id, day: Time.parse('16-11-2021'), shift: "1", ot: 4, startTime: Time.now)
+task6 = Task.create(account_id: user8.id, department_id: department.id, day: Time.parse('16-11-2021'), shift: "1", ot: 4, startTime: Time.now)
+task7 = Task.create(account_id: user9.id, department_id: department.id, day: Time.parse('16-11-2021'), shift: "1", ot: 4, startTime: Time.now)
+task8 = Task.create(account_id: user10.id, department_id: department.id, day: Time.parse('16-11-2021'), shift: "1", ot: 4, startTime: Time.now)
+
+task9 = Task.create(account_id: user11.id, department_id: department.id, day: Time.parse('17-11-2021'), shift: "2", ot: 2, startTime: Time.now)
+task10 = Task.create(account_id: user12.id, department_id: department.id, day: Time.parse('17-11-2021'), shift: "2", ot: 2, startTime: Time.now)
+task11 = Task.create(account_id: user13.id, department_id: department.id, day: Time.parse('17-11-2021'), shift: "2", ot: 2, startTime: Time.now)
+task12 = Task.create(account_id: user14.id, department_id: department.id, day: Time.parse('17-11-2021'), shift: "2", ot: 2, startTime: Time.now)
+
+task13 = Task.create(account_id: user15.id, department_id: department.id, day: Time.parse('17-11-2021'), shift: "2", ot: 0, startTime: Time.now)
+task14 = Task.create(account_id: user16.id, department_id: department.id, day: Time.parse('17-11-2021'), shift: "2", ot: 0, startTime: Time.now)
+task15 = Task.create(account_id: user17.id, department_id: department.id, day: Time.parse('17-11-2021'), shift: "2", ot: 0, startTime: Time.now)
+task16 = Task.create(account_id: user18.id, department_id: department.id, day: Time.parse('17-11-2021'), shift: "2", ot: 0, startTime: Time.now)

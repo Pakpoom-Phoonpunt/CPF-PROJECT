@@ -1,34 +1,28 @@
 $(document).ready(function(){
-    $('.check-all').on("click", function() {
+    $('.selectall-checkbox').on("click", function() {
         var side = $(this).attr("id")
         var cb;
         if(side == "left-check-all"){
-            cb = $("#left-checkbox")
+            cb = $("[id='left-checkbox']")
         }else{
-            cb = $("#right-checkbox")
+            cb = $("[id='right-checkbox']")
         }
         
         if ($(this).prop("checked") == true){
-            cb.prop("checked", true);
-            cb.closest('tr').addClass('checked');
+            cb.each(function(){
+                $(this).prop("checked", true);
+            });
+            $('#table-left .data').each(function(){
+                $(this).addClass('checked');
+            });
         } else {
-            cb.prop("checked", false);
-            cb.closest('tr').removeClass('checked');
+            cb.each(function(){
+                $(this).prop("checked", false);
+            });
+            $('#table-left .data').each(function(){
+                $(this).removeClass('checked');
+            });
         }
     });
 
-    $("#transfer-btn").on("click", function() {
-        console.log("เข้า")
-        let data = {"test": "korrawee"}
-        $.ajax({
-            type: "GET",
-            url: '/tasks_manage/tranfer',
-            dataType: "script",
-            data: data,
-            success:function(data){
-                console.log("hello");
-                console.log(data);
-            }
-        });
-    });
 });

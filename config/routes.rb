@@ -8,8 +8,7 @@ Rails.application.routes.draw do
   get '/accounts/:id/adminmanagepage' , to: "accounts#adminmanage"
 
   get '/tasks_manage/:id', to: "tasks_manage#show"
-  get '/tasks_manage/tranfer', to: "tasks_manage#tranfer"
-  
+  post '/tasks_manage/:id', to: "tasks_manage#manage_shift"
   get '/tasks_manage/', to: "tasks_manage#transfer"
   get '/login' , to: "session#index"
   post '/login', to: "session#create"

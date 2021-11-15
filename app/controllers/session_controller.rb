@@ -4,10 +4,7 @@ class SessionController < ApplicationController
 
   def create
     @user = Account.find_by(username: params[:username])
-    # puts "------------------------------------------------"
-    # puts params[:password]
-    # puts @user.password
-    # puts "------------------------------------------------"
+
     if(@user)
       if (@user.password == params[:password])
         session[:user_id] = @user.id

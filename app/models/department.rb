@@ -15,4 +15,7 @@ class Department < ApplicationRecord
             return ""
         end
     end
+    def self.add_task(departId, task)
+        Department.find_by(:id => departId).tasks << task        
+    end
 end

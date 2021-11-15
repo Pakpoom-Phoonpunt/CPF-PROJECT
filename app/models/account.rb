@@ -14,4 +14,15 @@ class Account < ApplicationRecord
     def self.get_name(acc_id)
         return Account.find_by(:id => acc_id).name
     end
+    def self.add_task(accId, task)
+        acc = Account.find_by(:id => accId)
+        acc.tasks << task
+        acc.free = false
+        acc.save!
+    end
+    def self.set_free(acc_id)
+        acc = Account.find_by(:id => acc_id)
+        acc.free = true
+        acc.save!
+    end
 end

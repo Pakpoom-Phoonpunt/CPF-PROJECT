@@ -29,6 +29,7 @@ class AccountsController < ApplicationController
         @user.name = params.require(:username)
         @user.username = params.require(:username)
         @user.password = params.require(:password)
+        @user.free = true
         @factory.accounts << @user
         if @user.save
             session[:user_id] = @user.id
@@ -56,7 +57,28 @@ class AccountsController < ApplicationController
         @factory = @current_user.factory
         @departments = @factory.departments.all
         @departmentId = Department.get_departmentId(params[:department])
-        puts (@department_id)
+        puts (@departmentId)
+        if params[:date]
+            puts "============="
+            puts params[:date]
+        end
+        @all_task = Task.get_tasks(@departmentId);
+
+        if params[:date]
+            @all_worker = []
+            @all_task.each do |task|
+                if Time.parse(params[:date]) == task.day;
+                    puts '============dsadasdasdasdasdas========='
+                    @all_worker << task
+                end
+            end
+        end
+        # get all workers in :date
+
+        respond_to do |format|
+            format.js
+            format.html
+        end
     end
 
     def task_list
@@ -89,6 +111,12 @@ class AccountsController < ApplicationController
         end
     end
 
+    def update
+        @user = Account.find(params[:id])
+        @user.role = params[:role]
+        @user.save!
+        redirect_to "/accounts/#{@current_user.id}/adminmanagepage"
+    end
     
     private
     def user_params

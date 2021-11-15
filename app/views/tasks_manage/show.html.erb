@@ -5,12 +5,15 @@
         <button id="search">Search</button>
     </div>
     <div id= "depart-shift-section">
-        <h3 id="detail">แผนก.. กะ..<h3>
+        <h3 id="detail"><%= @department.name %> .. กะ..<h3>
     </div>
-    <div id="save-delete-section">
-        <button id="save">Save</button>
-        <button id="delete">Delete</button>
-    </div>
+    
+    <%= form_tag method: :post, url: "/tasks_manage/#{@departmentId}" do %>
+        <div id="save-delete-section">
+            <%= submit_tag 'Assign' ,  :name =>'save', :id => 'save'%>
+            <%= text_field_tag :otTime %>
+            <%= submit_tag 'Delete' ,  :name =>'delete', :id => 'delete'%>
+        </div>
 </div>
 
 <div id="manage-shift-body">
@@ -18,14 +21,15 @@
         <h2>All Worker</h2>
         <table id="data-table">
             <tr>
-                <th><input type="checkbox" class="check-all" id="left-check-all"/></th>
+                <th><%= check_box_tag "", nil, nil, class: "selectall-checkbox", :id=>"left-check-all"%></th>
+                <!--<th><input type="checkbox" class="check-all" id="left-check-all"/></th>-->
                 <th>ID</th>
                 <th>Name</th>
             </tr>
             <%if @free_workers%>
                 <% @free_workers.each do |w|%>
                     <tr class="data">
-                        <td><input type="checkbox" id="left-checkbox"/> </td>
+                        <td><%= check_box_tag 'fworkers[]', w.id, false, :id=>"left-checkbox"%></td>
                         <td><%= w.id%></td>
                         <td><%= w.name%></td>
                     </tr>
@@ -33,26 +37,32 @@
             <%end%>
         </table>
     </div>
-    <%= button_to ">>", "/tasks_manage/#{@departmentId}", :id => "transfer-btn", method: :get, remote: true %>
+    <%= submit_tag '>>' , :name =>'add', :id => "transfer-btn" %>
+    
     <div id="table-right">
         <h2>Worker in shift</h2>
+        
         <table id="data-table">
             <tr>
-                <th><input type="checkbox" class="check-all" id="right-check-all"/><%= javascript_pack_tag 'checkAll'%></th>
+                <th><%= check_box_tag "", nil, nil, class: "selectall-checkbox", :id=>"right-check-all"%></th>
                 <th>ID</th>
                 <th>Name</th>
                 <th>OT</th>
             </tr>
+            
+            
             <%if @task_list%>
-                <% @task_list.each do |t|%>
+                <% @task_list.each do |w|%>
                     <tr class="data">
-                        <td><input type="checkbox" id="right-checkbox"/> </td>
-                        <td><%= t.account_id%></td>
-                        <td><%= t.get_owner_name%></td>
-                        <td><%= t.ot%></td>
+                        <td><%= check_box_tag 'sworkers[]', w.id, false, :id=>"right-checkbox"%></td>
+                        <td><%= w.account_id%></td>
+                        <td><%= w.get_owner_name%></td>
+                        <td><%= w.ot%></td>
                     </tr>
                 <%end%>
-                <%end%>
+            <%end%>
         </table>
+        
+        <% end %>
     </div>
 </div>

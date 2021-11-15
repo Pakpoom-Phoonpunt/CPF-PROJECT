@@ -1,6 +1,7 @@
 <%= form_with url: "/accounts/#{@user.id}" , method: :put do |f| %>
     <%= f.label :username , "Username : #{@user.name}" %><br>
     <%= f.label :factory , "Factory : #{@user.factory.name}"%><br>
-
+    <%= f.label :role , "Role :"%><br>
+    <%= f.select :role , ["Admin" , "Manager" ,"Worker"]%><br>
     <%= f.submit "Update Account"%>
 <% end %>

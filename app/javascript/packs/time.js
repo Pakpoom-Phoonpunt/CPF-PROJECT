@@ -9,7 +9,6 @@ function checkTime(i) {
   "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
   ];
     var today = new Date();
-    console.log(today.getMonth());
     var date = today.getDate();
     var month = today.getMonth();
     var year = today.getFullYear();   

@@ -2,7 +2,7 @@
     <h3 id="current-date"><%= javascript_pack_tag 'time'%></h3>
     <div id="dashboard-body">
         <div id="body-left">
-            <h2 id="already-in">Checked in<p id= "num"><%= @tasks.length%>/40</p></h2>
+            <h2 id="already-in">Checked in<p id= "num"><%=@tasks.length%>/40</p></h2>
             <div id="department-list">
                 <% @departments.each do |d|%>
                     <%= button_to "#{d.name}", "/accounts/#{current_user.id}/dashboard/#{d.name}", :class => "d-list", method: :get %>
@@ -15,40 +15,40 @@
                 <h3 id="actual">Actual</h3>
                 <h3 id= "plan">Plan</h3>
                 
-                <select id="date-select">
-                    <option>Day 1</option>
-                    <option>Day 2</option>
-                    <option>Day 3</option>
-                    <option>Day 4</option>
-                </select>
-
-                <select id="shift-select">
-                    <option>Shift 1</option>
-                    <option>Shift 2</option>
-                    <option>Shift 3</option>
-                    <option>Shift 4</option>
-                </select>
+                <%= form_tag method: :get, url: "/accounts/#{current_user.id}/dashboard/" do %>   
+                    <select name='day' id="date-select" ><%= javascript_pack_tag 'dateSelectLoop'%></select>
+                <%end%>
+                    <select id="shift-select">
+                        <option>Shift 1</option>
+                        <option>Shift 2</option>
+                        <option>Shift 3</option>    
+                        <option>Shift 4</option>
+                    </select>
             </div>
-            
             <table id="data-table">
                 <tr>
                     <th>Id</th>
                     <th>Name</th>
+                    <th>Enter time</th>
                     <th>Start time</th>
+                    <th>Exit time</th>
                     <th>End time</th>
                     <th>Over time</th>
                 </tr>
                 <%if @tasks%>
-                <% @tasks.each do |t|%>
-                    <tr class="data">
-                        <td><%= t.account.id%></td>
-                        <td><%=t.account.name%></td>
-                        <td><%= t.get_time(t.startTime)%></td>
-                        <td><%= t.get_time(t.endTime)%></td>
-                        <td><%= t.ot%></td>
-                    </tr>
+                    <% @tasks.each do |t|%>
+                        <tr class="data">
+                            <td><%= t.account_id%></td>
+                            <td><%=t.get_owner_name%></td>
+                            <td><%--%></td>
+                            <td><%= t.get_time(t.startTime)%></td>
+                            <td><%--%></td>
+                            <td><%= t.get_time(t.endTime)%></td>
+                            <td><%= t.ot%></td>
+                        </tr>
+                    <%end%>
                 <%end%>
-                <%end%>
+                
                 </div>
             </table>
         </div>
