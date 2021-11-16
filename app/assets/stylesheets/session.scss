@@ -1,3 +1,29 @@
 // Place all the styles related to the Session controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.profile-parent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5rem;
+    margin-left: 5rem;
+}
+.profile-parent h1{
+    font-size: 2rem;
+    font-weight: bold;
+}
+.profile-parent h2{
+    align-self: left;
+    margin-top: 1rem;
+    font-size: 1.5rem;
+}
+.profile-body{
+    display: flex;
+    flex-direction: column;
+}
+.topic{
+    display: inline;
+    flex-direction: row;
+    font-weight: bold;
+}

@@ -1,5 +1,9 @@
 
-<h1>Profile</h1>
-<h2>Name: <%=@current_user.name%></h2>
-<h2>Role: <%=@current_user.role%></h2>
-<h2>Factory: <%=@current_user.factory.name%></h2>
+<section class="profile-parent">
+    <h1>Profile</h1>
+    <div class="profile-body">
+        <h2 class="topic">Name: <%=@current_user.name%></h2>
+        <h2 class="topic">Role: <%=@current_user.role%></h2>
+        <h2 class="topic">Factory: <%=@current_user.factory.name%></h2>
+    </div>
+</section>
