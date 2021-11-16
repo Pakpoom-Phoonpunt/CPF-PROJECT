@@ -58,25 +58,37 @@ class AccountsController < ApplicationController
         @departments = @factory.departments.all
         @departmentId = Department.get_departmentId(params[:department])
         puts (@departmentId)
-        if params[:date]
-            puts "============="
-            puts params[:date]
+        if params[:current] && params[:departName]
+            select_time = Time.now.strftime("%Y-%m-%d");
+            @tasks = Task.filter_by_date(select_time, @departmentId)      
         end
-        @all_task = Task.get_tasks(@departmentId);
+        if params[:date] && params[:departName]
+            @tasks = Task.filter_by_date(params[:date], @departmentId)
+            # @tasks = []
+            # all_task = Task.get_tasks_by_department_name(params[:departName]); #get list of worker 
+            # select_time = Time.parse(params[:date]).strftime("%Y-%m-%d");
 
-        if params[:date]
-            @all_worker = []
-            @all_task.each do |task|
-                if Time.parse(params[:date]) == task.day;
-                    puts '============dsadasdasdasdasdas========='
-                    @all_worker << task
-                end
-            end
+            # puts params[:departName]
+            # all_task.each do |task|  #colloct task on selected day
+            #     task_time = task.day.strftime("%Y-%m-%d")
+            #    #puts '============task time========='
+            #    #puts task_time
+            #     if select_time === task_time;
+            #        # puts '============same day========='
+            #         #puts task_time
+            #         #puts task.account_id
+            #         #puts select_time
+            #         @tasks << task
+            #     end
+            # end
+
         end
+
         # get all workers in :date
-
+        
         respond_to do |format|
-            format.js
+            format.js {render layout: false}
+            format.json {}
             format.html
         end
     end

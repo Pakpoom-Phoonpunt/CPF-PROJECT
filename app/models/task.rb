@@ -9,10 +9,16 @@ class Task < ApplicationRecord
             return ""
         end
     end
+
     def self.get_tasks(department)
         return Task.where(:department_id => department)
     end
-
+    
+    def self.get_tasks_by_department_name(department_name)
+        department_id = Department.where(:name => department_name).ids
+        return Task.where(:department_id => department_id)
+    end
+    
     def get_owner_name
         puts self.account_id
         return Account.get_name(self.account_id)
@@ -34,11 +40,26 @@ class Task < ApplicationRecord
             task.destroy!  
         end      
     end
+    
     def self.assign_ot(task_id, val)
         if Task.find_by(:id => task_id)
             task = Task.find_by(:id => task_id)
             task.ot = val
             task.save!
+        end
+    end
+
+    def self.filter_by_date(date, departmentId)
+        time = Time.parse(date).strftime("%Y-%m-%d")
+        if Task.find_by(:department_id => departmentId)
+            tmp = Task.where(:department_id => departmentId)
+            tasks = []
+            tmp.each do |t|
+                if t.day.strftime("%Y-%m-%d") === time
+                    tasks << t
+                end
+            end
+            return tasks
         end
     end
 end

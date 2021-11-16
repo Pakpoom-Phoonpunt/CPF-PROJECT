@@ -1,4 +1,4 @@
-<% tasks.each do |t|%>
+<% @tasks.each do |t|%>
     <tr class="data">
         <td><%= t.account_id%></td>
         <td><%=t.get_owner_name%></td>
@@ -8,4 +8,3 @@
         <td><%= t.get_time(t.endTime)%></td>
     </tr>
 <%end%>
-<h1>hello</h1>

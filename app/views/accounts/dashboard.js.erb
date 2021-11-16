@@ -1,0 +1,5 @@
+
+$("#test").html("<%= escape_javascript(render partial: '/accounts/user', :locals => { :tasks => @tasks}) %>");
+
+
+console.log("done in js.erb");
