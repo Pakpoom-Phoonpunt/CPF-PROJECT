@@ -1,7 +1,7 @@
 addDaySelector();
 $("select#date-select").change(function(){
     let date = $(this).children(":selected").val();
-    let department = window.location.href.split('/').pop().slice(0,-1);
+    let department = "KFC" // debuggg 
 
     $.ajax({
         type: "GET",
@@ -11,20 +11,25 @@ $("select#date-select").change(function(){
                 "departName": department,
             },
         success:function(data){ 
+            $("input[type='button'][value='KFC']").focus
         }
     });
 });
 $(".d-list").on("click", function(){
-    let department = window.location.href.split('/').pop().slice(0,-1);
-
+    let date = $("#date-select").val();
+    let department = $(this).text();
+    console.log(date);
+    console.log(department);
     $.ajax({
         type: "GET",
         url: window.location.href,
         dataType: "script",
         data: {"current": "true",
+                "date": date,
                  "departName": department,
             },
         success:function(data){ 
+            console.log("success btn")
         }
     });
 });

@@ -1,3 +1,4 @@
+<%if @tasks %>
 <% @tasks.each do |t|%>
     <tr class="data">
         <td><%= t.account_id%></td>
@@ -7,4 +8,5 @@
         <td><%--%></td>
         <td><%= t.get_time(t.endTime)%></td>
     </tr>
+<%end%>
 <%end%>

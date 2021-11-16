@@ -1,5 +1,6 @@
 
-$("#test").html("<%= escape_javascript(render partial: '/accounts/user', :locals => { :tasks => @tasks}) %>");
+$("#data-table .data").remove();
+$("#data-table").append("<%= escape_javascript(render partial: '/accounts/user', :locals => { :tasks => @tasks}) %>");
 
-
+$("#num").html("<%if @tasks %>0/<%=@tasks.length%><%end%>")
 console.log("done in js.erb");

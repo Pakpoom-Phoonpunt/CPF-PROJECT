@@ -2,10 +2,10 @@
     <h3 id="current-date"><%= javascript_pack_tag 'time'%></h3>
     <div id="dashboard-body">
         <div id="body-left">
-            <h2 id="already-in">Checked in<p id= "num"><%=@tasks.length%>/40</p></h2>
+            <h2 id="already-in">Checked in<p id= "num"></p></h2>
             <div id="department-list">
                 <% @departments.each do |d|%>
-                    <%= button_to "#{d.name}", "/accounts/#{current_user.id}/dashboard/#{d.name}", :class => "d-list", method: :get %>
+                    <button class="d-list"><%= "#{d.name}"%></button>
                 <%end%>
             </div>
             <%= link_to "Manage Shift", "/tasks_manage/#{@departmentId}/", :id=>"manage-shift-btn"%> 
@@ -35,17 +35,7 @@
                     <th>End time</th>
                 </tr>
                 <%if @tasks%>
-                    <div id="test"></div>
-                    <% @tasks.each do |t|%>
-                        <tr class="data">
-                            <td><%= t.account_id%></td>
-                            <td><%=t.get_owner_name%></td>
-                            <td><%--%></td>
-                            <td><%= t.get_time(t.startTime)%></td>
-                            <td><%--%></td>
-                            <td><%= t.get_time(t.endTime)%></td>
-                        </tr>
-                    <%end%>
+                    
                 <%else%>
                     
                 <%end%>

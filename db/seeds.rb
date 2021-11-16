@@ -25,14 +25,14 @@ user17= Account.create(name: "แพนเค้ก", username: "Worker15", pass
 user18= Account.create(name: "พิเชต บุรุตวิทย์", username: "Worker16", password: "1", factory_id: factory.id, role: "Worker", free: true)
 
 task1 = Task.create(account_id: user3.id, department_id: department1.id, day: Time.parse('16-11-2021'), shift: "1", ot: 2, startTime: Time.now)
-task2 = Task.create(account_id: user4.id, department_id: department1.id, day: Time.parse('16-11-2021'), shift: "1", ot: 2, startTime: Time.now)
-task3 = Task.create(account_id: user5.id, department_id: department2.id, day: Time.parse('17-11-2021'), shift: "1", ot: 2, startTime: Time.now)
+task2 = Task.create(account_id: user4.id, department_id: department2.id, day: Time.parse('16-11-2021'), shift: "1", ot: 2, startTime: Time.now)
+task3 = Task.create(account_id: user5.id, department_id: department1.id, day: Time.parse('17-11-2021'), shift: "1", ot: 2, startTime: Time.now)
 task4 = Task.create(account_id: user6.id, department_id: department2.id, day: Time.parse('17-11-2021'), shift: "1", ot: 2, startTime: Time.now)
 
 task5 = Task.create(account_id: user7.id, department_id: department1.id, day: Time.parse('18-11-2021'), shift: "1", ot: 4, startTime: Time.now)
-task6 = Task.create(account_id: user8.id, department_id: department1.id, day: Time.parse('19-11-2021'), shift: "1", ot: 4, startTime: Time.now)
-task7 = Task.create(account_id: user9.id, department_id: department2.id, day: Time.parse('20-11-2021'), shift: "1", ot: 4, startTime: Time.now)
-task8 = Task.create(account_id: user10.id, department_id: department2.id, day: Time.parse('20-11-2021'), shift: "1", ot: 4, startTime: Time.now)
+task6 = Task.create(account_id: user8.id, department_id: department2.id, day: Time.parse('18-11-2021'), shift: "1", ot: 4, startTime: Time.now)
+task7 = Task.create(account_id: user9.id, department_id: department1.id, day: Time.parse('19-11-2021'), shift: "1", ot: 4, startTime: Time.now)
+task8 = Task.create(account_id: user10.id, department_id: department2.id, day: Time.parse('19-11-2021'), shift: "1", ot: 4, startTime: Time.now)
 
 task9 = Task.create(account_id: user11.id, department_id: department1.id, day: Time.parse('25-11-2021'), shift: "2", ot: 2, startTime: Time.now)
 task10 = Task.create(account_id: user12.id, department_id: department1.id, day: Time.parse('25-11-2021'), shift: "2", ot: 2, startTime: Time.now)

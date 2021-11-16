@@ -56,12 +56,8 @@ class AccountsController < ApplicationController
         task_list
         @factory = @current_user.factory
         @departments = @factory.departments.all
-        @departmentId = Department.get_departmentId(params[:department])
-        puts (@departmentId)
-        if params[:current] && params[:departName]
-            select_time = Time.now.strftime("%Y-%m-%d");
-            @tasks = Task.filter_by_date(select_time, @departmentId)      
-        end
+        @departmentId = Department.get_departmentId(params[:departName])
+        
         if params[:date] && params[:departName]
             @tasks = Task.filter_by_date(params[:date], @departmentId)
             # @tasks = []

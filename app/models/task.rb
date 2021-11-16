@@ -54,8 +54,13 @@ class Task < ApplicationRecord
         if Task.find_by(:department_id => departmentId)
             tmp = Task.where(:department_id => departmentId)
             tasks = []
+            puts "===================="
+            puts time
+            puts "===================="
             tmp.each do |t|
+                puts t.day
                 if t.day.strftime("%Y-%m-%d") === time
+                    puts t.get_owner_name
                     tasks << t
                 end
             end
