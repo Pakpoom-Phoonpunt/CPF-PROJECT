@@ -6,6 +6,8 @@ class CreateTasks < ActiveRecord::Migration[6.1]
       t.integer 'ot'
       t.datetime 'startTime'
       t.datetime 'endTime'
+      t.boolean 'active'
+      
 
       t.references 'account'
       t.references 'department'

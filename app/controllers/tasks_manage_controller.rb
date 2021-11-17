@@ -15,10 +15,6 @@ class TasksManageController < ApplicationController
         @departmentId = params[:id]
         @task_list = Task.get_tasks(params[:id])
         @department = Department.find(@departmentId)
-        if params[:test]
-          puts "BooYahhh"
-          puts params[:test]
-        end 
         respond_to do |format|
           format.html
           format.js {}
@@ -32,9 +28,6 @@ class TasksManageController < ApplicationController
       elsif params[:delete]
         delete_task(params[:sworkers])
       elsif params[:save]
-        puts "------------------"
-        puts params[:sworkers]
-        puts "------------------"
         assign_ot(params[:sworkers], params[:otTime])
       end
     end

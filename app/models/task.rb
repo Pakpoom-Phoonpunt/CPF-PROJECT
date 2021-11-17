@@ -20,7 +20,6 @@ class Task < ApplicationRecord
     end
     
     def get_owner_name
-        puts self.account_id
         return Account.get_name(self.account_id)
     end
     
@@ -49,22 +48,30 @@ class Task < ApplicationRecord
         end
     end
 
-    def self.filter_by_date(date, departmentId)
+    def self.filter_task(date, departmentId, shift, status)
         time = Time.parse(date).strftime("%Y-%m-%d")
-        if Task.find_by(:department_id => departmentId)
-            tmp = Task.where(:department_id => departmentId)
-            tasks = []
-            puts "===================="
-            puts time
-            puts "===================="
-            tmp.each do |t|
-                puts t.day
-                if t.day.strftime("%Y-%m-%d") === time
-                    puts t.get_owner_name
-                    tasks << t
+        if status && status == "plan"
+            if Task.find_by(:department_id => departmentId, :shift => shift)
+                tmp = Task.where(:department_id => departmentId, :shift => shift)
+                tasks = []
+                tmp.each do |t|
+                    if t.day.strftime("%Y-%m-%d") === time
+                        tasks << t
+                    end
                 end
             end
-            return tasks
+        elsif status && status == "actual"
+            if Task.find_by(:department_id => departmentId, :shift => shift, :active => true)
+                tmp = Task.where(:department_id => departmentId, :shift => shift, :active => true)
+                tasks = []
+                tmp.each do |t|
+                    if t.day.strftime("%Y-%m-%d") === time
+                        tasks << t
+                    end
+                end
+            end
         end
+        
+        return tasks
     end
 end

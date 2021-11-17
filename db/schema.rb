@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2021_11_11_061534) do
     t.integer "ot"
     t.datetime "startTime"
     t.datetime "endTime"
+    t.boolean "active"
     t.integer "account_id"
     t.integer "department_id"
     t.datetime "created_at", precision: 6, null: false

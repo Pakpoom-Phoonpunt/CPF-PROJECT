@@ -1,37 +1,57 @@
 addDaySelector();
-$("select#date-select").change(function(){
-    let date = $(this).children(":selected").val();
-    let department = "KFC" // debuggg 
 
-    $.ajax({
-        type: "GET",
-        url: window.location.href,
-        dataType: "script",
-        data: {"date": date,
-                "departName": department,
-            },
-        success:function(data){ 
-            $("input[type='button'][value='KFC']").focus
-        }
-    });
+$(".status").on("click",function(){
+    let date = $('#date-select').val(); // get recent selected day
+    let shift = $("#shift-select").val(); // get recent selected shift
+    let status = $(this).text(); // get current status
+
+    // get current department and shift
+    let department = sessionStorage.getItem("department"); //get selected department
+     
+    ajaxCommu(date, department, shift, status, "Done status event");
 });
-$(".d-list").on("click", function(){
-    let date = $("#date-select").val();
-    let department = $(this).text();
-    console.log(date);
-    console.log(department);
-    $.ajax({
-        type: "GET",
-        url: window.location.href,
-        dataType: "script",
-        data: {"current": "true",
-                "date": date,
-                 "departName": department,
-            },
-        success:function(data){ 
-            console.log("success btn")
-        }
-    });
+
+// SELECT SHIFT
+
+$("#shift-select").on('change', function(){ 
+    let date = $('#date-select').val(); // get recent selected day
+    let shift = $("#shift-select").val(); // get recent selected shift
+    let status = sessionStorage.getItem('status'); // get current status
+
+
+    // get current department and shift
+    let department = sessionStorage.getItem("department"); //get selected department
+    
+    ajaxCommu(date, department, shift, status, "Done shift event");
+
+});
+
+// SELECT DAY
+
+$("select#date-select").on('change',function(){ 
+    let date = $(this).val(); // get recent selected day
+    let shift = $('#shift-select').val(); // get recent selected shift
+    let status = sessionStorage.getItem('status'); // get current status
+    // save current department
+    sessionStorage.setItem("date", date);
+
+    // get current department and shift
+    let department = sessionStorage.getItem("department");
+    
+    ajaxCommu(date,department, shift, status, "Done day event");
+});
+
+// SELECT DEPARTMENT
+
+$(".d-list").on("click", function(){ 
+    let date = $("#date-select").val();   // get recent selected day
+    let shift = $("#shift-select").val(); // get recent selected shift
+    let department = $(this).text(); // get selected department
+    let status = sessionStorage.getItem('status'); // get current status
+
+    sessionStorage.setItem("department", department);
+
+    ajaxCommu(date, department, shift, status);
 });
 
 function addDaySelector() {
@@ -66,3 +86,20 @@ function addDaySelector() {
     }
     element.appendChild(df);
 };
+
+function ajaxCommu(date, department, shift, status, callbackMsg="SUCCESS communication event"){
+    $.ajax({
+        type: "GET",
+        url: window.location.href,
+        dataType: "script",
+        data: {
+                "date": date,
+                 "departName": department,
+                 "shift": shift,
+                 "status": status,
+            },
+        success:function(data){ 
+            console.log(callbackMsg);
+        }
+    });
+}

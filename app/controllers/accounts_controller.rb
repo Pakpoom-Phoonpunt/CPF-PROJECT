@@ -18,11 +18,6 @@ class AccountsController < ApplicationController
     end
 
     def create
-        # puts "-------------------------"
-        # puts params.require(:username)
-        # puts params.require(:password)
-        # puts params.require(:factory)
-        # puts "-------------------------"
         @factory = Factory.find_by(:name => params.require(:factory))
 
         @user = Account.new()
@@ -43,41 +38,22 @@ class AccountsController < ApplicationController
         
     end
     
-    # def manage_shift
-    #     puts "----------------------------------------"
-    #     puts "wow"
-    #     puts "----------------------------------------"
-    #     if !params[:departmentId].empty?
-    #         redirect_to "/tasks_manage/#{paramsp[:departmentId]}"
-    #     end
-    # end
-    
     def dashboard
         task_list
         @factory = @current_user.factory
         @departments = @factory.departments.all
         @departmentId = Department.get_departmentId(params[:departName])
-        
+        puts "===================Data details========================="
+        puts params[:date]
+        puts params[:departName]
+        puts params[:shift]
+        puts params[:status]
+        puts "======================================================="
         if params[:date] && params[:departName]
-            @tasks = Task.filter_by_date(params[:date], @departmentId)
-            # @tasks = []
-            # all_task = Task.get_tasks_by_department_name(params[:departName]); #get list of worker 
-            # select_time = Time.parse(params[:date]).strftime("%Y-%m-%d");
-
-            # puts params[:departName]
-            # all_task.each do |task|  #colloct task on selected day
-            #     task_time = task.day.strftime("%Y-%m-%d")
-            #    #puts '============task time========='
-            #    #puts task_time
-            #     if select_time === task_time;
-            #        # puts '============same day========='
-            #         #puts task_time
-            #         #puts task.account_id
-            #         #puts select_time
-            #         @tasks << task
-            #     end
-            # end
-
+            @tasks = Task.filter_task(params[:date], @departmentId, params[:shift], params[:status])
+            puts "======================================================="
+            puts @tasks
+            puts "======================================================="
         end
 
         # get all workers in :date

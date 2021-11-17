@@ -12,17 +12,17 @@
         </div>
         <div id="body-right">
             <div id=r-table-header>
-                <h3 id="actual">Actual</h3>
-                <h3 id= "plan">Plan</h3>
+                <h3 class="status" id="actual">actual</h3>
+                <h3 class= "status" id="plan">plan</h3>
                 
                 <%= form_tag method: :get, url: "/accounts/#{current_user.id}/dashboard/" do %>   
-                    <select name='day' id="date-select" ><%= javascript_pack_tag 'dateSelectLoop'%></select>
+                    <select name='day' id="date-select" ></select>
                 <%end%>
-                    <select id="shift-select">
-                        <option>Shift 1</option>
-                        <option>Shift 2</option>
-                        <option>Shift 3</option>    
-                        <option>Shift 4</option>
+                    <select id="shift-select", class="test">
+                        <option value="1" label="Shift 1">Shift 1</option>
+                        <option value="2" label="Shift 2">Shift 2</option>
+                        <option value="3" label="Shift 3">Shift 3</option>    
+                        <option value="4" label="Shift 4">Shift 4</option>
                     </select>
             </div>
             <table id="data-table">
@@ -44,4 +44,5 @@
             </table>
         </div>
     </div>
+    <%= javascript_pack_tag 'dateSelectLoop'%>
 </div
