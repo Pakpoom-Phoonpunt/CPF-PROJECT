@@ -4,8 +4,10 @@ class CreateTasks < ActiveRecord::Migration[6.1]
       t.datetime 'day'
       t.string 'shift'
       t.integer 'ot'
+      t.datetime 'enterTime'
       t.datetime 'startTime'
       t.datetime 'endTime'
+      t.datetime 'exitTime'
       t.boolean 'active'
       
 

@@ -1,18 +1,27 @@
 class TasksManageController < ApplicationController
     
     def show
-        @department = params[:depart]
+        @department = params[:departmentName]
         @date = params[:date]
         @shift = params[:shift]
         #add to shift
-        if params[:accId]
-          puts "=========================================================="
-          puts "เข้าaddแล้วจ้า"
-          assign_task(@department, params[:accId], @date, @shift)
-          puts "=========================================================="
+        if params[:Id] && params[:act]
+          if params[:act] == "add"
+            assign_task(@department, params[:Id], @date, @shift)
+          elsif params[:act] == "delete"
+            delete_task( params[:Id], @date, @shift)
+          elsif params[:act] == "ot"
+            assign_ot( params[:Id], @date, @shift, params[:value])
+          end
         end
+        
         # Display in manage page
-        @free_workers = Account.get_free_worker(@date)
+        if params[:word] && params[:word] != ""
+          @free_workers = Account.get_free_worker(@date, params[:word])
+        else
+          @free_workers = Account.get_free_worker(@date, "")
+        end
+
         @worker_in_department = Task.filter_task(@date, Department.get_departmentId(params[:departmentName]), @shift, "plan")   #right table 
         @departmentId = Department.get_departmentId(params[:departmentName])
         @department_name = params[:departmentName]
@@ -27,24 +36,14 @@ class TasksManageController < ApplicationController
           format.json {}
         end
     end
-    
-    def manage_shift
-      if params[:add]
-        assign_task(params[:fworkers])
-      elsif params[:delete]
-        delete_task(params[:sworkers])
-      elsif params[:save]
-        assign_ot(params[:sworkers], params[:otTime])
-      end
-    end
 
-    def delete_task(task_list)
-      if task_list
-        task_list.each {|x|
-          Task.delete_task(x)
+    def delete_task(accId_list, date, shift)
+      if accId_list
+        accId_list.each {|x|
+          Task.delete_task(x, date, shift)
         }
       end
-    end
+  end
     def assign_task(department, worker_list, date, shift)
         if worker_list
           worker_list.each {|x|
@@ -52,11 +51,11 @@ class TasksManageController < ApplicationController
           }
         end
     end
-    def assign_ot(worker_list, val)
+    def assign_ot(worker_list, date, shift, val)
       begin
          if Float(val) >= 0 && Float(val) <= 24
             worker_list.each{|x|
-              Task.assign_ot(x, val)
+              Task.assign_ot(x, date, shift, val)
             }
          end
       rescue 

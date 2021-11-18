@@ -1,8 +1,8 @@
 <body>
     <div class="manage-shift-header-page">
         <div id="search-section">
-            <input type="text" placeholder="Enter worker's name" />
-            <button id="search">Search</button>
+            <input id = "search-input" type="text" placeholder="Enter worker's name" />
+
         </div>
         <div id= "depart-shift-section">
             <h3 id="detail"><p>Department: </p> <%= @department_name%> <p>Date: </p> <%= @date%><p>Shift: </p> <%= @shift%> <h3> 
@@ -32,7 +32,7 @@
         
         <div id="table-right">
             <div>    
-                <button id="transfer-btn" name="add">transfer</button>
+                <button id="transfer-btn" name="delete">transfer</button>
                 <h2>Worker in shift</h2>
             </div>
 

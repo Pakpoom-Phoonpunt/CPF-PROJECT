@@ -3,16 +3,21 @@ Rails.application.routes.draw do
   
   resources :accounts,:tasks_manage
 
-  get '/accounts/:id/dashboard' , to: "accounts#dashboard"
+  #Permission Worker
   get "/accounts/:id/mytasks" , to: "accounts#mytasks"
+
+  #Permission Manager
+  get '/accounts/:id/dashboard' , to: "accounts#dashboard"
   get '/accounts/:id/dashboard/manage', to: "accounts#manage_shift" 
-
   get '/accounts/:id/dashboard/:department' , to: "accounts#dashboard"
-  get '/accounts/:id/adminmanagepage' , to: "accounts#adminmanage"
-
   get '/accounts/:id/dashboard/tasks_manage/:departmentName/:date/:shift', to: "tasks_manage#show"
   post '/accounts/:id/dashboard/tasks_manage/:departmentName/:date/:shift', to: "tasks_manage#manage_shift"
   
+  #Permission ADMIN
+  get '/accounts/:id/manage_Worker' , to: "accounts#adminmanage" 
+  get '/accounts/:id/manage_Department' , to: "accounts#adminmanage"
+
+  #Login Mechanic
   get '/login' , to: "session#index"
   post '/login', to: "session#create"
   post '/logout', to: 'session#destroy'

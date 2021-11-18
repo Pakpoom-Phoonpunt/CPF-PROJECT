@@ -2,32 +2,55 @@ factory = Factory.create(name:"CPF")
 department1 = Department.create(name:"KFC", factory_id: factory.id)
 department2 = Department.create(name:"CFK", factory_id: factory.id)
 
-user= Account.create(name: "สมบัติ วันพีช", username: "manager", password: "1", factory_id: factory.id, role: "Manager")
+user= Account.create(name: "แอดมิน", username: "manager", password: "1", factory_id: factory.id, role: "Manager")
 
-user2= Account.create(name: "ภาภูมิโตะ ปูปะโตะ", username: "admin", password: "1", factory_id: factory.id, role: "Admin")
+user2= Account.create(name: "ผู้จัดการ1", username: "admin", password: "1", factory_id: factory.id, role: "Admin")
 
-user3= Account.create(name: "สมชาย รักดี", username: "Worker1", password: "1", factory_id: factory.id, role: "Worker", free: true)
-user4= Account.create(name: "สมบูรณ์ ซีอิ้วขาว", username: "Worker2", password: "1", factory_id: factory.id, role: "Worker", free: true)
-user5= Account.create(name: "จัตุรงค์ บรรจงยิง", username: "Worker3", password: "1", factory_id: factory.id, role: "Worker", free: true)
-user6= Account.create(name: "อาหลิว เต๋อหัว", username: "Worker4", password: "1", factory_id: factory.id, role: "Worker", free: true)
-user7= Account.create(name: "นงรัก ไม่รัก", username: "Worker5", password: "1", factory_id: factory.id, role: "Woker", free: true)
-user8= Account.create(name: "จอร์น หมั่นเพียร", username: "Worker6", password: "1", factory_id: factory.id, role: "Worker", free: true)
-user9= Account.create(name: "เจซสิก้า ปากหาร", username: "Worker7", password: "1", factory_id: factory.id, role: "Worker", free: true)
-user10= Account.create(name: "สมหวัง ชายโสด", username: "Worker8", password: "1", factory_id: factory.id, role: "Worker", free: true)
+user3= Account.create(name: "พนักงาน1 ข้อมูลตัวอย่าง", username: "Worker1", password: "1", factory_id: factory.id, role: "Worker", free: true)
+user4= Account.create(name: "พนักงาน2 ข้อมูลตัวอย่าง", username: "Worker2", password: "1", factory_id: factory.id, role: "Worker", free: true)
+user5= Account.create(name: "พนักงาน3 ข้อมูลตัวอย่าง", username: "Worker3", password: "1", factory_id: factory.id, role: "Worker", free: true)
+user6= Account.create(name: "พนักงาน4 ข้อมูลตัวอย่าง", username: "Worker4", password: "1", factory_id: factory.id, role: "Worker", free: true)
+user7= Account.create(name: "พนักงาน5 ข้อมูลตัวอย่าง", username: "Worker5", password: "1", factory_id: factory.id, role: "Woker", free: true)
+user8= Account.create(name: "พนักงาน6 ข้อมูลตัวอย่าง", username: "Worker6", password: "1", factory_id: factory.id, role: "Worker", free: true)
+user9= Account.create(name: "พนักงาน7 ข้อมูลตัวอย่าง", username: "Worker7", password: "1", factory_id: factory.id, role: "Worker", free: true)
+user10= Account.create(name: "พนักงาน8 ข้อมูลตัวอย่าง", username: "Worker8", password: "1", factory_id: factory.id, role: "Worker", free: true)
+user11= Account.create(name: "พนักงาน9 ข้อมูลตัวอย่าง", username: "Worker9", password: "1", factory_id: factory.id, role: "Worker", free: true)
+user12= Account.create(name: "พนักงาน10 ข้อมูลตัวอย่าง", username: "Worker10", password: "1", factory_id: factory.id, role: "Worker", free: true)
 
-user11= Account.create(name: "อนามัย อนามุย", username: "Worker9", password: "1", factory_id: factory.id, role: "Worker", free: true)
-user12= Account.create(name: "หมูหัน พันแล๋ป", username: "Worker10", password: "1", factory_id: factory.id, role: "Worker", free: true)
-user13= Account.create(name: "แดง หลังอาน", username: "Worker11", password: "1", factory_id: factory.id, role: "Worker", free: true)
-user14= Account.create(name: "เขียว รักพืซ", username: "Worker12", password: "1", factory_id: factory.id, role: "Worker", free: true)
-user15= Account.create(name: "เชอรี่ สามโคก", username: "Worker13", password: "1", factory_id: factory.id, role: "Woker", free: true)
-user16= Account.create(name: "ตี้กแตน ชนแล้วด่า", username: "Worker14", password: "1", factory_id: factory.id, role: "Worker", free: true)
-user17= Account.create(name: "แพนเค้ก", username: "Worker15", password: "1", factory_id: factory.id, role: "Worker", free: true)
-user18= Account.create(name: "พิเชต บุรุตวิทย์", username: "Worker16", password: "1", factory_id: factory.id, role: "Worker", free: true)
+user13= Account.create(name: "สมชาย ร้อยเสน่ห์ ", username: "Worker11", password: "1", factory_id: factory.id, role: "Worker", free: true)
+user14= Account.create(name: "มหาเวทย์ ผนึกมาร ", username: "Worker12", password: "1", factory_id: factory.id, role: "Worker", free: true)
+user15= Account.create(name: "จัตุรงค์ บรรจงยิง", username: "Worker13", password: "1", factory_id: factory.id, role: "Woker", free: true)
+user16= Account.create(name: "รรรรร เทพจริง ", username: "Worker14", password: "1", factory_id: factory.id, role: "Worker", free: true)
+user17= Account.create(name: "มหาหล่อ บางกระดี้ดี ", username: "Worker15", password: "1", factory_id: factory.id, role: "Worker", free: true)
+user18= Account.create(name: "เฟรนส์ โซนส์ ", username: "Worker16", password: "1", factory_id: factory.id, role: "Worker", free: true)
+user19= Account.create(name: "มานะ หนึ่งเดียว  ", username: "Worker17", password: "1", factory_id: factory.id, role: "Worker", free: true)
+user20= Account.create(name: "มานะ ใจสลาย  ", username: "Worker18", password: "1", factory_id: factory.id, role: "Worker", free: true)
 
-task1 = Task.create(account_id: user3.id, department_id: department1.id, day: Time.parse('16-11-2021'), shift: "1", ot: 2, startTime: Time.now, active: true)
-task2 = Task.create(account_id: user4.id, department_id: department2.id, day: Time.parse('16-11-2021'), shift: "1", ot: 2, startTime: Time.now, active: false)
+
+
+
+
+
+
+task1 = Task.create(account_id: user3.id, department_id: department1.id, day: Time.parse('17-11-2021'), shift: "1", ot: 2, startTime: Time.now, active: true)
+task1 = Task.create(account_id: user3.id, department_id: department1.id, day: Time.parse('18-11-2021'), shift: "1", ot: 2, startTime: Time.now, active: true)
+task1 = Task.create(account_id: user3.id, department_id: department1.id, day: Time.parse('19-11-2021'), shift: "1", ot: 2, startTime: Time.now, active: true)
+task1 = Task.create(account_id: user3.id, department_id: department1.id, day: Time.parse('20-11-2021'), shift: "1", ot: 2, startTime: Time.now, active: true)
+
+task2 = Task.create(account_id: user3.id, department_id: department2.id, day: Time.parse('17-11-2021'), shift: "1", ot: 2, startTime: Time.now, active: false)
+task2 = Task.create(account_id: user3.id, department_id: department2.id, day: Time.parse('18-11-2021'), shift: "1", ot: 2, startTime: Time.now, active: false)
+task2 = Task.create(account_id: user3.id, department_id: department2.id, day: Time.parse('19-11-2021'), shift: "1", ot: 2, startTime: Time.now, active: false)
+task2 = Task.create(account_id: user3.id, department_id: department2.id, day: Time.parse('20-11-2021'), shift: "1", ot: 2, startTime: Time.now, active: false)
+
 task3 = Task.create(account_id: user5.id, department_id: department1.id, day: Time.parse('17-11-2021'), shift: "1", ot: 2, startTime: Time.now, active: true)
+task3 = Task.create(account_id: user5.id, department_id: department1.id, day: Time.parse('18-11-2021'), shift: "1", ot: 2, startTime: Time.now, active: true)
+task3 = Task.create(account_id: user5.id, department_id: department1.id, day: Time.parse('19-11-2021'), shift: "1", ot: 2, startTime: Time.now, active: true)
+task3 = Task.create(account_id: user5.id, department_id: department1.id, day: Time.parse('20-11-2021'), shift: "1", ot: 2, startTime: Time.now, active: true)
+
 task4 = Task.create(account_id: user6.id, department_id: department2.id, day: Time.parse('17-11-2021'), shift: "1", ot: 2, startTime: Time.now, active: false)
+task4 = Task.create(account_id: user6.id, department_id: department2.id, day: Time.parse('18-11-2021'), shift: "1", ot: 2, startTime: Time.now, active: false)
+task4 = Task.create(account_id: user6.id, department_id: department2.id, day: Time.parse('19-11-2021'), shift: "1", ot: 2, startTime: Time.now, active: false)
+task4 = Task.create(account_id: user6.id, department_id: department2.id, day: Time.parse('20-11-2021'), shift: "1", ot: 2, startTime: Time.now, active: false)
 
 task5 = Task.create(account_id: user7.id, department_id: department1.id, day: Time.parse('18-11-2021'), shift: "1", ot: 4, startTime: Time.now, active: true)
 task6 = Task.create(account_id: user8.id, department_id: department2.id, day: Time.parse('18-11-2021'), shift: "1", ot: 4, startTime: Time.now, active: false)

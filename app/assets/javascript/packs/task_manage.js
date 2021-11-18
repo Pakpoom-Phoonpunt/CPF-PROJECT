@@ -15,25 +15,37 @@ $.ajax({
         }
 })
 
-$('#transfer-btn').on("click", function() {
-    let checkbox = $("input:checked")
+$('#transfer-btn[name ="add"]').on("click", function() {
     let accId = []
     $('input:checked').each(function(){
         $(this).prop('checked',false);
         accId.push($(this).val())
     });
-    $.ajax({
-        type: "GET",
-            url: window.location.href,
-            dataType: "script",
-            data: {
-                     "accId": accId,
-                },
-            success:function(data){ 
-                console.log("Done In manage"); 
-            }
-    })
+
+    ajaxCommu("add", accId, 0)
 })
+
+$('#transfer-btn[name ="delete"]').on("click", function() {
+    let taskId = []
+    $('input:checked').each(function(){
+        $(this).prop('checked',false);
+        taskId.push($(this).val())
+    });
+    console.log(taskId.length)
+
+    ajaxCommu("delete", taskId, 0)
+})
+
+$('#assign').on("click", function() {
+    let taskId = []
+    let value = $('#otTime').val()
+    $('input:checked').each(function(){
+        $(this).prop('checked',false);
+        taskId.push($(this).val())
+    });
+    ajaxCommu("ot", taskId, value)
+})
+
 $('.selectall-checkbox').on("click", function() {
     var side = $(this).attr("id")
     var cb;
@@ -59,5 +71,39 @@ $('.selectall-checkbox').on("click", function() {
         });
     }
 });
+
+$('#search-input').bind("change keyup", function() {
+    let val = $(this).val()
+    console.log(val)
+    $.ajax({
+        type: "GET",
+        url: window.location.href,
+        dataType: "script",
+        data: {
+                "act": "search",
+                "word": val
+            },
+        success:function(data){ 
+            console.log("SUCCESS communication event");
+        }
+    });
+
+});
+
+function ajaxCommu(func, Id, value,  callbackMsg="SUCCESS communication event"){
+    $.ajax({
+        type: "GET",
+        url: window.location.href,
+        dataType: "script",
+        data: {
+                "act": func,
+                "Id": Id,
+                "value": value
+            },
+        success:function(data){ 
+            console.log(callbackMsg);
+        }
+    });
+}
 
     

@@ -7,9 +7,9 @@
         </tr>
     <%end%>
 <%end%>
-<%if task.length <= 20%>
-    <%i = 20 - task.length%>
-    <% while i > 0%>
+<%if task && task.length <= 16%>
+    <%i = 16 - task.length%>
+    <% while i > 0 do%>
         <tr class="data">
                 <td></td>
                 <td></td>

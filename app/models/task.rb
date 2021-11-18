@@ -15,9 +15,6 @@ class Task < ApplicationRecord
     end
     
     def self.assign_task(department, acc, day, shift)
-        puts "=======acc ID========"
-        puts acc
-        puts "======================"
         if !Task.find_by(:account_id => acc, :day => Time.parse(day))
             task = Task.new(:day => day, :shift => shift, :ot => 0)
             Department.add_task(department, task)
@@ -26,17 +23,17 @@ class Task < ApplicationRecord
         end
     end
 
-    def self.delete_task(task_id)
-        task = Task.find_by(:id => task_id)
+    def self.delete_task( accId, date, shift)
+        task = Task.find_by(:account_id => accId, :day => Time.parse(date), :shift => shift)
         if task
-            Account.set_free(task.account_id)
+            Account.set_free(accId)
             task.destroy!  
         end      
     end
     
-    def self.assign_ot(task_id, val)
-        if Task.find_by(:id => task_id)
-            task = Task.find_by(:id => task_id)
+    def self.assign_ot(acc_id, date, shift, val)
+        task = Task.find_by(:account_id => acc_id, :day => Time.parse(date), :shift => shift)
+        if task
             task.ot = val
             task.save!
         end

@@ -1,15 +1,15 @@
 <%if task%>
     <% task.each do |t|%>
         <tr class="data">
-            <td><%= check_box_tag 'sworkers[]', t.id, false, :id=>"right-checkbox", :value => t.id %></td>
+            <td><%= check_box_tag 'sworkers[]', t.id, false, :id=>"right-checkbox", :value => t.account_id %></td>
             <td><%= t.account_id%></td>
             <td><%= t.get_owner_name%></td>
             <td><%= t.ot%></td>
         </tr>
     <%end%>
 <%end%>
-<%if task.length <= 20%>
-    <%i = 20 - task.length%>
+<%if task.length <= 16%>
+    <%i = 16 - task.length%>
     <% while i > 0%>
         <tr class="data">
                 <td></td>

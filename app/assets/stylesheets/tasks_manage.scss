@@ -4,11 +4,12 @@
 /*================MANAGE SHIFT PAGE================*/
 
 .manage-shift-header-page{
-    padding: 2em 1em 1em 1em;
+    padding: 0 1em 0 1em;
     background: var(--dark-color);
     display:flex;
     flex-direction: row;
     justify-content: space-between;
+    height: 5vh;
   }
   
   #detail{
@@ -69,8 +70,8 @@
     flex-direction: row;
     justify-content: space-between;
     background: var(--dark-color);
-    padding: .5rem .5rem 10px .5rem;
-    border-collapse: none;
+    padding: 0 .5rem 10px .5rem;
+    height: 85vh;
   }
   #data-table-left,
   #data-table-right{

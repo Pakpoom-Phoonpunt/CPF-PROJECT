@@ -2,43 +2,36 @@
     
     <div id="dashboard-body">
         <div id="body-left">
-            <table>
-                <tr>
-                    <div id="left-top">
-                        <td>
-                            <div id="current-time-details">
-                                <h2 id="current-time"></h2>
-                                <h3 id="current-date"></h3>
-                            </div>
-                        </td>
-
-                        <td>
-                            <h2 id="already-in">Checked in<p id= "num">_</p></h2>
-                        </td>
-                    </div>
-                </tr>
-            </table>
+            <div id="left-top">
+                <div id="current-time-details">
+                    <h2 id="current-time"></h2>
+                    <h3 id="current-date"></h3>
+                </div>
+                <h2 id="already-in">Checked in<p id= "num">_</p></h2>
+            </div>
             <div id="department-list">
                 <% @departments.each do |d|%>
                     <button class="d-list"><%= "#{d.name}"%></button>
                 <%end%>
             </div>
-            <button id="manage-shift-btn">Manage Shift</button>
         </div>
         <div id="body-right">
             <div id=r-table-header>
-                <h3 class="status" id="actual">actual</h3>
-                <h3 class= "status" id="plan">plan</h3>
+                <div id="a-p-group">
+                    <h3 class="status" id="actual">actual</h3>
+                    <h3 class= "status" id="plan">plan</h3>
+                </div>
                 
-                <%= form_tag method: :get, url: "/accounts/#{current_user.id}/dashboard/" do %>   
+                <div id="d-s-group">
                     <select name='day' id="date-select" ></select>
-                <%end%>
                     <select id="shift-select", class="test">
                         <option value="1" label="Shift 1">Shift 1</option>
                         <option value="2" label="Shift 2">Shift 2</option>
                         <option value="3" label="Shift 3">Shift 3</option>    
-                        <option value="4" label="Shift 4">Shift 4</option>
                     </select>
+                    <button id="manage-shift-btn">Manage Shift</button>
+                </div>
+                
             </div>
             <table id="data-table">
                 <tr>
@@ -46,8 +39,8 @@
                     <th>Name</th>
                     <th>Enter time</th>
                     <th>Start time</th>
-                    <th>Exit time</th>
                     <th>End time</th>
+                    <th>Exit time</th>
                 </tr>
                                     
                 </div>

@@ -47,6 +47,7 @@ class AccountsController < ApplicationController
         puts "======================================================="
         if params[:date] && params[:departName]
             @tasks = Task.filter_task(params[:date], @departmentId, params[:shift], params[:status])
+            puts @tasks
             @actual_worker = Task.number_worker(@departmentId, params[:date], params[:shift], "actual")
             @all_worker = Task.number_worker(@departmentId, params[:date], params[:shift], "plan")
         end
