@@ -1,5 +1,11 @@
 addDaySelector();
+sessionStorage.setItem("status",'actual');
+sessionStorage.removeItem("date");
+sessionStorage.removeItem("department");
+sessionStorage.removeItem("shift");
 
+ //  SELECT PLAN ACTUAL
+ 
 $(".status").on("click",function(){
     let date = $('#date-select').val(); // get recent selected day
     let shift = $("#shift-select").val(); // get recent selected shift
@@ -53,6 +59,54 @@ $(".d-list").on("click", function(){
 
     ajaxCommu(date, department, shift, status);
 });
+
+// SELECT MANAGE SHIFT
+
+$("#manage-shift-btn").on("click",function(){
+
+    let status = "manage";
+    //get selected department
+    let department = sessionStorage.getItem("department"); // get current status
+    let date = $("#date-select").val();
+    let shift = $("#shift-select").val();
+    console.log(date)
+    console.log(shift)
+    let url = ''
+
+    if(department == null){
+        url = window.location.href
+    }else{
+        url = window.location.href + "/tasks_manage/" +department +"/"+ date + "/" + shift
+    }
+    $.ajax({
+        type: "GET",
+        url: url,
+        dataType: "script",
+        data: {
+                "date": date,
+                 "depart": department,
+                 "shift": shift,
+            },
+        success:function(data){ 
+            console.log("Done mange event");
+            window.location.href = url
+        }
+    });
+});
+
+$(".status").on("click",function(){
+    let date = $('#date-select').val(); // get recent selected day
+    let shift = $("#shift-select").val(); // get recent selected shift
+    let status = $(this).text(); // get current status
+
+    // get current department and shift
+    let department = sessionStorage.getItem("department"); //get selected department
+     
+    ajaxCommu(department)
+});
+
+
+
 
 function addDaySelector() {
     var element = document.getElementById('date-select'),

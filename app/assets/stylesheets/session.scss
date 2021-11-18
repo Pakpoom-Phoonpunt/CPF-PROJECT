@@ -27,3 +27,46 @@
     flex-direction: row;
     font-weight: bold;
 }
+
+/*================LOG-IN PAGE================*/
+#login-text{
+    text-align: center;
+    margin-top: 5em;
+}
+#login-parent form{
+   display:  flex;
+   flex-direction: column;
+   align-items: center;
+}
+#login-input {
+   margin: .2rem;
+}
+#login-btn, #sign-up{
+   margin: 1rem;
+}
+#login-btn input{
+ border-radius: 15px;
+ border-color: #333;
+ background-color: var(--secondary-color);
+ max-height: 2.5em;
+ width: 10em;
+ padding:.4em .5em;
+}
+#login-btn input:hover{
+ border-color: var(--accent-color);
+ cursor: pointer;
+}
+#login-btn input[type="submit"]{
+ font-size: 1rem;
+ letter-spacing: .3ch;
+}
+#sign-up{
+   color: var(--accent-color);
+   text-decoration: none;
+}
+#username, #password{
+   display: block;
+   height: 1.5rem;
+   max-width: 100%;
+   border-radius: 12px;
+}

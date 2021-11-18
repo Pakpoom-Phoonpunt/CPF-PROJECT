@@ -1,23 +1,29 @@
 class TasksManageController < ApplicationController
-    def index
-        redirect_back fallback_location: "/accounts/#{@current_user.id}/dashboard"
-    end
-    
-    def action
-        @departmentId = params[:id]
-        respond_to do |format|
-          format.js
-        end
-      end
     
     def show
-        @free_workers = Account.get_free_worker
-        @departmentId = params[:id]
-        @task_list = Task.get_tasks(params[:id])
-        @department = Department.find(@departmentId)
+        @department = params[:depart]
+        @date = params[:date]
+        @shift = params[:shift]
+        #add to shift
+        if params[:accId]
+          puts "=========================================================="
+          puts "เข้าaddแล้วจ้า"
+          assign_task(@department, params[:accId], @date, @shift)
+          puts "=========================================================="
+        end
+        # Display in manage page
+        @free_workers = Account.get_free_worker(@date)
+        @worker_in_department = Task.filter_task(@date, Department.get_departmentId(params[:departmentName]), @shift, "plan")   #right table 
+        @departmentId = Department.get_departmentId(params[:departmentName])
+        @department_name = params[:departmentName]
+
+        # if @free_workers.length <= 20
+          
+        # end
+
         respond_to do |format|
-          format.html
-          format.js {}
+          format.html {}
+          format.js {render action: "show"}
           format.json {}
         end
     end
@@ -38,15 +44,13 @@ class TasksManageController < ApplicationController
           Task.delete_task(x)
         }
       end
-      redirect_to "/tasks_manage/#{params[:id]}/"
     end
-    def assign_task(worker_list)
+    def assign_task(department, worker_list, date, shift)
         if worker_list
           worker_list.each {|x|
-            Task.assign_task(params[:id], x, Time.now, 1)
+            Task.assign_task(department, x, date, shift)
           }
         end
-        redirect_to "/tasks_manage/#{params[:id]}/"
     end
     def assign_ot(worker_list, val)
       begin
@@ -55,9 +59,8 @@ class TasksManageController < ApplicationController
               Task.assign_ot(x, val)
             }
          end
-          redirect_to "/tasks_manage/#{params[:id]}/"
-      rescue
-        redirect_to "/tasks_manage/#{params[:id]}/"
+      rescue 
+        flash[:notice] = "Something Wrong"
       end
     end
 end

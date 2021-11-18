@@ -9,22 +9,16 @@ class Task < ApplicationRecord
             return ""
         end
     end
-
-    def self.get_tasks(department)
-        return Task.where(:department_id => department)
-    end
-    
-    def self.get_tasks_by_department_name(department_name)
-        department_id = Department.where(:name => department_name).ids
-        return Task.where(:department_id => department_id)
-    end
     
     def get_owner_name
         return Account.get_name(self.account_id)
     end
     
     def self.assign_task(department, acc, day, shift)
-        if !(Task.find_by(:account_id => acc)&& Task.find_by(:day => day))
+        puts "=======acc ID========"
+        puts acc
+        puts "======================"
+        if !Task.find_by(:account_id => acc, :day => Time.parse(day))
             task = Task.new(:day => day, :shift => shift, :ot => 0)
             Department.add_task(department, task)
             Account.add_task(acc, task)
@@ -33,8 +27,8 @@ class Task < ApplicationRecord
     end
 
     def self.delete_task(task_id)
-        if Task.find_by(:id => task_id)
-            task = Task.find_by(:id => task_id)
+        task = Task.find_by(:id => task_id)
+        if task
             Account.set_free(task.account_id)
             task.destroy!  
         end      
@@ -50,9 +44,9 @@ class Task < ApplicationRecord
 
     def self.filter_task(date, departmentId, shift, status)
         time = Time.parse(date).strftime("%Y-%m-%d")
+        tmp = Task.where(:department_id => departmentId, :shift => shift)
         if status && status == "plan"
-            if Task.find_by(:department_id => departmentId, :shift => shift)
-                tmp = Task.where(:department_id => departmentId, :shift => shift)
+            if tmp
                 tasks = []
                 tmp.each do |t|
                     if t.day.strftime("%Y-%m-%d") === time
@@ -61,8 +55,8 @@ class Task < ApplicationRecord
                 end
             end
         elsif status && status == "actual"
-            if Task.find_by(:department_id => departmentId, :shift => shift, :active => true)
-                tmp = Task.where(:department_id => departmentId, :shift => shift, :active => true)
+            tmp = Task.where(:department_id => departmentId, :shift => shift, :active => true)
+            if tmp
                 tasks = []
                 tmp.each do |t|
                     if t.day.strftime("%Y-%m-%d") === time
@@ -71,7 +65,25 @@ class Task < ApplicationRecord
                 end
             end
         end
-        
         return tasks
+    end
+
+    def self.number_worker(departmentId, date, shift, status)
+        if filter_task(date, departmentId, shift, status)
+            return filter_task(date, departmentId, shift, status).length
+        else
+            return 0
+        end
+    end
+    
+    def self.get_accId_by_date(date)
+        accId = []
+        time = Time.parse(date).strftime("%Y-%m-%d")
+        Task.all.each do |t|
+            if t.day.strftime("%Y-%m-%d") === time
+                accId << t.account_id
+            end
+        end
+        return accId
     end
 end

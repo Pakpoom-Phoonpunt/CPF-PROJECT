@@ -1,3 +1,164 @@
 // Place all the styles related to the tasks_manage controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+/*================MANAGE SHIFT PAGE================*/
+
+.manage-shift-header-page{
+    padding: 2em 1em 1em 1em;
+    background: var(--dark-color);
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  #detail{
+    display: flex;
+    flex-direction: row;
+    font-size: 1.25rem;
+  
+  }
+  #depart-shift-section p{
+    color: var(--primary-color);
+    padding: 0 .5rem;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+  }
+  #detail{
+    color: var(--bright-color);
+    text-align: center;
+  }
+  #search-section input{
+    border-radius: var(--default-radius) 0 0 var(--default-radius);
+    text-align: center;
+    padding: .25rem 0;
+    border: none;
+  }
+  #save-delete-section button, #search-section #search {
+    border-radius: 0 var(--default-radius) var(--default-radius) 0;
+    border: 1px solid var(--dark-color);
+    padding: .25rem .5rem .25rem .25rem;
+    color: var(--dark-color);
+    text-transform: uppercase;
+  }
+  #search-section #search{
+    background-color: var(--bright-color);
+    color: var(--dark-color);
+  }
+  #search-section #search:hover{
+    cursor: pointer;
+  }
+  #save-delete-section #assign{
+    background-color: var(--primary-color);
+    border-radius: 0 var(--default-radius) var(--default-radius) 0;
+    padding: .25rem 1rem;
+    border: 0;
+  }
+  #save-delete-section #assign:hover{
+    color: var(--bright-color);
+    cursor:pointer;
+  }
+  
+  #otTime{
+    border-radius: var(--default-radius) 0 0 var(--default-radius);
+    border: 0;
+    text-align: center;
+    padding: .25rem 1rem;
+  }
+  #manage-shift-body{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background: var(--dark-color);
+    padding: .5rem .5rem 10px .5rem;
+    border-collapse: none;
+  }
+  #data-table-left,
+  #data-table-right{
+      border-collapse: collapse;
+      background: var(--bright-color);
+      color: var(--dark-color);
+  }
+  #data-table-left th,
+  #data-table-right th{
+    height: 2rem;
+    text-align: center;
+  }
+  #data-table-left .data:nth-child(odd),
+  #data-table-right .data:nth-child(odd){
+    background: rgb(231, 231, 231);
+  }
+
+  #data-table-left tr,
+  #data-table-right tr{
+    height: 2rem;
+  }
+
+
+  #data-table-left tr td,
+  #data-table-right tr td {
+    border: none;
+    text-align: center;
+  }
+  #table-left div,
+  #table-right div{
+    display:flex;
+    justify-content: space-between;
+    padding: .5rem;
+  }
+  #table-right h2,
+  #table-left h2{
+    color: var(--bright-color);
+    background-color: var(--dark-color);
+    border-radius: var(--default-radius) var(--default-radius) 0 0;
+    font-size: 1.5rem;
+    text-align: center;  
+    text-transform: uppercase;
+}
+  #table-right {
+    flex:50%;
+    margin-left:.5rem;
+    border-radius: var(--default-radius) var(--default-radius) 0 0;
+    border: 1px solid var(--primary-color);
+  }
+  #table-left{
+    margin-right: .5rem;
+    border-radius: var(--default-radius) var(--default-radius) 0 0;
+    border: 1px solid var(--primary-color);
+  }
+  .manage-shift-table{
+    flex: 50%;
+  }
+  #data-table-left,#data-table-right{
+    width: 100%;
+  }
+  
+  #transfer-btn{
+    display: flex;
+    background-color: var(--primary-color);
+    color: var(--bright-color);
+    border-radius: var(--default-radius);
+    border: none;
+    max-height: 2rem;
+    padding: 0 2rem 0 2rem;
+    align-items: center;
+    text-transform: uppercase;
+  }
+  #table-right #transfer-btn {
+    background-color: var(--accent-color);
+  }
+  #transfer-btn:hover{
+    cursor:pointer;
+    color:var(--dark-color)  
+  }
+  
+  #transfer-btn:active, #save-delete-section #assign:active
+  {
+    background-color: var(--secondary-color);
+  }
+  
+  #search-section #search:active{
+    background-color: grey;
+  }
+  
+  
+  

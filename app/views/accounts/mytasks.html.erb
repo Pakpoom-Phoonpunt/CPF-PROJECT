@@ -1,0 +1,32 @@
+<div>
+    <p>My tasks list</p>
+</div>
+
+
+
+<table id="task view">
+    <tr>
+      <th>No</th>
+      <th>Day</th>
+      <th>shift<th>
+      <th>OT<th>
+      <th>เวลาเข้างาน<th>
+      <th>เวลาเข้าออกงาน<th>
+      <th>เข้า/ออก<th>
+    </tr>
+    <% @tasks.each_with_index do |task,index| %>
+        <tr>
+            <td><%= index+1 %></td>
+            <td><%= task.day %></td>
+            <td><%= task.shift %></td>
+            <td><%= task.ot %></td>
+            <td><%= task.startTime %></td>
+            <td><%= task.endTime %></td>
+            <% if task.active %>
+                <td><%= link_to "ออกงาน", edit_tasks_manage_path(task) %></td>
+            <% else %>
+                <td><%= link_to "เข้างาน", edit_tasks_manage_path(task) %></td>
+            <% end %>
+        </tr>
+    <% end %>
+</table>

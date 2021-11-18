@@ -1,3 +1,212 @@
 // Place all the styles related to the Accounts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+/*================DASHBOARD PAGE================*/
+
+#dashboard-parent{
+    width:100vw;
+    display: flex;
+    flex-direction: column;
+  }
+  #dashboard-body{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background: var(--dark-color);
+    padding: 0px 0 10px 0;
+    border-collapse: none;
+  }
+  #body-right{
+    flex: 50%;
+  }
+  #current-date{
+    padding: .5rem 0 .5rem 0;
+    text-align: center;
+  }
+  
+  /*================LEFT SIDE BODY================*/
+  
+  #body-left{
+    margin-right: 0 .5rem .5rem 0;
+    width: 30vw;
+  }
+  #body-right{
+    display:flex;
+    flex-direction: column;
+    padding: 0 1rem 0 1rem;
+  }
+  #already-in{
+    display: inline-block;
+    background-color: var(--bright-color);
+    color: var(--dark-color);
+    border-radius: var(--default-radius) ;
+    border: 1px solid var(--dark-color);
+    padding: .3em;
+    margin: 1rem 1rem 0 1rem;
+    width: 90%;
+    text-align: center;
+    font-weight: 500;
+    font-size: 1.5rem;
+  }
+  #already-in #num{
+    color: var(--primary-color);
+    font-size: 2rem;
+  }
+  #current-time-details{
+    display: inline-block;
+    background-color: var(--bright-color);
+    color: var(--dark-color);
+    border-radius: var(--default-radius) ;
+    border: 1px solid var(--dark-color);
+    padding: .3em;
+    margin: 1rem 1rem 0 1rem;
+    width: 90%;
+    text-align: center;
+    font-weight: 500;
+    font-size: .5rem;
+  }
+  #current-time{
+    font-weight: 500;
+    font-size: 2rem;
+  }
+  #current-date{
+    font-size: 1rem;
+  }
+  #department-list{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: column;
+    background-color: var(--dark-color);
+    border: 1px solid var(--primary-color);
+    border-radius: var(--default-radius);
+    margin: .5rem 0 0 1rem;
+    width: 90%;
+    height: 30rem;
+  }
+  
+  .d-list{
+    display: block;
+    background-color:var(--bright-color);
+    border-radius: var(--default-radius);
+    height: 2rem;
+    width: 15em;
+    margin: .5rem 0 .5rem 0;
+    padding: 0 2rem 0 2rem;
+    text-align: center;
+  }
+  .d-list p{
+    pointer-events: none;
+  }
+  .d-list a{
+    font-size: 1.3rem;
+    text-decoration: none;
+    color: var(--dark-color);
+  }
+  .d-list:hover{
+    background-color: var(--primary-color);
+    color: var(--bright-color);
+    cursor:pointer;
+  }
+  .d-list:focus{
+    background-color: var(--primary-color);
+  }
+  #manage-shift-btn{
+    display: block;
+    border-radius: var(--medium-radius) ;
+    margin: .5rem 0 .5rem 1rem;
+    padding: .5em;
+    background: var(--bright-color);
+    border: 2px solid var(--primary-color);
+    color: var(--dark-color);
+    max-width: 90%;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: nowrap;
+    font-weight: normal;
+    font-size: 1.3rem;
+  }
+  #manage-shift-btn:hover{
+    background-color: var(--secondary-color);
+    border: 2px solid var(--dark-color);
+    color: var(--dark-color);
+    cursor: pointer;
+  }
+  #manage-shift-btn:active{
+    background-color: var(--primary-color);
+  }
+  #manage-shift-btn:focus{
+    background-color: var(--secondary-color);
+  }
+  /*================RIGHT SIDE BODY================*/
+  
+  #r-table-header{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: var(--dark-color);
+    border-radius: var(--default-radius) var(--default-radius) 0 0;
+    border: 1px solid var(--primary-color);
+    margin-top: 1rem;
+    padding: .2rem 1rem .2rem 1rem;
+  }
+  .status{
+    text-transform: capitalize;
+  }
+  #actual, #plan{
+    display: flex;
+    align-items: center;
+    font-weight: normal;
+    text-transform: uppercase;
+  }
+  #actual{
+    color: var(--accent-color);
+  }
+  #plan{
+    margin-left:1rem;
+    color: var(--primary-color);
+  }
+  #plan:hover,#actual:hover{
+    cursor: pointer;
+    color: var(--bright-color);
+  }
+  
+  #date-select{
+    margin-left: auto;
+    margin-right: .5rem;
+    background-color: var(--bright-color);
+    border-radius: var(--default-radius);
+  }
+  #shift-select{
+    background-color: var(--bright-color);
+    border-radius: var(--default-radius);
+  }
+  #shift-select:hover,#date-select:hover{
+    cursor:pointer;
+  }
+  #data-table{
+    border-collapse: collapse;
+    background: var(--bright-color);
+    color: var(--dark-color);
+  }
+  .data:nth-child(odd){
+    background: rgb(231, 231, 231);
+  }
+  th{
+    background-color: var(--secondary-color);
+    padding: .1rem 0 .1rem .5rem;
+    text-align: left;
+    border: 1px solid var(--dark-color);
+    color: var(--dark-color);
+  }
+  td{
+    padding: .2rem 0 .2rem .5rem;
+    border: 1px solid var(--dark-color);
+    color: var(--dark-color);
+  }
+  h3.detail{
+    text-align: center;
+    display: inline-block;
+  }
+  

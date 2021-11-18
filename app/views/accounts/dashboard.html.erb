@@ -1,14 +1,29 @@
 <div id="dashboard-parent">
-    <h3 id="current-date"><%= javascript_pack_tag 'time'%></h3>
+    
     <div id="dashboard-body">
         <div id="body-left">
-            <h2 id="already-in">Checked in<p id= "num"></p></h2>
+            <table>
+                <tr>
+                    <div id="left-top">
+                        <td>
+                            <div id="current-time-details">
+                                <h2 id="current-time"></h2>
+                                <h3 id="current-date"></h3>
+                            </div>
+                        </td>
+
+                        <td>
+                            <h2 id="already-in">Checked in<p id= "num">_</p></h2>
+                        </td>
+                    </div>
+                </tr>
+            </table>
             <div id="department-list">
                 <% @departments.each do |d|%>
                     <button class="d-list"><%= "#{d.name}"%></button>
                 <%end%>
             </div>
-            <%= link_to "Manage Shift", "/tasks_manage/#{@departmentId}/", :id=>"manage-shift-btn"%> 
+            <button id="manage-shift-btn">Manage Shift</button>
         </div>
         <div id="body-right">
             <div id=r-table-header>
@@ -34,15 +49,11 @@
                     <th>Exit time</th>
                     <th>End time</th>
                 </tr>
-                <%if @tasks%>
-                    
-                <%else%>
-                    
-                <%end%>
-                
+                                    
                 </div>
             </table>
         </div>
     </div>
     <%= javascript_pack_tag 'dateSelectLoop'%>
+    <%= javascript_pack_tag 'time'%>
 </div

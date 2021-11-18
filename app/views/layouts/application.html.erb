@@ -8,30 +8,38 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;700&display=swap" rel="stylesheet"> 
+    <% if @current_user%>
+        <div>
+        <ul>
+          <div id= "nav-elements">
+            <li><%= link_to "#{@current_user.name}" , account_path(@current_user)%> </li>
+            <% if @current_user.role == "Manager"%>
+              <li><%= link_to "Dashboard" , "/accounts/#{current_user.id}/dashboard"%></li>
+            <%end%>
+            <% if @current_user.role == "Admin"%>
+              <li><%= link_to "Manage User" , "/accounts/#{current_user.id}/adminmanagepage"%></li>
+            <%end%>
+            <% if @current_user.role == "Worker"%>
+              <li><%= link_to "See Task" , "/accounts/#{current_user.id}/mytasks"%></li>
+            <%end%>
+          </div>
+          <div id="nav-elements">
+            <li><h2>Welcome</h2><p id= "name-text"><%=@current_user.name%>!</p></li>
+            <li><%= link_to 'Log Out', logout_path, :method => :post, :id => "log-out"%></li>
+          </div>
+        </ul>
+        </div>
+      <%end%>
+        <%= yield %>
   </head>
   <% if flash[:notice]%>
     <div><%= flash[:notice] %></div>
   <%end%>
+  
   <body>
-  <% if @current_user%>
-    <div>
-    <ul>
-      <div id= "nav-elements">
-        <li><%= link_to "#{@current_user.name}" , account_path(@current_user)%> </li>
-        <% if @current_user.role == "Manager"%>
-          <li><%= link_to "Dashboard" , "/accounts/#{current_user.id}/dashboard"%></li>
-        <%end%>
-        <% if @current_user.role == "Admin"%>
-          <li><%= link_to "Manage User" , "/accounts/#{current_user.id}/adminmanagepage"%></li>
-        <%end%>
-      </div>
-      <div id="nav-elements">
-        <li><h2>Welcome</h2><p id= "name-text"><%=@current_user.name%>!</p></li>
-        <li><%= link_to 'Log Out', logout_path, :method => :post, :id => "log-out"%></li>
-      </div>
-    </ul>
-    </div>
-  <%end%>
-    <%= yield %>
+    
   </body>
 </html>

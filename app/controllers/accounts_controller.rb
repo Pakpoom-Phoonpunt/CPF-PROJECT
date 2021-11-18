@@ -34,10 +34,6 @@ class AccountsController < ApplicationController
         end
     end
     
-    def show
-        
-    end
-    
     def dashboard
         task_list
         @factory = @current_user.factory
@@ -51,20 +47,17 @@ class AccountsController < ApplicationController
         puts "======================================================="
         if params[:date] && params[:departName]
             @tasks = Task.filter_task(params[:date], @departmentId, params[:shift], params[:status])
-            puts "======================================================="
-            puts @tasks
-            puts "======================================================="
+            @actual_worker = Task.number_worker(@departmentId, params[:date], params[:shift], "actual")
+            @all_worker = Task.number_worker(@departmentId, params[:date], params[:shift], "plan")
         end
-
-        # get all workers in :date
-        
+                
         respond_to do |format|
             format.js {render layout: false}
             format.json {}
-            format.html
+            format.html { }
         end
     end
-
+    
     def task_list
         if params[:department]
             @tasks = Department.get_tasklist(params[:department])
@@ -78,6 +71,9 @@ class AccountsController < ApplicationController
         @accounts = Account.all()
     end
 
+    def mytasks
+        @tasks = @current_user.tasks
+    end
     def edit
         @user = Account.find(params[:id])
     end
@@ -102,8 +98,10 @@ class AccountsController < ApplicationController
         redirect_to "/accounts/#{@current_user.id}/adminmanagepage"
     end
     
+
     private
     def user_params
         params.require(:account).permit(:username, :password, :role)
     end
+
 end

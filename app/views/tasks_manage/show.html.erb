@@ -1,68 +1,51 @@
-<div class="manage-shift-header-page">
-    <%= javascript_pack_tag 'task_manage'%>
-    <div id="search-section">
-        <input type="text" placeholder="Enter worker's name" />
-        <button id="search">Search</button>
-    </div>
-    <div id= "depart-shift-section">
-        <h3 id="detail"><%= @department.name %> .. กะ..<h3>
-    </div>
-    
-    <%= form_tag method: :post, url: "/tasks_manage/#{@departmentId}" do %>
-        <div id="save-delete-section">
-            <%= submit_tag 'Assign' ,  :name =>'save', :id => 'save'%>
-            <%= text_field_tag :otTime %>
-            <%= submit_tag 'Delete' ,  :name =>'delete', :id => 'delete'%>
+<body>
+    <div class="manage-shift-header-page">
+        <div id="search-section">
+            <input type="text" placeholder="Enter worker's name" />
+            <button id="search">Search</button>
         </div>
-</div>
+        <div id= "depart-shift-section">
+            <h3 id="detail"><p>Department: </p> <%= @department_name%> <p>Date: </p> <%= @date%><p>Shift: </p> <%= @shift%> <h3> 
+        </div>
+        
+            <div id="save-delete-section">
+                <input id="otTime" placeholder="Assign OT"/>
+                <button id="assign">Assign</button>
+            </div>
+    </div>
 
-<div id="manage-shift-body">
-    <div id="table-left" class="manage-shift-table">
-        <h2>All Worker</h2>
-        <table id="data-table">
-            <tr>
-                <th><%= check_box_tag "", nil, nil, class: "selectall-checkbox", :id=>"left-check-all"%></th>
-                <!--<th><input type="checkbox" class="check-all" id="left-check-all"/></th>-->
-                <th>ID</th>
-                <th>Name</th>
-            </tr>
-            <%if @free_workers%>
-                <% @free_workers.each do |w|%>
-                    <tr class="data">
-                        <td><%= check_box_tag 'fworkers[]', w.id, false, :id=>"left-checkbox"%></td>
-                        <td><%= w.id%></td>
-                        <td><%= w.name%></td>
-                    </tr>
-                <%end%>
-            <%end%>
-        </table>
-    </div>
-    <%= submit_tag '>>' , :name =>'add', :id => "transfer-btn" %>
-    
-    <div id="table-right">
-        <h2>Worker in shift</h2>
+    <div id="manage-shift-body">
+        <div id="table-left" class="manage-shift-table">
+            <div>    
+                <h2>All Worker</h2>
+                <button id="transfer-btn" name="add">transfer</button>
+            </div>
+            <table id="data-table-left">
+                <tr>
+                    <th><%= check_box_tag "", nil, nil, class: "selectall-checkbox", :id=>"left-check-all"%></th>
+                    <!--<th><input type="checkbox" class="check-all" id="left-check-all"/></th>-->
+                    <th>ID</th>
+                    <th>Name</th>
+                </tr>
+            </table>
+        </div>
         
-        <table id="data-table">
-            <tr>
-                <th><%= check_box_tag "", nil, nil, class: "selectall-checkbox", :id=>"right-check-all"%></th>
-                <th>ID</th>
-                <th>Name</th>
-                <th>OT</th>
-            </tr>
+        <div id="table-right">
+            <div>    
+                <button id="transfer-btn" name="add">transfer</button>
+                <h2>Worker in shift</h2>
+            </div>
+
+            <table id="data-table-right">
+                <tr>
+                    <th><%= check_box_tag "", nil, nil, class: "selectall-checkbox", :id=>"right-check-all"%></th>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>OT</th>
+                </tr>
+            </table>
             
-            
-            <%if @task_list%>
-                <% @task_list.each do |w|%>
-                    <tr class="data">
-                        <td><%= check_box_tag 'sworkers[]', w.id, false, :id=>"right-checkbox"%></td>
-                        <td><%= w.account_id%></td>
-                        <td><%= w.get_owner_name%></td>
-                        <td><%= w.ot%></td>
-                    </tr>
-                <%end%>
-            <%end%>
-        </table>
-        
-        <% end %>
+            </div>
+        <%= javascript_pack_tag 'task_manage'%>
     </div>
-</div>
+</body>

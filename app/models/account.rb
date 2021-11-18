@@ -1,16 +1,13 @@
 class Account < ApplicationRecord
     has_many :tasks
     belongs_to :factory
-
-    def self.get_free_worker
+    
+    def self.get_free_worker(date)
         @worker_free = []
-        Account.where(:free => true).each do |a|
-            if a.role != "Manager"
-                @worker_free << a
-            end
-        end
-        return @worker_free
+        busy_acc = Task.get_accId_by_date(date)
+        return Account.where.not(:id => busy_acc).where.not(:role => ["Manager", "Admin"])
     end
+    
     def self.get_name(acc_id)
         return Account.find_by(:id => acc_id).name
     end
