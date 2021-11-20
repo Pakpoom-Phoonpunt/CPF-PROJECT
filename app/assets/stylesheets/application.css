@@ -41,7 +41,9 @@
 #already-in .responsive,
 #department-list-responsive,
 #mobile-indicator,
-.d-s-short{
+.d-s-short,
+#save-delete-section-responsive,
+#table-left #save-delete-section{
   display: none;
 }
 
@@ -126,6 +128,9 @@
   }
   
 /*================RESPONESIVE================*/
+/*================RESPONESIVE================*/
+
+
 @media screen and (max-width: 899px){
   .nav-bar #nav-default,
   #body-left{
@@ -252,5 +257,69 @@
     width: 60%;
     font-size: .8rem;
   }
+ 
+  /*========== TASK MANAGE ==========*/
+  #depart-shift-section,
+  .manage-shift-header-page #save-delete-section,
+  #table-right,
+  #table-left .action-bar h2{
+    display: none;
+  }
+  #search-section{
+    margin-left: auto;
+  }
+
+  #table-left .action-bar{
+    align-items: center;
+  }
+  #table-left .action-bar h3{
+    text-transform: uppercase;
+    font-size: 1.25rem;
+    margin-right: 1rem;
+    cursor: pointer;
+  }
   
+  .action-bar #free-btn{
+    color: var(--accent-color);
+  }
+  .action-bar #plan-btn{
+    color: var(--primary-color);
+  }
+  #free-btn:hover,
+  #plan-btn:hover{
+    color: var(--bright-color);
+  }
+
+  #table-left #save-delete-section{
+    display: flex;
+    justify-content: end;
+  }
+  #save-delete-section button{     /* assign section */
+    border-radius: 0 var(--default-radius) var(--default-radius) 0;
+    border: 1px solid var(--dark-color);
+    padding: .25rem .5rem .25rem .25rem;
+    color: var(--dark-color);
+    text-transform: uppercase;
+  }
+  #save-delete-section #assign{
+    background-color: var(--primary-color);
+    border-radius: 0 var(--default-radius) var(--default-radius) 0;
+    padding: .25rem .5rem;
+    width:50%;
+    border: 0;
+  }
+  #save-delete-section #assign:hover{
+    color: var(--bright-color);
+    cursor: pointer;
+  }
+  #otTime{
+    border-radius: var(--default-radius) 0 0 var(--default-radius);
+    border: 0;
+    text-align: center;
+    padding: .25rem 1rem;
+    width: 50%;
+  }
+  #transfer-btn{
+    padding: .25rem 1rem .25rem 1rem;
+  }
 }

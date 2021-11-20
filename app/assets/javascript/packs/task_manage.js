@@ -1,19 +1,17 @@
-let department = window.location.href.split("/").at(-1)
-console.log(department)
-
-
+let department = window.location.href.split("/").at(-3);
+console.log(department);
 
 $.ajax({
-    type: "GET",
-        url: window.location.href,
-        dataType: "script",
-        data: {
-                 "departmentName": department,
-            },
-        success:function(data){ 
-            console.log("Done In manage"); 
-        }
-})
+    type: 'GET',
+    url: window.location.href,
+    dataType: 'script',
+    data: {
+            'departmentName': department,
+        },
+    success:function(data){ 
+        console.log("Done In manage"); 
+    }
+});
 
 $('#transfer-btn[name ="add"]').on("click", function() {
     let accId = []
@@ -23,7 +21,7 @@ $('#transfer-btn[name ="add"]').on("click", function() {
     });
 
     ajaxCommu("add", accId, 0)
-})
+});
 
 $('#transfer-btn[name ="delete"]').on("click", function() {
     let taskId = []
@@ -31,19 +29,19 @@ $('#transfer-btn[name ="delete"]').on("click", function() {
         $(this).prop('checked',false);
         taskId.push($(this).val())
     });
-    console.log(taskId.length)
+    console.log(taskId.length);
 
-    ajaxCommu("delete", taskId, 0)
+    ajaxCommu("delete", taskId, 0);
 })
 
 $('#assign').on("click", function() {
-    let taskId = []
-    let value = $('#otTime').val()
+    let taskId = [];
+    let value = $('#otTime').val();
     $('input:checked').each(function(){
         $(this).prop('checked',false);
-        taskId.push($(this).val())
+        taskId.push($(this).val());
     });
-    ajaxCommu("ot", taskId, value)
+    ajaxCommu("ot", taskId, value);
 })
 
 $('.selectall-checkbox').on("click", function() {
@@ -107,3 +105,46 @@ function ajaxCommu(func, Id, value,  callbackMsg="SUCCESS communication event"){
 }
 
     
+// Responsive //
+if(isMobileWidth()){
+    let shift = window.location.href.split('/').at(-1)
+    let depart_shift = department + " : " + shift
+    $("#num").html(depart_shift);
+    $('#free-btn').on('click',function(){
+        $.ajax({
+            type: "GET",
+            url: window.location.href,
+            dataType: "script",
+            data: {
+                    "departmentName": department,
+                    "freeTable": true,
+                    "mobile": true
+                },
+            success:function(data){ 
+                console.log("Done In Free btn"); 
+            }
+        });
+    });
+
+    $('#plan-btn').on('click',function(){
+        $.ajax({
+            type: "GET",
+            url: window.location.href,
+            dataType: "script",
+            data: {
+                    "departmentName": department,
+                    "freeTable": false,
+                    "mobile": true
+                },
+            success:function(data){ 
+                console.log("Done In Free btn"); 
+            }
+        });
+    });
+
+
+}
+
+function isMobileWidth() {
+    return $('#mobile-indicator').is(':visible');
+}

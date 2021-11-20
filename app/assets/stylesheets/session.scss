@@ -2,12 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+//================== PROFILE PAGE =================//
+//================== PROFILE PAGE =================//
+
 .profile-parent{
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 5rem;
-    margin-left: 5rem;
 }
 .profile-parent h1{
     font-size: 2rem;
@@ -17,6 +18,18 @@
     align-self: left;
     margin-top: 1rem;
     font-size: 1.5rem;
+}
+#profile-details{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 2rem 0;
+    border: 1px solid var(--primary-color);
+    border-radius: var(--default-radius);
+    padding: 1rem 5rem;
+  }
+.image{
+    margin-right: 3rem;
 }
 .profile-body{
     display: flex;
@@ -28,7 +41,24 @@
     font-weight: bold;
 }
 
+#task-view{
+    border-collapse: collapse;
+}
+#task-view tr:first-child{
+    border-radius: var(--default-radius) var(--default-radius) 0 0;
+    border: 1px solid var(--primary-color);
+}
+#task-view th,
+#task-view td,
+#task-view td a{
+    text-align: center;
+    white-space: pre;
+    padding: 0 1rem;
+    font-size: 1.25rem;
+    text-decoration: none;
+}
 /*================LOG-IN PAGE================*/
+  
 #login-text{
     text-align: center;
     margin-top: 5em;
@@ -37,6 +67,7 @@
    display:  flex;
    flex-direction: column;
    align-items: center;
+   justify-content: center;
 }
 #login-input {
    margin: .2rem;

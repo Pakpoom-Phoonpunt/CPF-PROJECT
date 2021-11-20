@@ -72,7 +72,7 @@ class AccountsController < ApplicationController
         @accounts = Account.all()
     end
 
-    def mytasks
+    def show
         @tasks = @current_user.tasks
     end
     def edit

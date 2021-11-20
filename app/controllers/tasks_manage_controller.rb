@@ -16,23 +16,30 @@ class TasksManageController < ApplicationController
         end
         
         # Display in manage page
+        #search
         if params[:word] && params[:word] != ""
           @free_workers = Account.get_free_worker(@date, params[:word])
         else
           @free_workers = Account.get_free_worker(@date, "")
         end
-
         @worker_in_department = Task.filter_task(@date, Department.get_departmentId(params[:departmentName]), @shift, "plan")   #right table 
         @departmentId = Department.get_departmentId(params[:departmentName])
         @department_name = params[:departmentName]
 
-        # if @free_workers.length <= 20
+        if params[:mobile]
+          puts "============== mobile============"
+          puts params[:mobile]
+          puts params[:freeTable]
+          puts "============== mobile============"
+          @freeTable = params[:freeTable]
+          @mobile = params[:mobile]
+        end
           
         # end
 
         respond_to do |format|
           format.html {}
-          format.js {render action: "show"}
+          format.js {render layout: false}
           format.json {}
         end
     end

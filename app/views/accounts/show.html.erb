@@ -1,9 +1,41 @@
 
 <section class="profile-parent">
-    <h1>Profile</h1>
-    <div class="profile-body">
-        <h2 class="topic">Name: <%=@current_user.name%></h2>
-        <h2 class="topic">Role: <%=@current_user.role%></h2>
-        <h2 class="topic">Factory: <%=@current_user.factory.name%></h2>
-    </div>
+    <section id="profile-details">
+        <div class="image" style=" width: 8rem; height:10rem; background-color: #333;"></div>
+        <div class="profile-body">
+            <h2 class="topic">Name: <%=@current_user.name%></h2>
+            <h2 class="topic">Role: <%=@current_user.role%></h2>
+            <h2 class="topic">Factory: <%=@current_user.factory.name%></h2>
+        </div>
+    </section>
+    <%if @current_user.role === "Worker"%>
+        <table id="task-view">
+            <tr>
+            <th>ลำดับ</th>
+            <th>วันที่ (วันเดือนปี)</th>
+            <th>กะทำงาน</th>
+            <th>เวลาลงชื่อเข้า</th>
+            <th>เวลาลงชื่อออก</th>
+            <th>ทำงานล่วงเวลา (ชั่วโมง)</th>
+            <th>สถานะ</th>
+            </tr>
+                <% @tasks.each_with_index do |task,index| %>
+            <tr>
+                    <td><%= index+1 %></td>
+                    <td><%= task.day.strftime("%d-%m-%y") %></td>
+                    <td><%= task.shift %></td>
+                    
+                    <td><%= task.get_time(task.startTime)%></td>
+                    <td><%= task.get_time(task.endTime) %></td>
+                    <td><%= task.ot %></td>
+                    <% if task.active %>
+                        <td><%= link_to "ออกงาน", edit_tasks_manage_path(task) %></td>
+                    <% else %>
+                        <td><%= link_to "เข้างาน", edit_tasks_manage_path(task) %></td>
+                    <% end %>
+            </tr>
+            <% end %>   
+        
+        </table>
+    <%end%>
 </section>

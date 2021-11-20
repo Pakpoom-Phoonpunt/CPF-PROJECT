@@ -1,5 +1,17 @@
-$("#data-table-left .data").remove();
-$("#data-table-right .data").remove();
-$('#data-table-left').append("<%= j render partial: 'user', :locals => {:task => @free_workers} %>");
-$('#data-table-right').append("<%= j render partial: 'task', :locals => {:task => @worker_in_department} %>");
-console.log("done table patial in js.erb");
+if (@mobile){
+    $("#data-table-left .data").remove();
+    $('#data-table-left tr th:last-child()').remove();
+    if(@freeTable){
+        $('#data-table-left').append("<%= j render partial: 'user', :locals => {:task => @free_workers} %>");
+    }else{
+        $('#data-table-left tr th').append("<th>OT</th>");
+        $('#data-table-left').append("<%= j render partial: 'task', :locals => {:task => @worker_in_department} %>");
+    }
+    console.log("done table Mobile patial in js.erb"); 
+}else{
+    $("#data-table-left .data").remove();
+    $("#data-table-right .data").remove();
+    $('#data-table-left').append("<%= j render partial: 'user', :locals => {:task => @free_workers} %>");
+    $('#data-table-right').append("<%= j render partial: 'task', :locals => {:task => @worker_in_department} %>");
+    console.log("done table patial in js.erb"); 
+}

@@ -32,7 +32,7 @@
           </div>
           <h2 id="already-in-responsive" class='responsive'><p id='num'>--/--</p></h2>
           <div id="hamberg-menu">
-            <li><%= link_to "#{@current_user.name}" , account_path(@current_user)%> </li>
+            <li><%= link_to "profile" , account_path(@current_user)%> </li>
             <li><%= link_to 'Log Out', logout_path, :method => :post, :id => "log-out"%></li>
           </div>
           <div class="nav-icon">

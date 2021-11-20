@@ -1,6 +1,16 @@
 // Place all the styles related to the Accounts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+#profile-details{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 2rem 0;
+}
+
+
+
 /*================DASHBOARD PAGE================*/
 
 #dashboard-parent{
@@ -226,9 +236,10 @@
     color: var(--dark-color);
   }
   td{
-    padding: .2rem 0 .2rem .5rem;
+    padding: .2rem .5rem .2rem .5rem;
     border: 1px solid var(--dark-color);
     color: var(--dark-color);
+    white-space: pre;
   }
   h3.detail{
     text-align: center;
