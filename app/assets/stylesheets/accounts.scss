@@ -98,6 +98,7 @@
   .d-list{
     display: block;
     border-radius: var(--default-radius);
+    background-color: var(--bright-color);
     height: 2rem;
     width: 90%;
     margin: .5rem 0 .5rem 0;
@@ -169,13 +170,16 @@
     background-color: var(--bright-color);
     border-radius: var(--default-radius);
     border:none;
+    text-align-last: center;
     width: 33%;
   }
+  
   #shift-select{
     margin: .1rem .5rem;
     background-color: var(--bright-color);
     border-radius: var(--default-radius);
     border: none;
+    text-align-last: center;
     width: 33%;
   }
   #shift-select:hover,#date-select:hover{

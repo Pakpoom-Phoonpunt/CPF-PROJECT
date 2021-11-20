@@ -37,6 +37,15 @@
 }
 
 /*================NAV================*/
+#nav-responsive .responsive,  /* HIDE RESPONESIVE ELEMENTS*/
+#already-in .responsive,
+#department-list-responsive,
+#mobile-indicator,
+.d-s-short{
+  display: none;
+}
+
+
 .nav-icon {
   display: none;
   cursor: pointer;
@@ -53,8 +62,8 @@
 
 /* Rotate first bar */
 .change .bar1 {
-  -webkit-transform: rotate(-45deg) translate(-9px, 6px) ;
-  transform: rotate(-45deg) translate(-9px, 6px) ;
+  -webkit-transform: rotate(-45deg) translate(-9px, 0px) ;
+  transform: rotate(-45deg) translate(-9px, 0px) ;
 }
 
 /* Fade out the second bar */
@@ -64,8 +73,8 @@
 
 /* Rotate last bar */
 .change .bar3 {
-  -webkit-transform: rotate(45deg) translate(-8px, -8px) ;
-  transform: rotate(45deg) translate(-8px, -8px) ;
+  -webkit-transform: rotate(45deg) translate(-10px, 1px) ;
+  transform: rotate(45deg) translate(-10px, 1px) ;
 }
 
 
@@ -104,6 +113,7 @@
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    text-transform: uppercase;
     font-size: 1.25rem;
     font-weight: 500;
   }
@@ -117,12 +127,52 @@
   
 /*================RESPONESIVE================*/
 @media screen and (max-width: 899px){
-  .nav-bar ul{
+  .nav-bar #nav-default,
+  #body-left{
       display: none;
   }
+  #mobile-indicator{
+    display: block;
+  }
+  #hamberg-menu{
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+    align-items:center;
+    background-color: var(--bright-color);
+    border-radius: var(--default-radius);
+    border: none;
+    max-width: 80%;
+    height: 2rem;
+  }
+  
+  #hamberg-menu li a{
+    padding: 0 .5rem;
+  }
+
+  #log-out{
+    color: var(--accent-color);
+  }
+  #log-out:hover{
+    color: var(--accent-color);
+    opacity: 70%;
+  }
+  
   .nav-bar{
+    padding: 0 .5rem;
+  }
+  #nav-responsive .responsive{
+    display:flex;
+    flex-direction: row;
+    max-width: 50%;
+  }
+  .nav-bar #nav-responsive{
     height: 6vh;
   }
+  li a, li h2{
+    color: var(--dark-color);
+  }
+  
   .nav-icon{
       display: block;
       float: right;
@@ -136,8 +186,71 @@
     display:none;
   }
   #current-time-details,
-  #already-in{
+  #already-in-responsive{
     height: 2rem;
     font-size: 0;
   }
+  /*============ DASHBOARD =====*/
+  #left-top{
+    display: none;
+  }
+  #already-in-responsive{
+    background-color: var(--bright-color);
+    color: var(--primary-color);
+    border-radius: var(--default-radius) ;
+    border: 1px solid var(--dark-color);
+    padding: .3em;
+    margin-left: .5rem;
+    flex: 50%;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 1.5rem;
+  }
+  
+
+  #department-list-responsive{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: var(--dark-color);
+    border: 1px solid var(--primary-color);
+    border-radius: var(--default-radius) var(--default-radius) 0 0;
+    padding: .5rem 1rem;
+    margin: 0 1rem;
+  }
+  .d-list{
+    width: 90%;
+    margin: 0 .5rem;
+    padding: 0 2rem 0 2rem;
+    text-align: center;
+    background-color: var(--bright-color);
+  }
+  #body-right{
+    width:100%;
+  }
+  #actual,
+  #plan,
+  #manage-shift-btn{
+    font-size: .8rem;
+  }
+  #d-s-group{
+    margin-left:1rem;
+  }
+  #date-select{
+    margin: .1rem;
+    width: 20%;
+  }
+  #shift-select{
+    margin: .1rem;
+    width: 20%;
+  }
+  .d-s-short{
+    display: inline;
+  }
+  #manage-shift-btn{
+    width: 60%;
+    font-size: .8rem;
+  }
+  
 }

@@ -121,15 +121,22 @@ function addDaySelector() {
     for (var number = 1 ; number < limit_showDay; number++) { //day 0 of next month  is max day of this month
         var option = document.createElement('option');
         option.value = number;
-
         if (number == 1 ){
-            option.appendChild(document.createTextNode("Day " + current_day + "(Current)"));
-            option.setAttribute ("selected", true); 
+            if(isMobileWidth()){
+                option.appendChild(document.createTextNode(current_day)); //Create  <option> _ </option>
+            }else{
+                option.appendChild(document.createTextNode("Day " + current_day + "(Current)"));
+                option.setAttribute ("selected", true); 
+            }
         }else { 
             if ( current_day == number_Month ){ // last day of month  dd-mm-yyyy
                 current_day = 1 ;
             }
-            option.appendChild(document.createTextNode("Day " + current_day)); //Create  <option> Day _ </option>  
+            if(isMobileWidth()){
+                option.appendChild(document.createTextNode(current_day)); //Create  <option> _ </option>
+            }else{
+                option.appendChild(document.createTextNode("Day " + current_day)); //Create  <option> Day _ </option>   
+            }
         }
         option.classList.add('day');
         var date = today.getFullYear().toString()+"-"+(today.getMonth()+1).toString()+"-"+current_day.toString(); //->  yyyy-mm-dd
@@ -156,4 +163,18 @@ function ajaxCommu(date, department, shift, status, callbackMsg="SUCCESS communi
             console.log(callbackMsg);
         }
     });
+}
+
+// RESPONSIVE //
+
+$("#current-date").show();
+$("#current-time-details li").hide();
+
+$('.nav-icon').on('click',function(){
+        $('#already-in .responsive').toggle();
+
+});
+
+function isMobileWidth() {
+    return $('#mobile-indicator').is(':visible');
 }

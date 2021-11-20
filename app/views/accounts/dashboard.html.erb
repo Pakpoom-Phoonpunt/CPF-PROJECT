@@ -1,7 +1,7 @@
+
 <div id="dashboard-parent">
-    
     <div id="dashboard-body">
-        <div id="body-left">
+        <div id="body-left">    
             <div id="left-top">
                 <div id="current-time-details">
                     <h2 id="current-time"></h2>
@@ -15,6 +15,11 @@
                 <%end%>
             </div>
         </div>
+        <div id="department-list-responsive">
+                <% @departments.each do |d|%>
+                    <button class="d-list"><%= "#{d.name}"%></button>
+                <%end%>
+        </div>
         <div id="body-right">
             <div id=r-table-header>
                 <div id="a-p-group">
@@ -23,8 +28,11 @@
                 </div>
                 
                 <div id="d-s-group">
-                    <select name='day' id="date-select" ></select>
-                    <select id="shift-select", class="test">
+                    <select name='day' id="date-select" >
+                        <option class='d-s-short'value="disabled selected">D</option>
+                    </select>
+                    <select id="shift-select">
+                        <option class='d-s-short' value="disabled selected">S</option>
                         <option value="1" label="Shift 1">Shift 1</option>
                         <option value="2" label="Shift 2">Shift 2</option>
                         <option value="3" label="Shift 3">Shift 3</option>    

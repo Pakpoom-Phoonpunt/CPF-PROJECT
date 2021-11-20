@@ -11,14 +11,30 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;700&display=swap" rel="stylesheet"> 
-    
+    <div id='mobile-indicator'></div>
     <% if @current_user%>
         <div class="nav-bar">
-        <ul id="nav-response">
-          <div id="current-time-details" class='response'>
+        <ul id="nav-responsive">
+          <div id="current-time-details" class='responsive'>
             <h3 id="current-date"></h3>
+            <% if @current_user.role == "Manager"%>
+              <li><%= link_to "Dashboard" , "/accounts/#{current_user.id}/dashboard"%></li>
+            <%end%>
+
+            <% if @current_user.role == "Worker"%>
+              <li><%= link_to "See Task" , "/accounts/#{current_user.id}/mytasks"%></li>
+            <%end%>
+
+            <% if @current_user.role == "Admin"%>
+              <li><%= link_to "Manage Department" , "/accounts/#{current_user.id}/manage_Department"%></li>
+              \<li><%= link_to "Manage User" , "/accounts/#{current_user.id}/manage_Worker"%></li>
+            <%end%>
           </div>
-          <h2 id="already-in" class='response'></h2>
+          <h2 id="already-in-responsive" class='responsive'><p id='num'>--/--</p></h2>
+          <div id="hamberg-menu">
+            <li><%= link_to "#{@current_user.name}" , account_path(@current_user)%> </li>
+            <li><%= link_to 'Log Out', logout_path, :method => :post, :id => "log-out"%></li>
+          </div>
           <div class="nav-icon">
             <div class="bar1"></div>
             <div class="bar2"></div>
@@ -60,4 +76,5 @@
     
   </body>
   <%= javascript_pack_tag 'nav_icon'%>
+  <%= javascript_pack_tag 'nav_menu'%>
 </html>
