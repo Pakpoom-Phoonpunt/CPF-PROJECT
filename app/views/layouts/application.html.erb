@@ -68,12 +68,12 @@
       <%end%>
         <%= yield %>
   </head>
-  <% if flash[:notice]%>
-    <div><%= flash[:notice] %></div>
-  <%end%>
+  
   
   <body>
-    
+    <% if flash[:notice]%>
+    <div id=notice><%= flash[:notice] %></div>
+  <%end%>
   </body>
   <%= javascript_pack_tag 'nav_icon'%>
   <%= javascript_pack_tag 'nav_menu'%>

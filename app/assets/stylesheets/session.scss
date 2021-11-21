@@ -73,42 +73,71 @@
     background-color: rgb(211, 209, 209);
 }
 /*================LOG-IN PAGE================*/
-  
+#login-page{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+#notice{
+    order: 1;
+    color:white;
+}
 #login-text{
     text-align: center;
-    margin-top: 5em;
+    color: var(--bright-color);
+    font-size: 1.5rem;
+    font-weight: medium;
 }
 #login-parent form{
    display:  flex;
    flex-direction: column;
    align-items: center;
    justify-content: center;
+   border: 1px solid var(--primary-color);
+   border-radius: var(--default-radius);
+   max-width: 30ch;
+   margin: auto;
+   padding: 1rem .5rem;
 }
 #login-input {
    margin: .2rem;
+   color: var(--bright-color);
+   font-size: 1.25rem;
 }
 #login-btn, #sign-up{
    margin: 1rem;
+   font-size: 1.25rem;
 }
 #login-btn input{
  border-radius: 15px;
- border-color: #333;
+ border:none;
  background-color: var(--secondary-color);
  max-height: 2.5em;
  width: 10em;
  padding:.4em .5em;
 }
 #login-btn input:hover{
- border-color: var(--accent-color);
+ background-color: var(--primary-color);
+ color: var(--bright-color);
  cursor: pointer;
 }
 #login-btn input[type="submit"]{
- font-size: 1rem;
+ font-size: 1.25rem;
  letter-spacing: .3ch;
+}
+form h3{
+    color: var(--bright-color);
 }
 #sign-up{
    color: var(--accent-color);
    text-decoration: none;
+   font-size: 1rem;
+}
+#sign-up:hover{
+    color: var(--primary-color);
 }
 #username, #password{
    display: block;
