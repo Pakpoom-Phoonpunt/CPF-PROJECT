@@ -39,7 +39,7 @@ class Task < ApplicationRecord
         end
     end
 
-    def self.filter_task(date, departmentId, shift, status)
+    def self.filter_task(date, departmentId, shift, status, word)
         time = Time.parse(date).strftime("%Y-%m-%d")
         tmp = Task.where(:department_id => departmentId, :shift => shift)
         if status && status == "plan"
@@ -62,12 +62,26 @@ class Task < ApplicationRecord
                 end
             end
         end
-        return tasks
+        return filter_by_word(word, tasks)
+    end
+
+    def self.filter_by_word(word, tasks)
+        tmp = []
+        if word && word != ""
+            tasks.each do |t|
+                if t.get_owner_name.match("^#{word}") || String(t.account_id).match("^#{word}")
+                    tmp << t
+                end
+            end
+            return tmp
+        else
+            return tasks
+        end
     end
 
     def self.number_worker(departmentId, date, shift, status)
-        if filter_task(date, departmentId, shift, status)
-            return filter_task(date, departmentId, shift, status).length
+        if filter_task(date, departmentId, shift, status, "")
+            return filter_task(date, departmentId, shift, status, "").length
         else
             return 0
         end

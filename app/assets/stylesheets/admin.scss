@@ -1,0 +1,34 @@
+
+
+html{
+    background: var(--bright-color);
+}
+#fac-manage-body{
+    display: flex;
+    margin: auto;
+}
+#factory-manage-table{
+    border-collapse: collapse;
+}
+#factory-manage-table tr:first-child{
+    border-radius: var(--default-radius) var(--default-radius) 0 0;
+    border: 1px solid var(--primary-color);
+}
+#factory-manage-table th,
+#factory-manage-table td,
+#factory-manage-table td a{
+    text-align: center;
+    white-space: pre;
+    padding: 0 1rem;
+    font-size: 1.25rem;
+    text-decoration: none;
+}
+#factory-manage-table tr:first-child{
+    border-radius: var(--default-radius) var(--default-radius) 0 0;
+}
+#factory-manage-table tr:nth-child(even){
+    background-color: var(--bright-color);
+}
+#factory-manage-table tr:nth-child(odd){
+    background-color: rgb(211, 209, 209);
+}

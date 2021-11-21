@@ -1,0 +1,3 @@
+$("#factory_table .data").remove();
+$('#factory_table').append("<%= j render partial: 'factory', :locals => {:@factories => @factories} %>");
+console.log("done in factory js erb")

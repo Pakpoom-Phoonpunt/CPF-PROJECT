@@ -47,29 +47,37 @@
     font-weight: bold;
 }
 
-#task-view{
+#task-view,
+#admin-table{
     border-collapse: collapse;
 }
-#task-view tr:first-child{
+#task-view tr:first-child,
+#admin-table tr:first-child{
     border-radius: var(--default-radius) var(--default-radius) 0 0;
     border: 1px solid var(--primary-color);
 }
 #task-view th,
 #task-view td,
-#task-view td a{
+#task-view td a,
+#admin-table th,
+#admin-table td,
+#admin-table td a{
     text-align: center;
     white-space: pre;
     padding: 0 1rem;
     font-size: 1.25rem;
     text-decoration: none;
 }
-#task-view tr:first-child{
+#task-view tr:first-child,
+#admin-table tr:first-child{
     border-radius: var(--default-radius) var(--default-radius) 0 0;
 }
-#task-view tr:nth-child(even){
+#task-view tr:nth-child(even),
+#admin-table tr:nth-child(even){
     background-color: var(--bright-color);
 }
-#task-view tr:nth-child(odd){
+#task-view tr:nth-child(odd),
+#admin-table tr:nth-child(odd){
     background-color: rgb(211, 209, 209);
 }
 /*================LOG-IN PAGE================*/

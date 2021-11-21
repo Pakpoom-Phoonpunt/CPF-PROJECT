@@ -1,0 +1,18 @@
+<h1><%= "Factory name: #{@factory.name}"%></h1>
+<%= button_to "Add", action: ""%>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+    </tr>
+    </thead>
+        <% if @departments %>
+            <% @departments.each do |department|%>
+            <tr>
+                <td><%= department.id%></td>
+                <td><%= department.name%></td>
+            </tr>
+            <%end%>
+        <% end %>
+</table>

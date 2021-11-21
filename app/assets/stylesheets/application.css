@@ -46,7 +46,9 @@ html{
 #mobile-indicator,
 .d-s-short,
 #save-delete-section-responsive,
-#table-left #save-delete-section{
+#table-left #save-delete-section,
+#free-btn,
+#plan-btn{
   display: none;
 }
 
@@ -281,7 +283,10 @@ html{
     margin-right: 1rem;
     cursor: pointer;
   }
-  
+  #free-btn,
+  #plan-btn{
+    display: block;
+  }
   .action-bar #free-btn{
     color: var(--accent-color);
   }

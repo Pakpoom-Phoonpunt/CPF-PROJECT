@@ -15,7 +15,8 @@ Rails.application.routes.draw do
   
   #Permission ADMIN
   get '/accounts/:id/manage_Worker' , to: "accounts#adminmanage" 
-  get '/accounts/:id/manage_Department' , to: "accounts#adminmanage"
+  get '/accounts/:id/manage_factories' , to: "accounts#factory_manage"
+  get '/manage_factories/edit/:facId', to: "accounts#editFactory"
 
   #Login Mechanic
   get '/login' , to: "session#index"

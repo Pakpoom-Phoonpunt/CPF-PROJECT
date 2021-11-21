@@ -16,13 +16,28 @@ class TasksManageController < ApplicationController
         end
         
         # Display in manage page
-        #search
-        if params[:word] && params[:word] != ""
-          @free_workers = Account.get_free_worker(@date, params[:word])
+
+        # SEARCH FUNCTION
+        # MOBILE VERSION
+        if params[:mobile] === "true"
+          if params[:freeTable] === "true"
+            @free_workers = Account.get_free_worker(@date, params[:word])
+          else
+            @worker_in_department = Task.filter_task(@date, Department.get_departmentId(params[:departmentName]), @shift, "plan", params[:word])
+          end
+         
         else
-          @free_workers = Account.get_free_worker(@date, "")
+          # DESKTOP VERSION
+          if params[:word] && params[:word] != ""
+            @free_workers = Account.get_free_worker(@date, params[:word])
+            puts 
+            puts @free_workers.length
+          else
+            @free_workers = Account.get_free_worker(@date, "")
+          end
+          @worker_in_department = Task.filter_task(@date, Department.get_departmentId(params[:departmentName]), @shift, "plan", "")
         end
-        @worker_in_department = Task.filter_task(@date, Department.get_departmentId(params[:departmentName]), @shift, "plan")   #right table 
+
         @departmentId = Department.get_departmentId(params[:departmentName])
         @department_name = params[:departmentName]
 

@@ -16,10 +16,14 @@ $.ajax({
 $('#transfer-btn[name ="add"]').on("click", function() {
     let accId = []
     $('input:checked').each(function(){
-        $(this).prop('checked',false);
-        accId.push($(this).val())
+        if($(this).val() != "on"){
+            $(this).prop('checked',false);
+            accId.push($(this).val())
+        }else{
+            $(this).prop('checked',false);
+        }
     });
-
+    console.log(accId.length);
     ajaxCommu("add", accId, 0)
 });
 
@@ -73,13 +77,17 @@ $('.selectall-checkbox').on("click", function() {
 $('#search-input').bind("change keyup", function() {
     let val = $(this).val()
     console.log(val)
+     table = sessionStorage.getItem('freeTable');
+     console.log(table)
     $.ajax({
         type: "GET",
         url: window.location.href,
         dataType: "script",
         data: {
                 "act": "search",
-                "word": val
+                "word": val,
+                "mobile": isMobileWidth(),
+                "freeTable": table
             },
         success:function(data){ 
             console.log("SUCCESS communication event");
@@ -110,7 +118,9 @@ if(isMobileWidth()){
     let shift = window.location.href.split('/').at(-1)
     let depart_shift = department + " : " + shift
     $("#num").html(depart_shift);
+    
     $('#free-btn').on('click',function(){
+        sessionStorage.setItem('freeTable', 'true');
         $.ajax({
             type: "GET",
             url: window.location.href,
@@ -127,6 +137,7 @@ if(isMobileWidth()){
     });
 
     $('#plan-btn').on('click',function(){
+        sessionStorage.setItem('freeTable', 'false');
         $.ajax({
             type: "GET",
             url: window.location.href,

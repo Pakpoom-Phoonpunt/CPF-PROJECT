@@ -1,0 +1,20 @@
+<h2>All Factory</h2>
+<%= stylesheet_link_tag 'admin'%>
+<div id="fac-manage-body">
+  <table id="factory-manage-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @factories.each do |fac| %>
+          <tr>
+              <td><%= fac.name %></td>
+              <td><%= link_to "Edit", "/manage_factories/edit/#{fac.id}" %></td>
+          </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

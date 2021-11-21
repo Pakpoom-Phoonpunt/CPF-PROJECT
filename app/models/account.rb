@@ -13,13 +13,15 @@ class Account < ApplicationRecord
     
     def self.filter_by_word(word, acc_list)
         tmp = []
-        if word
+        if word != ""
             acc_list.each do |w|
                 if w.name.match("^#{word}") || String(w.id).match("^#{word}")
                     tmp << w
                 end
             end
             return tmp
+        else
+            return acc_list
         end
     end
     
@@ -28,10 +30,14 @@ class Account < ApplicationRecord
     end
     
     def self.add_task(accId, task)
-        acc = Account.find_by(:id => accId)
-        acc.tasks << task
-        acc.free = false
-        acc.save!
+            acc = Account.find_by(:id => accId)
+            puts "+++++++++++++++++++++++++++++"
+            puts accId
+            puts task
+            puts "+++++++++++++++++++++++++++++"
+            acc.tasks << task
+            acc.free = false
+            acc.save!
     end
     
     def self.set_free(acc_id)

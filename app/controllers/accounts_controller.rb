@@ -46,7 +46,7 @@ class AccountsController < ApplicationController
         puts params[:status]
         puts "======================================================="
         if params[:date] && params[:departName]
-            @tasks = Task.filter_task(params[:date], @departmentId, params[:shift], params[:status])
+            @tasks = Task.filter_task(params[:date], @departmentId, params[:shift], params[:status], "")
             puts @tasks
             @actual_worker = Task.number_worker(@departmentId, params[:date], params[:shift], "actual")
             @all_worker = Task.number_worker(@departmentId, params[:date], params[:shift], "plan")
@@ -99,6 +99,19 @@ class AccountsController < ApplicationController
         redirect_to "/accounts/#{@current_user.id}/adminmanagepage"
     end
     
+    def factory_manage
+        @factories = Factory.get_all_factory
+
+    end
+
+    def editFactory
+        puts params[:facId]
+        @factory = Factory.find_by_id(params[:facId])
+        @departments = @factory.departments
+        puts "=======check fac department==========="
+        puts @factory.departments
+        puts "====================================="
+    end
 
     private
     def user_params

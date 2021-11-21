@@ -26,8 +26,8 @@
             <%end%>
 
             <% if @current_user.role == "Admin"%>
-              <li><%= link_to "Manage Department" , "/accounts/#{current_user.id}/manage_Department"%></li>
-              \<li><%= link_to "Manage User" , "/accounts/#{current_user.id}/manage_Worker"%></li>
+              <li><%= link_to "Manage Factories" , "/accounts/#{current_user.id}/manage_factories"%></li>
+              <li><%= link_to "Manage User" , "/accounts/#{current_user.id}/manage_Worker"%></li>
             <%end%>
           </div>
           <h2 id="already-in-responsive" class='responsive'><p id='num'>--/--</p></h2>
@@ -54,8 +54,8 @@
             <%end%>
 
             <% if @current_user.role == "Admin"%>
-              <li><%= link_to "Manage Department" , "/accounts/#{current_user.id}/manage_Department"%></li>
-              \<li><%= link_to "Manage User" , "/accounts/#{current_user.id}/manage_Worker"%></li>
+              <li><%= link_to "Manage Factories" , "/accounts/#{current_user.id}/manage_factories"%></li>
+              <li><%= link_to "Manage User" , "/accounts/#{current_user.id}/manage_Worker"%></li>
             <%end%>
 
           </div>
