@@ -35,6 +35,9 @@
   font-size: 1rem;
   font-weight: 400;
 }
+html{
+  background-color: var(--dark-color);
+}
 
 /*================NAV================*/
 #nav-responsive .responsive,  /* HIDE RESPONESIVE ELEMENTS*/

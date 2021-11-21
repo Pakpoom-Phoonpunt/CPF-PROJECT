@@ -6,7 +6,7 @@ $.ajax({
     url: window.location.href,
     dataType: 'script',
     data: {
-            'departmentName': department,
+            'departmentName': department
         },
     success:function(data){ 
         console.log("Done In manage"); 
