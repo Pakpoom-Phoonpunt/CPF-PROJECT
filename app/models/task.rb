@@ -33,8 +33,12 @@ class Task < ApplicationRecord
     
     def self.assign_ot(acc_id, date, shift, val)
         task = Task.find_by(:account_id => acc_id, :day => Time.parse(date), :shift => shift)
+        puts "=========== task id ========="
+        puts task.account_id
+        puts val
+        puts "=========== task id ========="
         if task
-            task.ot = val
+            task.ot = val;
             task.save!
         end
     end

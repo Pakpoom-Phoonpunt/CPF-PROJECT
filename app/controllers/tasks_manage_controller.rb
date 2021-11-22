@@ -6,12 +6,19 @@ class TasksManageController < ApplicationController
         @shift = params[:shift]
         #add to shift
         if params[:Id] && params[:act]
+          puts "============ assign ==============="
+          puts params[:date]
+          puts params[:shift]
+          puts params[:Id]
+          puts params[:act]
+          puts "============ assign ==============="
           if params[:act] == "add"
             assign_task(@department, params[:Id], @date, @shift)
           elsif params[:act] == "delete"
             delete_task( params[:Id], @date, @shift)
           elsif params[:act] == "ot"
-            assign_ot( params[:Id], @date, @shift, params[:value])
+            Task.assign_ot( params[:Id], @date, @shift, params[:value])
+            puts "============ assign ot ==============="
           end
         end
         

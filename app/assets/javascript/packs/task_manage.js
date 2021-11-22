@@ -26,6 +26,9 @@ $('#transfer-btn[name ="delete"]').on("click", function() {
     ajaxCommu("delete", taskId, 0);
 })
 
+$('[id="otTime"]').on('change', function(){
+    sessionStorage.setItem('ot-input',$(this).val());
+});
 $('[id="assign"]').on("click", function() {
     assignReply();
 })
@@ -104,19 +107,22 @@ function collectSelected(){
     $('input:checked').each(function(){
         if($(this).val() != "on"){
             $(this).prop('checked',false);
-            taskId.push($(this).val())
+            collection.push($(this).val())
         }else{
             $(this).prop('checked',false);
         }
     });
     return collection;
 }
-function assignReply(){
+function assignReply(isDefault){
     let taskId = collectSelected();
-    let value = $('#otTime').val();
+    let value = sessionStorage.getItem('ot-input');
+    console.log(value);
     
-    console.log("value: " + String(value));
-    ajaxCommu("ot", taskId, value, callbackMsg="responed assign to id: " + btnId.toString());
+    if (value != null){
+        ajaxCommu("ot", taskId, value, callbackMsg="responed assign to");
+        sessionStorage.removeItem('ot-input');
+    }
 }
 
 // Responsive //
