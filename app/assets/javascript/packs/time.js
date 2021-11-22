@@ -21,7 +21,7 @@ function checkTime(i) {
     second = checkTime(second);
     try {
       document.getElementById('current-time').innerHTML =  hour + ":" + minute + ":" + second;
-      document.getElementById('current-date').innerHTML =  weekday[0] +" "+ date +" "+monthNames[month]+" "+year; 
+      $('[id="current-date"]').html(weekday[0] +" "+ date +" "+monthNames[month]+" "+year); 
       t = setTimeout(function() {
         startTime()
       }, 500);

@@ -47,7 +47,6 @@ class AccountsController < ApplicationController
         puts "======================================================="
         if params[:date] && params[:departName]
             @tasks = Task.filter_task(params[:date], @departmentId, params[:shift], params[:status], "")
-            puts @tasks
             @actual_worker = Task.number_worker(@departmentId, params[:date], params[:shift], "actual")
             @all_worker = Task.number_worker(@departmentId, params[:date], params[:shift], "plan")
         end
@@ -104,6 +103,9 @@ class AccountsController < ApplicationController
 
     end
 
+    def mytasks
+        @tasks = @current_user.tasks
+    end
     def editFactory
         puts params[:facId]
         @factory = Factory.find_by_id(params[:facId])
@@ -113,6 +115,7 @@ class AccountsController < ApplicationController
         puts "====================================="
     end
 
+    
     private
     def user_params
         params.require(:account).permit(:username, :password, :role)

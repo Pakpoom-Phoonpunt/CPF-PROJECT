@@ -38,27 +38,23 @@
 html{
   background-color: var(--dark-color);
 }
+  /*================NAV================*/
+  #nav-responsive,  /* HIDE RESPONESIVE ELEMENTS*/
+  #already-in .responsive,
+  #department-list-responsive,
+  #mobile-indicator,
+  .d-s-short,
+  #save-delete-section-responsive,
+  #table-left #save-delete-section,
+  #free-btn,
+  #plan-btn{
+    display: none;
+  }
 
-/*================NAV================*/
-#nav-responsive .responsive,  /* HIDE RESPONESIVE ELEMENTS*/
-#already-in .responsive,
-#department-list-responsive,
-#mobile-indicator,
-.d-s-short,
-#save-delete-section-responsive,
-#table-left #save-delete-section,
-#free-btn,
-#plan-btn{
-  display: none;
-}
-
-
-.nav-icon {
-  display: none;
-  cursor: pointer;
-  
-}
-
+  .nav-icon {
+    display: none;
+    cursor: pointer;
+  }
 .bar1, .bar2, .bar3 {
   width: 1.5rem;
   height: .25rem;
@@ -83,8 +79,6 @@ html{
   -webkit-transform: rotate(45deg) translate(-10px, 1px) ;
   transform: rotate(45deg) translate(-10px, 1px) ;
 }
-
-
 .nav-bar{
   top: 10vh;
   background-color: var(--dark-color);
@@ -95,43 +89,67 @@ html{
   color:var(--primary-color);
   font-size: 1.25rem;
 }
- ul {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    list-style-type: none;
-    overflow: hidden;
+ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  list-style-type: none;
+  overflow: hidden;
+}
+
+#nav-elements {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-transform: uppercase;
+}
+#nav-elements li{
+  display:flex;
+  flex-direction: row;
+}
+
+li a, li h2 {
+  color: var(--bright-color);
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+li a:hover {
+  color:var(--primary-color);
+}
+#log-out:hover{
+  color:var(--accent-color);
+}
+ 
+@media screen and (min-width: 900px) {
+    /*================NAV================*/
+  #nav-responsive,  /* HIDE RESPONESIVE ELEMENTS*/
+  #already-in .responsive,
+  #department-list-responsive,
+  #mobile-indicator,
+  .d-s-short,
+  #save-delete-section-responsive,
+  #table-left #save-delete-section,
+  #free-btn,
+  #plan-btn{
+    display: none;
   }
-  
-  #nav-elements {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    text-transform: uppercase;
+
+  .nav-icon {
+    display: none;
+    cursor: pointer;
   }
-  #nav-elements li{
-    display:flex;
-    flex-direction: row;
+  #current-date{
+    display:block;
   }
-  
-  li a, li h2 {
-    color: var(--bright-color);
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-size: 1.25rem;
-    font-weight: 500;
-  }
-  
-  li a:hover {
-    color:var(--primary-color);
-  }
-  #log-out:hover{
-    color:var(--accent-color);
-  }
-  
+}
+
+
 /*================RESPONESIVE================*/
 /*================RESPONESIVE================*/
 
@@ -141,7 +159,12 @@ html{
   #body-left{
       display: none;
   }
-  #mobile-indicator{
+  #nav-responsive{
+    display: flex;
+    margin-left: 1rem;
+  }
+  #mobile-indicator
+  {
     display: block;
   }
   #hamberg-menu{

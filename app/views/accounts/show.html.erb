@@ -18,7 +18,7 @@
                     <th>เวลาลงชื่อเข้า</th>
                     <th>เวลาลงชื่อออก</th>
                     <th>ทำงานล่วงเวลา (ชั่วโมง)</th>
-                    <th>สถานะ</th>
+                    <th></th>
                     </tr>
                         <% @tasks.each_with_index do |task,index| %>
                     <tr>
@@ -26,12 +26,14 @@
                             <td><%= task.day.strftime("%d-%m-%y") %></td>
                             <td><%= task.shift %></td>
                             
-                            <td><%= task.get_time(task.startTime)%></td>
-                            <td><%= task.get_time(task.endTime) %></td>
+                            <td><%= task.get_time(task.enterTime)%></td>
+                            <td><%= task.get_time(task.exitTime) %></td>
                             <td><%= task.ot %></td>
                             <% if task.active %>
                                 <td><%= link_to "ออกงาน", edit_tasks_manage_path(task) %></td>
-                            <% else %>
+                            <% elsif task.exitTime %>
+                                <td>✔️</td>
+                            <% elsif !task.active %>
                                 <td><%= link_to "เข้างาน", edit_tasks_manage_path(task) %></td>
                             <% end %>
                     </tr>

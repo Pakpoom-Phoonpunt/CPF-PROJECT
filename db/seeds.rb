@@ -4,8 +4,8 @@ factory2 = Factory.create(name:"KFC")
 department1 = Department.create(name:"KFC", factory_id: factory.id)
 department2 = Department.create(name:"CFK", factory_id: factory.id)
 
-department1 = Department.create(name:"MK", factory_id: factory2.id)
-department2 = Department.create(name:"Yayoi", factory_id: factory2.id)
+department3 = Department.create(name:"MK", factory_id: factory2.id)
+department4 = Department.create(name:"Yayoi", factory_id: factory2.id)
 
 user= Account.create(name: "แอดมิน", username: "admin", password: "1", factory_id: factory.id, role: "Admin")
 

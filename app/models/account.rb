@@ -31,10 +31,6 @@ class Account < ApplicationRecord
     
     def self.add_task(accId, task)
             acc = Account.find_by(:id => accId)
-            puts "+++++++++++++++++++++++++++++"
-            puts accId
-            puts task
-            puts "+++++++++++++++++++++++++++++"
             acc.tasks << task
             acc.free = false
             acc.save!

@@ -59,7 +59,8 @@ $('.selectall-checkbox').on("click", function() {
     }
 });
 
-$('#search-input').bind("change keyup", function() {
+$('#search-input').on("change keyup", function() {
+    $('.selectall-checkbox').prop('checked', false);
     let val = $(this).val()
     console.log(val)
     let table = sessionStorage.getItem('freeTable');
@@ -104,7 +105,7 @@ function isMobileWidth() {
 }
 function collectSelected(){
     collection = []
-    $('input:checked').each(function(){
+    $('input[name="workers[]"]:checked').each(function(){
         if($(this).val() != "on"){
             $(this).prop('checked',false);
             collection.push($(this).val())
@@ -115,9 +116,9 @@ function collectSelected(){
     return collection;
 }
 function assignReply(isMobile){
+    $('.selectall-checkbox').prop('checked', false);
     let taskId = collectSelected();
     let value = sessionStorage.getItem('ot-input');
-    console.log(value);
     
     if (value != null){
         $.ajax({
@@ -133,6 +134,7 @@ function assignReply(isMobile){
                 },
             success:function(data){ 
                 sessionStorage.removeItem('ot-input');
+                $("[id='otTime']").val("");
                 console.log("responed assign to");
             }
         });
@@ -144,9 +146,13 @@ if(isMobileWidth()){
     let shift = window.location.href.split('/').at(-1)
     let depart_shift = department + " : " + shift
     $("#num").html(depart_shift);
+    $("[id='otTime']").addClass("ot-input-inactive");
+    $("[id='assign']").addClass("assign-inactive");
     
     $('#free-btn').on('click',function(){
         $('.selectall-checkbox').prop('checked', false);
+        $("[id='otTime']").addClass("ot-input-inactive");
+        $("[id='assign']").addClass("assign-inactive");
         sessionStorage.setItem('freeTable', 'true');
         $.ajax({
             type: "GET",
@@ -165,6 +171,8 @@ if(isMobileWidth()){
 
     $('#plan-btn').on('click',function(){
         $('.selectall-checkbox').prop('checked', false);
+        $("[id='otTime']").removeClass("ot-input-inactive");
+        $("[id='assign']").removeClass("assign-inactive");
         sessionStorage.setItem('freeTable', 'false');
         $.ajax({
             type: "GET",

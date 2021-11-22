@@ -1,7 +1,7 @@
 <%if task%>
     <% task.each do |t|%>
         <tr class="data">
-            <td><%= check_box_tag 'fworkers[]', t.id, false, :id=>"left-checkbox"%></td>
+            <td><%= check_box_tag 'workers[]', t.id, false, :id=>"left-checkbox"%></td>
             <td><%= t.id%></td>
             <td><%= t.name%></td>
         </tr>

@@ -15,8 +15,11 @@ class Task < ApplicationRecord
     end
     
     def self.assign_task(department, acc, day, shift)
+        time_list = ["0:00-8:00", "8:00-16:00", "16:00-0:00"]
         if !Task.find_by(:account_id => acc, :day => Time.parse(day))
-            task = Task.new(:day => day, :shift => shift, :ot => 0)
+            start_time = Time.parse(day +" "+ time_list[shift.to_i-1].split("-")[0])
+            end_time = Time.parse(day +" "+ time_list[shift.to_i-1].split("-")[1])
+            task = Task.new(:day => day, :shift => shift, :ot => 0, :startTime => start_time, :endTime =>end_time)
             Department.add_task(department, task)
             Account.add_task(acc, task)
             task.save!
@@ -33,11 +36,8 @@ class Task < ApplicationRecord
     
     def self.assign_ot(acc_id, date, shift, val)
         task = Task.find_by(:account_id => acc_id, :day => Time.parse(date), :shift => shift)
-        puts "=========== task id ========="
-        puts task.account_id
-        puts val
-        puts "=========== task id ========="
         if task
+            task.endTime = (task.endTime-task.ot.hours) + val.to_i.hours
             task.ot = val;
             task.save!
         end
@@ -57,7 +57,9 @@ class Task < ApplicationRecord
             end
         elsif status && status == "actual"
             tmp = Task.where(:department_id => departmentId, :shift => shift, :active => true)
+            puts tmp.length
             if tmp
+                puts tmp.length
                 tasks = []
                 tmp.each do |t|
                     if t.day.strftime("%Y-%m-%d") === time

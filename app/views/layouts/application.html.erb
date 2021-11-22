@@ -43,15 +43,12 @@
         </ul>
         <ul id="nav-default">
           <div id= "nav-elements">
-            <li><%= link_to "#{@current_user.name}" , account_path(@current_user)%> </li>
+            <li><%= link_to "profile" , account_path(@current_user)%> </li>
 
             <% if @current_user.role == "Manager"%>
               <li><%= link_to "Dashboard" , "/accounts/#{current_user.id}/dashboard"%></li>
             <%end%>
 
-            <% if @current_user.role == "Worker"%>
-              <li><%= link_to "See Task" , "/accounts/#{current_user.id}/mytasks"%></li>
-            <%end%>
 
             <% if @current_user.role == "Admin"%>
               <li><%= link_to "Manage Factories" , "/accounts/#{current_user.id}/manage_factories"%></li>

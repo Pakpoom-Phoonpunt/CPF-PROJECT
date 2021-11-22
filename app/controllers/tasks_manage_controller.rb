@@ -18,7 +18,10 @@ class TasksManageController < ApplicationController
           elsif params[:act] == "delete"
             delete_task( params[:Id], @date, @shift)
           elsif params[:act] == "ot"
-            Task.assign_ot( params[:Id], @date, @shift, params[:value])
+            puts "===================check id================"
+            puts params[:Id]
+            puts "=========================================="
+            assign_ot( params[:Id], @date, @shift, params[:value])
             puts "============ assign ot ==============="
           end
         end
@@ -83,7 +86,7 @@ class TasksManageController < ApplicationController
     end
     def assign_ot(worker_list, date, shift, val)
       begin
-         if Float(val) >= 0 && Float(val) <= 24
+         if Float(val) >= 0 && Float(val) <= 4
             worker_list.each{|x|
               Task.assign_ot(x, date, shift, val)
             }
@@ -92,4 +95,21 @@ class TasksManageController < ApplicationController
         flash[:notice] = "Something Wrong"
       end
     end
+
+    def edit
+      @task = Task.find_by(:id => params[:id])
+      if @task.active
+        time = Time.now+360
+        @task.exitTime = time
+        @task.active = false
+        @task.save!
+      elsif !@task.active
+        time = Time.now
+        @task.enterTime = time
+        @task.active = true
+        @task.save!
+      end
+      redirect_to @current_user
+      end
+      
 end
