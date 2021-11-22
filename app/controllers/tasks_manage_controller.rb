@@ -11,6 +11,7 @@ class TasksManageController < ApplicationController
           puts params[:shift]
           puts params[:Id]
           puts params[:act]
+          puts params[:mobile]
           puts "============ assign ==============="
           if params[:act] == "add"
             assign_task(@department, params[:Id], @date, @shift)

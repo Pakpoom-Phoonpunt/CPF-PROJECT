@@ -2,12 +2,12 @@
     $("#data-table-left .data").remove();
     $('#headOt').remove();
     console.log("in mobile");
-    <%if @freeTable === "true"%>
+    <%if @freeTable === "true"%>        
         $('#data-table-left').append("<%= j render partial: 'user', :locals => {:task => @free_workers} %>");
         console.log("in freeTable");
-    <%else%>
+    <%else%>     
         $('#data-table-left tr').append("<th id='headOt'>OT</th>");
-        $('#data-table-left').append("<%= j render partial: 'task', :locals => {:task => @worker_in_department} %>");
+        $('#data-table-left').append("<%= j render partial: 'task', :locals => {:task => @worker_in_department, :mobile => @mobile} %>");
         console.log("in taskTable");    
     <%end%>
     console.log("done table Mobile patial in js.erb"); 

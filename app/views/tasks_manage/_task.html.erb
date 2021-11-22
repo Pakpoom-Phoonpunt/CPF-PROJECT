@@ -1,11 +1,22 @@
 <%if task%>
-    <% task.each do |t|%>
-        <tr class="data">
-            <td><%= check_box_tag 'sworkers[]', t.id, false, :id=>"right-checkbox", :value => t.account_id %></td>
-            <td><%= t.account_id%></td>
-            <td><%= t.get_owner_name%></td>
-            <td><%= t.ot%></td>
-        </tr>
+    <%if @mobile === "true"%>
+        <% task.each do |t|%>
+            <tr class="data">
+                <td><%= check_box_tag 'sworkers[]', t.id, false, :id=>"left-checkbox", :value => t.account_id %></td>
+                <td><%= t.account_id%></td>
+                <td><%= t.get_owner_name%></td>
+                <td><%= t.ot%></td>
+            </tr>
+        <%end%>
+    <%else%>
+        <% task.each do |t|%>
+            <tr class="data">
+                <td><%= check_box_tag 'sworkers[]', t.id, false, :id=>"right-checkbox", :value => t.account_id %></td>
+                <td><%= t.account_id%></td>
+                <td><%= t.get_owner_name%></td>
+                <td><%= t.ot%></td>
+            </tr>
+        <%end%>
     <%end%>
 <%end%>
 

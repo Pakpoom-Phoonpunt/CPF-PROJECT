@@ -30,7 +30,7 @@ $('[id="otTime"]').on('change', function(){
     sessionStorage.setItem('ot-input',$(this).val());
 });
 $('[id="assign"]').on("click", function() {
-    assignReply();
+    assignReply(isMobileWidth());
 })
 
 $('.selectall-checkbox').on("click", function() {
@@ -62,7 +62,7 @@ $('.selectall-checkbox').on("click", function() {
 $('#search-input').bind("change keyup", function() {
     let val = $(this).val()
     console.log(val)
-     table = sessionStorage.getItem('freeTable');
+    let table = sessionStorage.getItem('freeTable');
      console.log(table)
     $.ajax({
         type: "GET",
@@ -114,14 +114,28 @@ function collectSelected(){
     });
     return collection;
 }
-function assignReply(isDefault){
+function assignReply(isMobile){
     let taskId = collectSelected();
     let value = sessionStorage.getItem('ot-input');
     console.log(value);
     
     if (value != null){
-        ajaxCommu("ot", taskId, value, callbackMsg="responed assign to");
-        sessionStorage.removeItem('ot-input');
+        $.ajax({
+            type: "GET",
+            url: window.location.href,
+            dataType: "script",
+            data: {
+                    "act": "ot",
+                    "Id": taskId,
+                    "value": value,
+                    "mobile": isMobile,
+                    "freeTable": "false"
+                },
+            success:function(data){ 
+                sessionStorage.removeItem('ot-input');
+                console.log("responed assign to");
+            }
+        });
     }
 }
 
@@ -132,6 +146,7 @@ if(isMobileWidth()){
     $("#num").html(depart_shift);
     
     $('#free-btn').on('click',function(){
+        $('.selectall-checkbox').prop('checked', false);
         sessionStorage.setItem('freeTable', 'true');
         $.ajax({
             type: "GET",
@@ -149,6 +164,7 @@ if(isMobileWidth()){
     });
 
     $('#plan-btn').on('click',function(){
+        $('.selectall-checkbox').prop('checked', false);
         sessionStorage.setItem('freeTable', 'false');
         $.ajax({
             type: "GET",
@@ -164,6 +180,10 @@ if(isMobileWidth()){
             }
         });
     });
+
+    $('[id="assign"]').on("click", function() {
+        assignReply(isMobileWidth());
+    })
 
 
 }
