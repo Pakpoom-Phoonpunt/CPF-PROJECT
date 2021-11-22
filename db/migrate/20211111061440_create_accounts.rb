@@ -6,7 +6,8 @@ class CreateAccounts < ActiveRecord::Migration[6.1]
       t.string 'password'
       t.string 'role'
       t.boolean 'free'
-
+      t.json 'detail'
+      
       t.references 'factory'
 
       t.timestamps

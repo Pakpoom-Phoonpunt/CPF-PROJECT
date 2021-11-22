@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2021_11_11_061534) do
     t.string "password"
     t.string "role"
     t.boolean "free"
+    t.json "detail"
     t.integer "factory_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

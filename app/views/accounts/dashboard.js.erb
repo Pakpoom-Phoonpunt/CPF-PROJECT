@@ -1,7 +1,6 @@
 
-
 $("#data-table .data").remove();
 $("#data-table").append("<%= escape_javascript(render partial: '/accounts/user', :locals => { :tasks => @tasks}) %>");
-
 $("[id='num']").html("<%= @actual_worker%>/<%=@all_worker%>")
+
 console.log("done in js.erb");

@@ -19,7 +19,7 @@ class Task < ApplicationRecord
         if !Task.find_by(:account_id => acc, :day => Time.parse(day))
             start_time = Time.parse(day +" "+ time_list[shift.to_i-1].split("-")[0])
             end_time = Time.parse(day +" "+ time_list[shift.to_i-1].split("-")[1])
-            task = Task.new(:day => day, :shift => shift, :ot => 0, :startTime => start_time, :endTime =>end_time)
+            task = Task.new(:day => day, :shift => shift, :ot => 0, :startTime => start_time, :endTime =>end_time, :active => false) 
             Department.add_task(department, task)
             Account.add_task(acc, task)
             task.save!
@@ -58,6 +58,19 @@ class Task < ApplicationRecord
         elsif status && status == "actual"
             tmp = Task.where(:department_id => departmentId, :shift => shift, :active => true)
             puts tmp.length
+            if tmp
+                tasks = []
+                tmp.each do |t|
+                    if t.day.strftime("%Y-%m-%d") === time
+                        tasks << t
+                    end
+                end
+            end
+        elsif status && status == "absent"
+            tmp = Task.where(:department_id => departmentId, :shift => shift, :active => false)
+            puts "=============check task================="
+            puts tmp.length
+            puts "============================================"
             if tmp
                 puts tmp.length
                 tasks = []

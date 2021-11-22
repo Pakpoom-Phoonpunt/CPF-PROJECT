@@ -131,6 +131,17 @@
 
 /*================RIGHT SIDE BODY================*/
 
+.popup{
+  display:block; 
+  width: 400px;
+  height: 600px; 
+  background-color: pink;
+  position: fixed;
+  margin-left: 15%;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
 #r-table-header{
   display:flex;
   flex-direction: row;
@@ -152,7 +163,7 @@
 .status{
   text-transform: capitalize;
 }
-#actual, #plan{
+#actual, #plan, #absent{
   display: flex;
   align-items: center;
   font-weight: normal;
@@ -161,11 +172,15 @@
 #actual{
   color: var(--accent-color);
 }
+#absent{
+  margin-left:1rem;
+  color: var(--bg-color);
+}
 #plan{
   margin-left:1rem;
   color: var(--primary-color);
 }
-#plan:hover,#actual:hover{
+#plan:hover,#actual:hover,#absent:hover{
   cursor: pointer;
   color: var(--bright-color);
 }
@@ -385,7 +400,7 @@ h3.detail{
   .status{
     text-transform: capitalize;
   }
-  #actual, #plan{
+  #actual, #plan , #absent{
     display: flex;
     align-items: center;
     font-weight: normal;
@@ -394,11 +409,14 @@ h3.detail{
   #actual{
     color: var(--accent-color);
   }
+  #absent{
+    color: var(--accent-color);
+  }
   #plan{
     margin-left:1rem;
     color: var(--primary-color);
   }
-  #plan:hover,#actual:hover{
+  #plan:hover,#actual:hover,#absent:hover{
     cursor: pointer;
     color: var(--bright-color);
   }

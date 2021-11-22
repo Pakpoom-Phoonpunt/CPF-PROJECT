@@ -1,16 +1,22 @@
 addDaySelector();
-sessionStorage.setItem("status",'actual');
+sessionStorage.setItem("status",'actual', 'absent');
 sessionStorage.removeItem("date");
 sessionStorage.removeItem("department");
 sessionStorage.removeItem("shift");
 
- //  SELECT PLAN ACTUAL
+$('#popup-btn').on("click", function(){
+ $(".popup").toggle();
+});
+
+
+ //  SELECT PLAN ,ACTUAL ,ABSENT
  
 $(".status").on("click",function(){
     let date = $('#date-select').val(); // get recent selected day
     let shift = $("#shift-select").val(); // get recent selected shift
     let status = $(this).text(); // get current status
 
+    console.log(status)
     // get current department and shift
     let department = sessionStorage.getItem("department"); //get selected department
      
@@ -89,7 +95,8 @@ $("#manage-shift-btn").on("click",function(){
             },
         success:function(data){ 
             console.log("Done mange event");
-            window.location.href = url
+            window.open(url,"_blank","width=400, height=600");
+            //window.location.href = url
         }
     });
 });

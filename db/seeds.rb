@@ -7,6 +7,7 @@ department2 = Department.create(name:"CFK", factory_id: factory.id)
 department3 = Department.create(name:"MK", factory_id: factory2.id)
 department4 = Department.create(name:"Yayoi", factory_id: factory2.id)
 
+
 user= Account.create(name: "แอดมิน", username: "admin", password: "1", factory_id: factory.id, role: "Admin")
 
 user2= Account.create(name: "ผู้จัดการ1", username: "manager1", password: "1", factory_id: factory.id, role: "Manager")
@@ -30,15 +31,9 @@ user16= Account.create(name: "รรรรร เทพจริง ", username:
 user17= Account.create(name: "มหาหล่อ บางกระดี้ดี ", username: "Worker15", password: "1", factory_id: factory.id, role: "Worker", free: true)
 user18= Account.create(name: "เฟรนส์ โซนส์ ", username: "Worker16", password: "1", factory_id: factory.id, role: "Worker", free: true)
 user19= Account.create(name: "มานะ หนึ่งเดียว  ", username: "Worker17", password: "1", factory_id: factory.id, role: "Worker", free: true)
-user20= Account.create(name: "มานะ ใจสลาย  ", username: "Worker18", password: "1", factory_id: factory.id, role: "Worker", free: true)
+user20= Account.create(name: "มานะ ใจสลาย", username: "Worker18", password: "1", factory_id: factory.id, role: "Worker", free: true)
 
 
-
-
-
-
-
-task1 = Task.create(account_id: user3.id, department_id: department1.id, day: Time.parse('22-11-2021'), shift: "1", ot: 2, startTime: Time.now, active: true)
 task1 = Task.create(account_id: user3.id, department_id: department1.id, day: Time.parse('23-11-2021'), shift: "1", ot: 2, startTime: Time.now, active: true)
 task1 = Task.create(account_id: user3.id, department_id: department1.id, day: Time.parse('24-11-2021'), shift: "1", ot: 2, startTime: Time.now, active: true)
 task1 = Task.create(account_id: user3.id, department_id: department1.id, day: Time.parse('25-11-2021'), shift: "1", ot: 2, startTime: Time.now, active: true)
