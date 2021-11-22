@@ -14,38 +14,20 @@ $.ajax({
 });
 
 $('#transfer-btn[name ="add"]').on("click", function() {
-    let accId = []
-    $('input:checked').each(function(){
-        if($(this).val() != "on"){
-            $(this).prop('checked',false);
-            accId.push($(this).val())
-        }else{
-            $(this).prop('checked',false);
-        }
-    });
+    let accId = collectSelected();
     console.log(accId.length);
     ajaxCommu("add", accId, 0)
 });
 
 $('#transfer-btn[name ="delete"]').on("click", function() {
-    let taskId = []
-    $('input:checked').each(function(){
-        $(this).prop('checked',false);
-        taskId.push($(this).val())
-    });
+    let taskId = collectSelected();
     console.log(taskId.length);
 
     ajaxCommu("delete", taskId, 0);
 })
 
-$('#assign').on("click", function() {
-    let taskId = [];
-    let value = $('#otTime').val();
-    $('input:checked').each(function(){
-        $(this).prop('checked',false);
-        taskId.push($(this).val());
-    });
-    ajaxCommu("ot", taskId, value);
+$('[id="assign"]').on("click", function() {
+    assignReply();
 })
 
 $('.selectall-checkbox').on("click", function() {
@@ -96,6 +78,8 @@ $('#search-input').bind("change keyup", function() {
 
 });
 
+// DECLARE FUNCTIONs //
+
 function ajaxCommu(func, Id, value,  callbackMsg="SUCCESS communication event"){
     $.ajax({
         type: "GET",
@@ -112,7 +96,29 @@ function ajaxCommu(func, Id, value,  callbackMsg="SUCCESS communication event"){
     });
 }
 
+function isMobileWidth() {
+    return $('#mobile-indicator').is(':visible');
+}
+function collectSelected(){
+    collection = []
+    $('input:checked').each(function(){
+        if($(this).val() != "on"){
+            $(this).prop('checked',false);
+            taskId.push($(this).val())
+        }else{
+            $(this).prop('checked',false);
+        }
+    });
+    return collection;
+}
+function assignReply(){
+    let taskId = collectSelected();
+    let value = $('#otTime').val();
     
+    console.log("value: " + String(value));
+    ajaxCommu("ot", taskId, value, callbackMsg="responed assign to id: " + btnId.toString());
+}
+
 // Responsive //
 if(isMobileWidth()){
     let shift = window.location.href.split('/').at(-1)
@@ -156,6 +162,4 @@ if(isMobileWidth()){
 
 }
 
-function isMobileWidth() {
-    return $('#mobile-indicator').is(':visible');
-}
+
