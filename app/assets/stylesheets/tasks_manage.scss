@@ -62,9 +62,12 @@
     border-radius: 0 var(--default-radius) var(--default-radius) 0;
     padding: .25rem 1rem;
     border: 0;
+    transition: ease .3s all;
   }
   #save-delete-section #assign:hover{
+    transition: ease .3s all;
     color: var(--bright-color);
+    box-shadow: rgba(250,250,250, 0.5) 0px 0px 20px 0px; 
     cursor:pointer;
   }
   
@@ -151,21 +154,38 @@
   
   #transfer-btn{
     display: flex;
-    background-color: var(--primary-color);
     color: var(--bright-color);
     border-radius: var(--default-radius);
-    border: none;
     max-height: 2rem;
     padding: 0 2rem 0 2rem;
     align-items: center;
     text-transform: uppercase;
+    background-color: rgba(rgb(80, 203, 147), 0.5);
+    border: 2px solid rgba(rgb(80, 203, 147), .8);
+    color: rgba(250,250,250, 0.8);
+    transition: ease .3s all;
   }
   #table-right #transfer-btn {
-    background-color: var(--accent-color);
+    background-color: rgba(rgb(255, 86, 122), 0.5);
+    border: 2px solid rgba(rgb(255, 86, 122), .8);
+    color: rgba(250,250,250, .8);
+    transition: ease .3s all;
   }
-  #transfer-btn:hover{
+  #table-left #transfer-btn:hover{
     cursor:pointer;
-    color:var(--dark-color)  
+    color:var(--dark-color);
+    background-color: rgba(rgb(80, 203, 147), .8);
+    border: 2px solid rgba(rgb(80, 203, 147), 0.1);
+    box-shadow: rgba(250,250,250, 0.5) 0px 0px 20px 0px; 
+    color: rgba(250,250,250, 1);
+  }
+  #table-right #transfer-btn:hover{
+    cursor:pointer;
+    color:var(--dark-color);
+    background-color: rgba(rgb(255, 86, 122), .8);
+    border: 2px solid rgba(rgb(255, 86, 122), 0.1);
+    box-shadow: rgba(250,250,250, 0.5) 0px 0px 20px 0px; 
+    color: rgba(250,250,250, 1);
   }
   
   #transfer-btn:active, #save-delete-section #assign:active

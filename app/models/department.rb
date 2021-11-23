@@ -1,6 +1,14 @@
 class Department < ApplicationRecord
     has_many :tasks 
     belongs_to :factory
+
+    def self.create_department(facID, name)
+        if name && facID
+            depart = Department.new(:name => name)
+            Factory.add_department(facID, depart)
+            depart.save!
+        end
+    end
     def self.get_tasklist(department)
         begin
             return Department.find_by(:name => department).tasks

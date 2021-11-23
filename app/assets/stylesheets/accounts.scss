@@ -180,6 +180,7 @@
   font-weight: normal;
   text-transform: uppercase;
   text-shadow: 0 0 80px rgb(246, 250, 255);
+  transition: ease .3s all;
 }
 #actual{
   color: var(--accent-color);
@@ -193,8 +194,10 @@
   color: var(--primary-color);
 }
 #plan:hover,#actual:hover,#absent:hover{
+  transition: ease .3s all;
   cursor: pointer;
   color: var(--bright-color);
+  text-shadow: 0 0 80px rgb(250, 250, 250);
 }
 
 #date-select{

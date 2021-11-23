@@ -19,10 +19,10 @@
     --dark-color: #333;
     --bright-color: rgb(250, 250, 250);
     --bg-color: #54436B;
-    --primary-color:  #50CB93;
-    --secondary-color:  #71EFA3;
+    --primary-color:  rgb(80, 203, 147);
+    --secondary-color:  rgb(113, 239, 163);
     --light-color: #ACFFAD;
-    --accent-color: #FF567A;
+    --accent-color: rgb(255, 86, 122);
     --accenter-color: #f0385f;
     
     --default-radius: 8px;
@@ -120,11 +120,22 @@ li a, li h2 {
   font-weight: 500;
 }
 
+li a{
+  transition: ease .3s all;
+}
 li a:hover {
+  transition: ease .3s all;
   color:var(--primary-color);
+  text-shadow: 0 0 80px rgb(250, 250, 250);
+}
+#log-out{
+  transition: ease .3s all;
+  color: var(--bright-color);
 }
 #log-out:hover{
+  transition: ease .3s all;
   color:var(--accent-color);
+  text-shadow: 0 0 80px rgb(250, 250, 250);
 }
  
 @media screen and (min-width: 900px) {
@@ -186,10 +197,13 @@ li a:hover {
 
   #log-out{
     color: var(--accent-color);
+    transition: ease .3s all;
   }
   #log-out:hover{
+    transition: ease .3s all;
     color: var(--accent-color);
     opacity: 70%;
+    text-shadow: 0 0 80px rgb(218, 0, 0);
   }
   
   .nav-bar{
@@ -206,7 +220,10 @@ li a:hover {
   li a, li h2{
     color: var(--dark-color);
   }
-  
+  .d-list:hover{
+    color: var(--bright-color);
+    background-color: var(--primary-color);
+  }
   .nav-icon{
       display: block;
       float: right;
@@ -256,17 +273,22 @@ li a:hover {
   .d-list{
     width: 90%;
     margin: 0 .5rem;
-    padding: 0 2rem 0 2rem;
+    padding: 0 .5rem 0 .5rem;
     text-align: center;
     background-color: var(--bright-color);
-  }
+    font-size: .8rem;
+    }
   #body-right{
     width:100%;
-  }
+    }
   #actual,
   #plan,
+  #absent,
   #manage-shift-btn{
     font-size: .8rem;
+  }
+  #absent{
+    color: var(--accent-color);
   }
   #d-s-group{
     margin-left:1rem;
@@ -285,6 +307,8 @@ li a:hover {
   #manage-shift-btn{
     width: 60%;
     font-size: .8rem;
+    background-color: var(--primary-color);
+    margin: 0;
   }
  
   /*========== TASK MANAGE ==========*/

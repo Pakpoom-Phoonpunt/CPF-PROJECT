@@ -37,7 +37,7 @@ class AccountsController < ApplicationController
     
     def dashboard
         tmp = Time.now
-        @date = tmp.strftime("%d-%m-%y")
+        @date = tmp.strftime("%y-%m-%d")
         time = tmp.strftime("%H:%M")
         if Time.parse(@date+" 8:00") > Time.parse(@date+" "+time) && 
             Time.parse(@date+" "+time) > Time.parse(@date+" 0:00")
@@ -48,7 +48,7 @@ class AccountsController < ApplicationController
         else 
             @shift = 3
         end
-        
+
         task_list
         @factory = @current_user.factory
         @departments = @factory.departments.all
@@ -128,13 +128,15 @@ class AccountsController < ApplicationController
         puts params[:facId]
         @factory = Factory.find_by_id(params[:facId])
         @departments = @factory.departments
-        puts "=======check fac department==========="
-        puts @factory.departments
-        puts "====================================="
+
     end
 
-    def add_department
+    def create_department
+        department_name = params.require(:name)
+        fac_id = params[:facId]
+        Department.create_department(fac_id, department_name)
         
+        redirect_to "/manage_factories/edit/#{params[:facId]}"
     end
     
     private

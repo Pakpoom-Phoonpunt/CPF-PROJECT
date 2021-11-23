@@ -1,7 +1,11 @@
-<%= form_with url: "/accounts/#{@user.id}" , method: :put do |f| %>
-    <%= f.label :username , "Username : #{@user.name}" %><br>
-    <%= f.label :factory , "Factory : #{@user.factory.name}"%><br>
-    <%= f.label :role , "Role :"%><br>
-    <%= f.select :role , ["Admin" , "Manager" ,"Worker"]%><br>
-    <%= f.submit "Update Account"%>
-<% end %>
+<body>  
+<div class="content">
+    <%= form_with url: "/accounts/#{@user.id}" , method: :put do |f| %>
+        <h1><%= f.label :username , "Username : #{@user.name}" %></h1><br>
+        <h1><%= f.label :factory , "Factory : #{@user.factory.name}"%></h1><br>
+        <h1><%= f.label :role , "Role :"%></h1><br>
+        <h1><%= f.select :role , ["Admin" , "Manager" ,"Worker"]%></h1><br>
+        <%= f.submit "Update Account"%>
+    <% end %>
+</div>
+</body>

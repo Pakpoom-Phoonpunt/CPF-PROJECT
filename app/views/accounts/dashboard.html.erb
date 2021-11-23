@@ -11,13 +11,13 @@
             </div>
             <div id="department-list">
                 <% @departments.each do |d|%>
-                    <button class="d-list"><%= "#{d.name}   (#{Task.number_worker(@departmentId, @date, @shift, "actual")} | #{Task.number_worker(@departmentId, @date, @shift, "plan")})"%></button>
+                    <button class="d-list"><%= "#{d.name}   (Current Shift: #{@shift}) (#{Task.number_worker(d.id, @date, @shift, "actual")} | #{Task.number_worker(d.id, @date, @shift, "plan")})"%></button>
                 <%end%>
             </div>
         </div>
         <div id="department-list-responsive">
                 <% @departments.each do |d|%>
-                    <button class="d-list"><%= "#{d.name}"%></button>
+                    <button class="d-list"><%= "#{d.name}   (Current Shift: #{@shift}) (#{Task.number_worker(d.id, @date, @shift, "actual")} | #{Task.number_worker(d.id, @date, @shift, "plan")})"%></button>
                 <%end%>
         </div>
         <div id="body-right">
@@ -33,13 +33,11 @@
                 
                 <div id="d-s-group">
                     <select name='day' id="date-select" >
-                        <option class='d-s-short'>D</option>
+                        <option class='d-s-short'>Day</option>
                     </select>
-                    <select id="shift-select">
+                    <select name='shift' id="shift-select">
                         <option class='d-s-short'>S</option>
-                        <option value="1" label="Shift 1">Shift 1</option>
-                        <option value="2" label="Shift 2">Shift 2</option>
-                        <option value="3" label="Shift 3">Shift 3</option>    
+                        
                     </select>
                     <button id="manage-shift-btn">Manage Shift</button>
                 </div>
@@ -61,5 +59,6 @@
         </div>
     </div>
     <%= javascript_pack_tag 'dateSelectLoop'%>
+    <%= javascript_pack_tag 'shiftSelectLoop'%>
     <%= javascript_pack_tag 'time'%>
 </div

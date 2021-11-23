@@ -1,3 +1,8 @@
-<label>Enter Department Name</label>
-<%= text_field ,:id=> "departname"%>
-<button id="submit"></button>
+<h1>Add Department</h1>
+
+<%= form_with url: "/manage_factories/edit/#{params[:facId]}" , method: :post do |f| %>
+    <%= f.label :name , "Department name" %><br>
+    <%= f.text_field  :name %>
+    <%= f.submit "Create Department"%>
+
+<% end %>

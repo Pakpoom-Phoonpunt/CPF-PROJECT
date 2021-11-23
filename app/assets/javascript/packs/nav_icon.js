@@ -4,7 +4,11 @@ $('.nav-icon').on('click',function(){
     if($("#hamberg-menu").is(':visible')){
         $("#hamberg-menu").fadeToggle(function(){
             $("#current-time-details").fadeToggle();
-            $('#already-in-responsive').fadeIn();
+            console.log(window.location.href.split('/').length);
+            console.log(window.location.href);
+            if(window.location.href.split('/').length > 5){
+                $('#already-in-responsive').fadeIn();
+                }
         });
     }else{
         $("#current-time-details").fadeToggle("fast",function(){

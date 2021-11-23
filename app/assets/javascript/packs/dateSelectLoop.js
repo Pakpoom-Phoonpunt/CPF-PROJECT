@@ -48,25 +48,14 @@ $("select#date-select").on('change',function(){
     ajaxCommu(date,department, shift, status, "Done day event");
 });
 
-//SHOW Current Shift ,Workerin time of each Department on Department list 
-$(".d-list").each(function(){ 
-    var today = new Date();
-    var current_day = today.getDate()
-    
-
-    sessionStorage.setItem("department", department);
-
-    ajaxCommu(date, department, shift, status);
-});
-
 // SELECT DEPARTMENT
 
 $(".d-list").on("click", function(){ 
     let date = $("#date-select").val();   // get recent selected day
     let shift = $("#shift-select").val(); // get recent selected shift
-    let department = $(this).text(); // get selected department
+    let department = $(this).text().split(" ")[0]; // get selected department
     let status = sessionStorage.getItem('status'); // get current status
-
+    
     sessionStorage.setItem("department", department);
 
     ajaxCommu(date, department, shift, status);
@@ -169,8 +158,8 @@ $("#current-date").show();
 $("#current-time-details li").hide();
 
 $('.nav-icon').on('click',function(){
-        $('#already-in .responsive').toggle();
-
+ 
+    $('#already-in .responsive').toggle();
 });
 
 function isMobileWidth() {
