@@ -1,4 +1,4 @@
-
+<%= stylesheet_pack_tag 'popup'%>
 <div id="dashboard-parent">
     <div id="dashboard-body">
         <div id="body-left">    
@@ -11,7 +11,7 @@
             </div>
             <div id="department-list">
                 <% @departments.each do |d|%>
-                    <button class="d-list"><%= "#{d.name}"%></button>
+                    <button class="d-list"><%= "#{d.name}   (#{Task.number_worker(@departmentId, @date, @shift, "actual")} | #{Task.number_worker(@departmentId, @date, @shift, "plan")})"%></button>
                 <%end%>
             </div>
         </div>
@@ -21,8 +21,9 @@
                 <%end%>
         </div>
         <div id="body-right">
-            <div class="popup">popup</div>
-            <button id ="popup-btn">pop-up</button>
+            <div class="popup">
+                <h3 class ="popup-exit ">x</h3>
+            </div>
             <div id=r-table-header>
                 <div id="a-p-group">
                     <h3 class="status" id="actual">actual</h3>  

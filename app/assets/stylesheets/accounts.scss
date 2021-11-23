@@ -1,6 +1,19 @@
 // Place all the styles related to the Accounts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+:root{
+  --dark-color: rgb(51, 51, 51);
+  --bright-color: rgb(250, 250, 250);
+  --bg-color: rgb(84, 67, 107);
+  --primary-color:  rgb(80, 203, 147);
+  --secondary-color:  rgb(113, 239, 163);
+  --light-color: rgb(172, 255, 173);
+  --accent-color: rgb(255, 86, 122);
+  --accenter-color: rgb(240, 56, 95);
+  
+  --default-radius: 8px;
+  --medium-radius: 15px;
+}
 
 #profile-details{
   display: flex;
@@ -94,7 +107,8 @@
   flex-direction: column;
   align-items: center;
   background-color: var(--dark-color);
-  border: 1px solid var(--primary-color);
+  border: 1px solid ;
+  box-shadow: rgba(rgb(80, 203, 147), 0.5) 0px 0px 20px 0px;  
   border-radius: var(--default-radius);
   margin: 1rem 0 0 0;
   width: 100%;
@@ -110,6 +124,10 @@
   margin: .5rem 0 .5rem 0;
   padding: 0 2rem 0 2rem;
   text-align: center;
+  transition: ease all 0.3s;
+  background-color: rgba(rgb(80, 203, 147), 0.15);
+  border: 1px solid rgba(rgb(80, 203, 147), 0.25);
+  color: rgba(var(--bright-color), 0.8);
 }
 .d-list p{
   pointer-events: none;
@@ -120,8 +138,11 @@
   color: var(--dark-color);
 }
 .d-list:hover{
-  background-color: var(--primary-color);
-  color: var(--bright-color);
+  transition: ease all 0.3s;
+  background-color: rgba(rgb(80, 203, 147), 0.35);
+  border: 1px solid rgba(rgb(80, 203, 147), 0.5);
+  box-shadow: rgba(rgb(80, 203, 147), 0.5) 0px 0px 20px 0px;  
+  color: rgba(var(--bright-color), 0.9);
   cursor:pointer;
 }
 .d-list:focus{
@@ -131,23 +152,13 @@
 
 /*================RIGHT SIDE BODY================*/
 
-.popup{
-  display:block; 
-  width: 400px;
-  height: 600px; 
-  background-color: pink;
-  position: fixed;
-  margin-left: 15%;
-  align-items: center;
-  justify-content: center;
-  z-index: 2;
-}
 #r-table-header{
   display:flex;
   flex-direction: row;
   justify-content: space-between;
   background-color: var(--dark-color);
   border-radius: var(--default-radius) var(--default-radius) 0 0;
+  box-shadow: rgba(rgb(80, 203, 147), 0.5) 0px 0px 20px 0px;  
   border: 1px solid var(--primary-color);
   padding: .2rem 1rem .2rem 1rem;
   width: 100%;
@@ -168,6 +179,7 @@
   align-items: center;
   font-weight: normal;
   text-transform: uppercase;
+  text-shadow: 0 0 80px rgb(246, 250, 255);
 }
 #actual{
   color: var(--accent-color);
@@ -210,8 +222,6 @@
   display: block;
   border-radius: var(--default-radius) ;
   border: none;
-  background: var(--primary-color);
-  color: var(--bright-color);
   margin: .1rem .5rem;
   padding: 0 .5rem;
   width: 33%;
@@ -220,16 +230,24 @@
   text-transform: uppercase;
   white-space: nowrap;
   font-weight: normal;
+  background-color: rgba(rgb(80, 203, 147), 0.5);
+  border: 2px solid rgba(rgb(80, 203, 147), .8);
+  color: rgba(250,250,250, 0.8);
+  transition: ease .3s all;
 }
 #manage-shift-btn:hover{
-  background-color: var(--dark-color);
+  transition: ease .3s all;
+  background-color: rgba(rgb(80, 203, 147), .8);
+  border: 2px solid rgba(rgb(80, 203, 147), 0.1);
+  box-shadow: rgba(250,250,250, 0.5) 0px 0px 20px 0px;  
+  color: rgba(250,250,250, 0.9);
   cursor: pointer;
 }
 #manage-shift-btn:active{
   background-color: var(--primary-color);
 }
 #manage-shift-btn:focus{
-  background-color: var(--dark-color);
+  background-color: var(--bright-color);
 }
 #data-table{
   border-collapse: collapse;
@@ -442,12 +460,11 @@ h3.detail{
   #shift-select:hover,#date-select:hover{
     cursor:pointer;
   }
+  
   #manage-shift-btn{
     display: block;
     border-radius: var(--default-radius) ;
     border: none;
-    background: var(--primary-color);
-    color: var(--bright-color);
     margin: .1rem .5rem;
     padding: 0 .5rem;
     width: 33%;
@@ -456,16 +473,24 @@ h3.detail{
     text-transform: uppercase;
     white-space: nowrap;
     font-weight: normal;
+    background-color: rgba(rgb(80, 203, 147), 0.5);
+    border: 2px solid rgba(rgb(80, 203, 147), .8);
+    color: rgba(250,250,250, 0.8);
+    transition: ease .3s all;
   }
   #manage-shift-btn:hover{
-    background-color: var(--dark-color);
+    transition: ease .3s all;
+    background-color: rgba(rgb(80, 203, 147), .8);
+    border: 2px solid rgba(rgb(80, 203, 147), 0.1);
+    box-shadow: rgba(250,250,250, 0.5) 0px 0px 20px 0px;  
+    color: rgba(250,250,250, 0.9);
     cursor: pointer;
   }
   #manage-shift-btn:active{
     background-color: var(--primary-color);
   }
   #manage-shift-btn:focus{
-    background-color: var(--dark-color);
+    background-color: var(--bright-color);
   }
   #data-table{
     border-collapse: collapse;

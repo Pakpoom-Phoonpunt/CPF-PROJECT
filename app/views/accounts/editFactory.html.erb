@@ -1,18 +1,22 @@
-<h1><%= "Factory name: #{@factory.name}"%></h1>
-<%= button_to "Add", action: ""%>
-<table>
+<%= stylesheet_link_tag 'admin'%>
+<div id="fac-manage-body">
+<h2><%= "#{@factory.name}"%></h2>
+<%= button_to "Add Department", "/manage_factories/#{@factory.id}/add_department"%>
+
+<table id="factory-manage-table">
     <thead>
     <tr>
-        <th>ID</th>
-        <th>Name</th>
+        <th>Department ID</th>
+        <th>Department Name</th>
     </tr>
     </thead>
         <% if @departments %>
             <% @departments.each do |department|%>
-            <tr>
+            <tr >
                 <td><%= department.id%></td>
                 <td><%= department.name%></td>
             </tr>
             <%end%>
         <% end %>
 </table>
+</div>

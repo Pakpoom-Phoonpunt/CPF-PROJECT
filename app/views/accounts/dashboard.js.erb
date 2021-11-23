@@ -1,6 +1,12 @@
 
-$("#data-table .data").remove();
-$("#data-table").append("<%= escape_javascript(render partial: '/accounts/user', :locals => { :tasks => @tasks}) %>");
-$("[id='num']").html("<%= @actual_worker%>/<%=@all_worker%>")
+<%if params[:status] != "detail"%>
+    $("#data-table .data").remove();
+    $("[id='num']").html("<%= @actual_worker%>/<%=@all_worker%>")
+    $("#data-table").append("<%= escape_javascript(render partial: '/accounts/user', :locals => { :tasks => @tasks}) %>");
+    $("#dashboard-parent").append("<%= j javascript_pack_tag 'popup'%>")
+<% elsif params[:status] == "detail"%>
+    $(".popup h1").remove();
+    $(".popup").append("<%= escape_javascript(render partial: '/accounts/account_detail', :locals => { :worker => @worker}) %>");
+<%end%>
 
 console.log("done in js.erb");

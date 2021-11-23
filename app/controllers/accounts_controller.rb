@@ -24,6 +24,7 @@ class AccountsController < ApplicationController
         @user.name = params.require(:username)
         @user.username = params.require(:username)
         @user.password = params.require(:password)
+        @user.detail = {"telephone": "#{params.require(:telephone)}"}
         @user.free = true
         @factory.accounts << @user
         if @user.save
@@ -35,16 +36,32 @@ class AccountsController < ApplicationController
     end
     
     def dashboard
+        tmp = Time.now
+        @date = tmp.strftime("%d-%m-%y")
+        time = tmp.strftime("%H:%M")
+        if Time.parse(@date+" 8:00") > Time.parse(@date+" "+time) && 
+            Time.parse(@date+" "+time) > Time.parse(@date+" 0:00")
+            @shift = 1
+        elsif Time.parse(@date+" 16:00") > Time.parse(@date+" "+time) && 
+            Time.parse(@date+" "+time) > Time.parse(@date+" 8:00")
+            @shift = 2
+        else 
+            @shift = 3
+        end
+        
         task_list
         @factory = @current_user.factory
         @departments = @factory.departments.all
         @departmentId = Department.get_departmentId(params[:departName])
-        puts "===================Data details========================="
+        puts "+===================Data details========================="
         puts params[:date]
         puts params[:departName]
         puts params[:shift]
         puts params[:status]
         puts "======================================================="
+        if params[:status] === "detail"
+            @worker = Account.get_worker_by_id(params[:account_id])
+        end
         if params[:date] && params[:departName]
             @tasks = Task.filter_task(params[:date], @departmentId, params[:shift], params[:status], "")
             @actual_worker = Task.number_worker(@departmentId, params[:date], params[:shift], "actual")
@@ -56,6 +73,7 @@ class AccountsController < ApplicationController
             format.json {}
             format.html { }
         end
+
     end
     
     def task_list
@@ -95,7 +113,7 @@ class AccountsController < ApplicationController
         @user = Account.find(params[:id])
         @user.role = params[:role]
         @user.save!
-        redirect_to "/accounts/#{@current_user.id}/adminmanagepage"
+        redirect_to "/accounts/#{@current_user.id}/manage_Worker"
     end
     
     def factory_manage
@@ -115,6 +133,9 @@ class AccountsController < ApplicationController
         puts "====================================="
     end
 
+    def add_department
+        
+    end
     
     private
     def user_params

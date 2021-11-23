@@ -42,4 +42,14 @@ class Account < ApplicationRecord
         acc.save!
     end
     
+    def self.get_worker_by_id(id)
+        return Account.find_by_id(id)
+    end
+    def get_tel
+        begin
+            return self.detail["telephone"]
+        rescue
+            return ""
+        end
+    end
 end

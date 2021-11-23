@@ -5,6 +5,8 @@
     <%= f.text_field  :username %>
     <%= f.label :password , "Password"%>
     <%= f.password_field  :password %>
+    <%= f.label :telephone , "Telephone"%><br>
+    <%= f.text_field  :telephone %><br>
     <%= f.label :factory , "Factory"%>
     <%= f.select  :factory , @factorysNameList%><br>
     <%= f.submit "Create Account"%>

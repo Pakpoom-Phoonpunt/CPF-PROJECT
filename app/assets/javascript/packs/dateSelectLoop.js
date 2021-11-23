@@ -4,11 +4,6 @@ sessionStorage.removeItem("date");
 sessionStorage.removeItem("department");
 sessionStorage.removeItem("shift");
 
-$('#popup-btn').on("click", function(){
- $(".popup").toggle();
-});
-
-
  //  SELECT PLAN ,ACTUAL ,ABSENT
  
 $(".status").on("click",function(){
@@ -53,6 +48,17 @@ $("select#date-select").on('change',function(){
     ajaxCommu(date,department, shift, status, "Done day event");
 });
 
+//SHOW Current Shift ,Workerin time of each Department on Department list 
+$(".d-list").each(function(){ 
+    var today = new Date();
+    var current_day = today.getDate()
+    
+
+    sessionStorage.setItem("department", department);
+
+    ajaxCommu(date, department, shift, status);
+});
+
 // SELECT DEPARTMENT
 
 $(".d-list").on("click", function(){ 
@@ -95,25 +101,10 @@ $("#manage-shift-btn").on("click",function(){
             },
         success:function(data){ 
             console.log("Done mange event");
-            window.open(url,"_blank","width=400, height=600");
-            //window.location.href = url
+            window.location.href = url
         }
     });
 });
-
-$(".status").on("click",function(){
-    let date = $('#date-select').val(); // get recent selected day
-    let shift = $("#shift-select").val(); // get recent selected shift
-    let status = $(this).text(); // get current status
-
-    // get current department and shift
-    let department = sessionStorage.getItem("department"); //get selected department
-     
-    ajaxCommu(department)
-});
-
-
-
 
 function addDaySelector() {
     var element = document.getElementById('date-select'),
