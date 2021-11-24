@@ -1,4 +1,4 @@
-$(document).ready(function(){
+jQuery(function(){
     let department = window.location.href.split("/").at(-3);
     console.log(department);
 
