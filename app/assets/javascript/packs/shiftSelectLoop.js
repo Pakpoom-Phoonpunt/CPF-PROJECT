@@ -5,13 +5,12 @@ function ShiftSelector() {
         df = document.createDocumentFragment();
     
     var date = new Date();
-    var current_time = date.getHours()+":"+date.getMinutes()
-    var current_shift = 0 
+    var current_time = date.getHours() //number type
     
-    if (current_time > "00:00" && current_time< "08:00") {
+    if (current_time >= 0 && current_time< 8) {
         current_shift = 1
         }        
-    else if (current_time > "08:00" && current_time< "16:00"){
+    else if (current_time >= 8 && current_time< 16){
         current_shift = 2
     }
     else {
@@ -32,10 +31,7 @@ function ShiftSelector() {
         df.appendChild(option);
         }
         element.appendChild(df);
-
-        //<option value="1" label="Shift 1">Shift 1</option>
-        //<option value="2" label="Shift 2">Shift 2</option>
-        //<option value="3" label="Shift 3">Shift 3</option>    
+ 
 };
 
 function isMobileWidth() {
