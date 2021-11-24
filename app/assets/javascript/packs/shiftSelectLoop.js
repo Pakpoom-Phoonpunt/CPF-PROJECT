@@ -37,3 +37,8 @@ function ShiftSelector() {
         //<option value="2" label="Shift 2">Shift 2</option>
         //<option value="3" label="Shift 3">Shift 3</option>    
 };
+
+function isMobileWidth() {
+    console.log($(window).width() < 872);
+    return $(window).width() < 872
+}

@@ -6,6 +6,7 @@
     $("#dashboard-parent").append("<%= j javascript_pack_tag 'popup'%>")
 <% elsif params[:status] == "detail"%>
     $(".popup h1").remove();
+    $(".image").remove();
     $(".popup").append("<%= escape_javascript(render partial: '/accounts/account_detail', :locals => { :worker => @worker}) %>");
 <%end%>
 

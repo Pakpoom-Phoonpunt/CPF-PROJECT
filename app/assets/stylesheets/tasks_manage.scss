@@ -3,7 +3,8 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 /*================MANAGE SHIFT PAGE================*/
 
-.manage-shift-header-page{
+@media screen and (min-width:872px){
+  .manage-shift-header-page{
     padding: 0 1em 0 1em;
     background: var(--dark-color);
     display:flex;
@@ -37,6 +38,210 @@
     text-align: center;
     padding: .25rem 0;
     border: none;
+  }
+  #save-delete-section {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+  }
+  #save-delete-section button, #search-section #search {
+    border-radius: 0 var(--default-radius) var(--default-radius) 0;
+    border: 1px solid var(--dark-color);
+    padding: .25rem .5rem .25rem .25rem;
+    color: var(--dark-color);
+    text-transform: uppercase;
+  }
+  #search-section #search{
+    background-color: var(--bright-color);
+    color: var(--dark-color);
+  }
+  #search-section #search:hover{
+    cursor: pointer;
+  }
+  #save-delete-section #assign{
+    background-color: var(--primary-color);
+    border-radius: 0 var(--default-radius) var(--default-radius) 0;
+    padding: .25rem 1rem;
+    border: 0;
+    transition: ease .3s all;
+  }
+  #save-delete-section #assign:hover{
+    transition: ease .3s all;
+    color: var(--bright-color);
+    box-shadow: rgba(250,250,250, 0.5) 0px 0px 20px 0px; 
+    cursor:pointer;
+  }
+  
+  #otTime{
+    border-radius: var(--default-radius) 0 0 var(--default-radius);
+    border: 0;
+    text-align: center;
+    padding: .25rem 1rem;
+    width: 50%;
+  }
+  .ot-input-inactive,
+  .assign-inactive{
+    pointer-events: none;
+    opacity: 70%;
+
+  }
+  #manage-shift-body{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background: var(--dark-color);
+    padding: 0 .5rem 10px .5rem;
+    height: 85vh;
+  }
+  #data-table-left,
+  #data-table-right{
+      border-collapse: collapse;
+      background: var(--bright-color);
+      color: var(--dark-color);
+      overflow: auto;
+  }
+  #data-table-left th,
+  #data-table-right th{
+    height: 2rem;
+    text-align: center;
+  }
+  #data-table-left .data:nth-child(odd),
+  #data-table-right .data:nth-child(odd){
+    background: rgb(231, 231, 231);
+  }
+
+  #data-table-left tr,
+  #data-table-right tr{
+    height: 2rem;
+  }
+
+
+  #data-table-left tr td,
+  #data-table-right tr td {
+    border: none;
+    text-align: center;
+  }
+  #data-table-left .content{
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  #table-left div,
+  #table-right div{
+    display:flex;
+    justify-content: space-between;
+    padding: .5rem;
+  }
+  #table-right h2,
+  #table-left h2{
+    color: var(--bright-color);
+    background-color: var(--dark-color);
+    border-radius: var(--default-radius) var(--default-radius) 0 0;
+    font-size: 1.5rem;
+    text-align: center;  
+    text-transform: uppercase;
+}
+  #table-right {
+    flex:50%;
+    margin-left:.5rem;
+    border-radius: var(--default-radius) var(--default-radius) 0 0;
+    border: 1px solid var(--primary-color);
+  }
+  #table-left{
+    margin-right: .5rem;
+    border-radius: var(--default-radius) var(--default-radius) 0 0;
+    border: 1px solid var(--primary-color);
+  }
+  .manage-shift-table{
+    flex: 50%;
+  }
+  #data-table-left,#data-table-right{
+    width: 100%;
+  }
+  
+  #transfer-btn{
+    display: flex;
+    color: var(--bright-color);
+    border-radius: var(--default-radius);
+    max-height: 2rem;
+    padding: 0 2rem 0 2rem;
+    align-items: center;
+    text-transform: uppercase;
+    background-color: rgba(rgb(80, 203, 147), 0.5);
+    border: 2px solid rgba(rgb(80, 203, 147), .8);
+    color: rgba(250,250,250, 0.8);
+    transition: ease .3s all;
+  }
+  #table-right #transfer-btn {
+    background-color: rgba(rgb(255, 86, 122), 0.5);
+    border: 2px solid rgba(rgb(255, 86, 122), .8);
+    color: rgba(250,250,250, .8);
+    transition: ease .3s all;
+  }
+  #table-left #transfer-btn:hover{
+    cursor:pointer;
+    color:var(--dark-color);
+    background-color: rgba(rgb(80, 203, 147), .8);
+    border: 2px solid rgba(rgb(80, 203, 147), 0.1);
+    box-shadow: rgba(250,250,250, 0.5) 0px 0px 20px 0px; 
+    color: rgba(250,250,250, 1);
+  }
+  #table-right #transfer-btn:hover{
+    cursor:pointer;
+    color:var(--dark-color);
+    background-color: rgba(rgb(255, 86, 122), .8);
+    border: 2px solid rgba(rgb(255, 86, 122), 0.1);
+    box-shadow: rgba(250,250,250, 0.5) 0px 0px 20px 0px; 
+    color: rgba(250,250,250, 1);
+  }
+  
+  #transfer-btn:active, #save-delete-section #assign:active
+  {
+    background-color: var(--secondary-color);
+  }
+  
+  #search-section #search:active{
+    background-color: grey;
+  }
+  
+}
+
+@media screen and (max-width: 871px) {
+  .manage-shift-header-page{
+    padding: 0 1em 0 1em;
+    background: var(--dark-color);
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 5vh;
+  }
+  
+  #detail{
+    display: flex;
+    flex-direction: row;
+    font-size: 1.25rem;
+  
+  }
+  #depart-shift-section p{
+    color: var(--primary-color);
+    padding: 0 .5rem;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+  }
+  #detail{
+    color: var(--bright-color);
+    text-align: center;
+  }
+  #num{
+    font-weight: 500;
+    font-size: .8rem;
+  }
+  #search-section input{
+    border-radius: var(--default-radius) 0 0 var(--default-radius);
+    text-align: center;
+    padding: .25rem;
+    border: none;
+    font-size: .8rem;
   }
   #save-delete-section {
     display: flex;
@@ -196,10 +401,76 @@
   #search-section #search:active{
     background-color: grey;
   }
-  
-@media screen and (max-width: 899px) {
+
+
+
   #manage-shift-body{
     padding: 0 0rem 10px .5rem;
+  }
+  /*========== TASK MANAGE ==========*/
+  #depart-shift-section,
+  .manage-shift-header-page #save-delete-section,
+  #table-right,
+  #table-left .action-bar h2{
+    display: none;
+  }
+  #search-section{
+    margin-left: auto;
+  }
 
+  #table-left .action-bar{
+    align-items: center;
+  }
+  #table-left .action-bar h3{
+    text-transform: uppercase;
+    font-size: 1.25rem;
+    margin-right: .5rem;
+    cursor: pointer;
+  }
+  #free-btn,
+  #plan-btn{
+    display: block;
+  }
+  .action-bar #free-btn{
+    color: var(--accent-color);
+  }
+  .action-bar #plan-btn{
+    color: var(--primary-color);
+  }
+  #free-btn:hover,
+  #plan-btn:hover{
+    color: var(--bright-color);
+  }
+
+  #table-left #save-delete-section{
+    display: flex;
+    justify-content: end;
+  }
+  #save-delete-section button{     /* assign section */
+    border-radius: 0 var(--default-radius) var(--default-radius) 0;
+    border: 1px solid var(--dark-color);
+    padding: .25rem .5rem .25rem .25rem;
+    color: var(--dark-color);
+    text-transform: uppercase;
+  }
+  #save-delete-section #assign{
+    background-color: var(--primary-color);
+    border-radius: 0 var(--default-radius) var(--default-radius) 0;
+    padding: .25rem 0rem;
+    max-width: 5ch;
+    border: 0;
+    font-size: .8rem;
+  }
+  #save-delete-section #assign:hover{
+    color: var(--bright-color);
+    cursor: pointer;
+  }
+  #otTime{
+    border-radius: var(--default-radius) 0 0 var(--default-radius);
+    border: 0;
+    text-align: center;
+    padding: .25rem 0rem;
+    width: 50%;
+    font-size: .8rem;
   }
 }

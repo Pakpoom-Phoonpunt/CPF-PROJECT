@@ -12,9 +12,9 @@
     <%end%>
     console.log("done table Mobile patial in js.erb"); 
 <%else%>
-    $("#data-table-left .data").remove();
+    $("#data-table-left tbody .data").remove();
     $("#data-table-right .data").remove();
-    $('#data-table-left').append("<%= j render partial: 'user', :locals => {:task => @free_workers} %>");
+    $('#data-table-left tbody').append("<%= j render partial: 'user', :locals => {:task => @free_workers} %>");
     $('#data-table-right').append("<%= j render partial: 'task', :locals => {:task => @worker_in_department} %>");
     console.log("done table patial in js.erb"); 
 <%end%>

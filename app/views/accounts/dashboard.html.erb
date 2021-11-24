@@ -11,13 +11,13 @@
             </div>
             <div id="department-list">
                 <% @departments.each do |d|%>
-                    <button class="d-list"><%= "#{d.name}   (Current Shift: #{@shift}) (#{Task.number_worker(d.id, @date, @shift, "actual")} | #{Task.number_worker(d.id, @date, @shift, "plan")})"%></button>
+                    <button class="d-list"><%= "#{d.name} (Current Shift: #{@shift}) (#{Task.number_worker(d.id, @date, @shift, "actual")} | #{Task.number_worker(d.id, @date, @shift, "plan")})"%></button>
                 <%end%>
             </div>
         </div>
         <div id="department-list-responsive">
                 <% @departments.each do |d|%>
-                    <button class="d-list"><%= "#{d.name}   (Current Shift: #{@shift}) (#{Task.number_worker(d.id, @date, @shift, "actual")} | #{Task.number_worker(d.id, @date, @shift, "plan")})"%></button>
+                    <button class="d-list"><%= "#{d.name}"%></button>
                 <%end%>
         </div>
         <div id="body-right">

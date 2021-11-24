@@ -25,7 +25,6 @@ class AccountsController < ApplicationController
         @user.username = params.require(:username)
         @user.password = params.require(:password)
         @user.detail = {"telephone": "#{params.require(:telephone)}"}
-        @user.free = true
         @factory.accounts << @user
         if @user.save
             session[:user_id] = @user.id
@@ -139,6 +138,16 @@ class AccountsController < ApplicationController
         redirect_to "/manage_factories/edit/#{params[:facId]}"
     end
     
+    def new_factory
+        @factory = Factory.new()
+    end
+
+    def add_factory
+        factory_name = params.require(:name)
+        @factory = Factory.new(:name => factory_name)
+        @factory.save!
+        redirect_to "/accounts/#{@current_user.id}/manage_factories"
+    end
     private
     def user_params
         params.require(:account).permit(:username, :password, :role)

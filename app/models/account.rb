@@ -32,14 +32,7 @@ class Account < ApplicationRecord
     def self.add_task(accId, task)
             acc = Account.find_by(:id => accId)
             acc.tasks << task
-            acc.free = false
             acc.save!
-    end
-    
-    def self.set_free(acc_id)
-        acc = Account.find_by(:id => acc_id)
-        acc.free = true
-        acc.save!
     end
     
     def self.get_worker_by_id(id)

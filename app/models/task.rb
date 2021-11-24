@@ -29,7 +29,6 @@ class Task < ApplicationRecord
     def self.delete_task( accId, date, shift)
         task = Task.find_by(:account_id => accId, :day => Time.parse(date), :shift => shift)
         if task
-            Account.set_free(accId)
             task.destroy!  
         end      
     end
@@ -68,9 +67,6 @@ class Task < ApplicationRecord
             end
         elsif status && status == "absent"
             tmp = Task.where(:department_id => departmentId, :shift => shift, :active => false)
-            puts "=============check task================="
-            puts tmp.length
-            puts "============================================"
             if tmp
                 puts tmp.length
                 tasks = []

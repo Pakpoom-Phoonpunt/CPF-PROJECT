@@ -1,23 +1,27 @@
 <%= stylesheet_link_tag 'admin'%>
 <div id="fac-manage-body">
-<h2><%= "#{@factory.name}"%></h2>
-<table id="factory-manage-table">
-    <thead>
-    <tr>
-        <th>Department ID</th>
-        <th>Department Name</th>
-        <th>Action</th>
-    </tr>
-    </thead>
-        <% if @departments %>
-            <% @departments.each do |department|%>
-            <tr >
-                <td><%= department.id%></td>
-                <td><%= department.name%></td>
-                <td><%= link_to "Delete", method: :delete, data: { confirm: "Are you sure?" } %></td>
-            </tr>
-            <%end%>
-        <% end %>
-</table>
-<%= link_to "Add Department", "/manage_factories/#{@factory.id}/add_department"%>
+<div style="display:flex;flex-direction:row; align-items:center;">
+    <h2 style="margin-right: 1rem"><%= "#{@factory.name}"%></h2>
+    <%= button_to "Add Department", "/manage_factories/#{@factory.id}/add_department"%>
+</div>
+<div id="table-wraper">
+    <table id="factory-manage-table">
+        <thead>
+        <tr>
+            <th>Department ID</th>
+            <th>Department Name</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+            <% if @departments %>
+                <% @departments.each do |department|%>
+                <tr >
+                    <td><%= department.id%></td>
+                    <td><%= department.name%></td>
+                    <td><%= link_to "Delete", method: :delete, data: { confirm: "Are you sure?" } %></td>
+                </tr>
+                <%end%>
+            <% end %>
+    </table>
+</div>
 </div>

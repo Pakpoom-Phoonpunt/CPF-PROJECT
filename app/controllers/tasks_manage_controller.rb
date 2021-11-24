@@ -18,11 +18,7 @@ class TasksManageController < ApplicationController
           elsif params[:act] == "delete"
             delete_task( params[:Id], @date, @shift)
           elsif params[:act] == "ot"
-            puts "===================check id================"
-            puts params[:Id]
-            puts "=========================================="
             assign_ot( params[:Id], @date, @shift, params[:value])
-            puts "============ assign ot ==============="
           end
         end
         
@@ -41,14 +37,11 @@ class TasksManageController < ApplicationController
           # DESKTOP VERSION
           if params[:word] && params[:word] != ""
             @free_workers = Account.get_free_worker(@date, params[:word])
-            puts 
-            puts @free_workers.length
           else
             @free_workers = Account.get_free_worker(@date, "")
           end
           @worker_in_department = Task.filter_task(@date, Department.get_departmentId(params[:departmentName]), @shift, "plan", "")
         end
-
         @departmentId = Department.get_departmentId(params[:departmentName])
         @department_name = params[:departmentName]
 

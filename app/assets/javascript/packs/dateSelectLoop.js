@@ -11,7 +11,6 @@ $(".status").on("click",function(){
     let shift = $("#shift-select").val(); // get recent selected shift
     let status = $(this).text(); // get current status
 
-    console.log(status)
     // get current department and shift
     let department = sessionStorage.getItem("department"); //get selected department
      
@@ -70,8 +69,6 @@ $("#manage-shift-btn").on("click",function(){
     let department = sessionStorage.getItem("department"); // get current status
     let date = $("#date-select").val();
     let shift = $("#shift-select").val();
-    console.log(date)
-    console.log(shift)
     let url = ''
 
     if(department == null){
@@ -145,6 +142,7 @@ function ajaxCommu(date, department, shift, status, callbackMsg="SUCCESS communi
                  "departName": department,
                  "shift": shift,
                  "status": status,
+                 'mobile': isMobileWidth()
             },
         success:function(data){ 
             console.log(callbackMsg);
@@ -161,7 +159,29 @@ $('.nav-icon').on('click',function(){
  
     $('#already-in .responsive').toggle();
 });
+$('.nav-icon-worker').on('click',function(){
+ 
+    $('#already-in .responsive').toggle();
+});
+
+if(isMobileWidth()){
+    console.log("in cond.");
+    $("#manage-shift-btn").text("manage");
+    $('#date-select option:first-child()').text('D');
+    $('#shift-select option:first-child()').text('S');
+    const td = ['ID', 'Name', 'Enter', 'Start', 'End', 'Exit', 'More']
+    $("#data-table tr th").each(function(index){
+        if(index == 2 || index == 3 || index == 4 || index == 5){
+            $(this).remove();
+        }else{
+            $(this).text(td[index]);
+        }
+    });
+}
+
+
 
 function isMobileWidth() {
-    return $('#mobile-indicator').is(':visible');
+    console.log($(window).width() < 872);
+    return $(window).width() < 872
 }

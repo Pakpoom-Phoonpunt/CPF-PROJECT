@@ -56,3 +56,8 @@ html{
 .data_department_table{
     color: var(--bright-color);
 }
+
+#table-wraper{
+    overflow-x: hidden;
+    overflow-y: auto;
+}

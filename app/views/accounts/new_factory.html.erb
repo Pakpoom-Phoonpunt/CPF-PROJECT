@@ -1,0 +1,8 @@
+<h1> Create Factory </h1>
+
+<%= form_with url: "/manage_factories/add/" , method: :post do |f| %>
+    <%= f.label :name , "Factory name" %><br>
+    <%= f.text_field  :name %>
+    <%= f.submit "Create Factory"%>
+
+<% end %>

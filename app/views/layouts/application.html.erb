@@ -15,31 +15,38 @@
     <% if @current_user%>
         <div class="nav-bar">
         <ul id="nav-responsive">
-          <div id="current-time-details" class='responsive'>
-            <h3 id="current-date"></h3>
-            <% if @current_user.role == "Manager"%>
-              <li><%= link_to "Dashboard" , "/accounts/#{current_user.id}/dashboard"%></li>
-            <%end%>
-
-            <% if @current_user.role == "Worker"%>
-              <li><%= link_to "See Task" , "/accounts/#{current_user.id}/mytasks"%></li>
-            <%end%>
-
-            <% if @current_user.role == "Admin"%>
-              <li><%= link_to "Manage Factories" , "/accounts/#{current_user.id}/manage_factories"%></li>
-              <li><%= link_to "Manage User" , "/accounts/#{current_user.id}/manage_Worker"%></li>
-            <%end%>
-          </div>
+          <% if @current_user.role != "Worker"%>
+            <div id="current-time-details" class='responsive'>
+              <h3 id="current-date"></h3>
+              <% if @current_user.role == "Manager"%>
+                <li><%= link_to "Dashboard" , "/accounts/#{current_user.id}/dashboard"%></li>
+              <%end%>
+              <% if @current_user.role == "Admin"%>
+                <li><%= link_to "Manage Factories" , "/accounts/#{current_user.id}/manage_factories"%></li>
+                <li><%= link_to "Manage User" , "/accounts/#{current_user.id}/manage_Worker"%></li>
+              <%end%>
+            </div>
+          <%end%>
           <h2 id="already-in-responsive" class='responsive'><p id='num'>--/--</p></h2>
           <div id="hamberg-menu">
-            <li><%= link_to "profile" , account_path(@current_user)%> </li>
+            <%if @current_user.role != "Worker"%>
+              <li><%= link_to "profile" , account_path(@current_user)%> </li>
+            <%end%>
             <li><%= link_to 'Log Out', logout_path, :method => :post, :id => "log-out"%></li>
           </div>
-          <div class="nav-icon">
-            <div class="bar1"></div>
-            <div class="bar2"></div>
-            <div class="bar3"></div>
-          </div> 
+          <% if @current_user.role != "Worker"%>
+            <div class="nav-icon">
+              <div class="bar1"></div>
+              <div class="bar2"></div>
+              <div class="bar3"></div>
+            </div> 
+          <%else%>
+            <div class="nav-icon-worker">
+              <div class="bar1"></div>
+              <div class="bar2"></div>
+              <div class="bar3"></div>
+            </div> 
+          <%end%>
         </ul>
         <ul id="nav-default">
           <div id= "nav-elements">

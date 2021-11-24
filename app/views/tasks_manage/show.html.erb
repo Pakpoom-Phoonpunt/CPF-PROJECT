@@ -25,13 +25,18 @@
                 </div>
                 <h2>All Worker</h2>
                 <button id="transfer-btn" name="add">transfer</button>
-            </div>
+            </div >
+            
             <table id="data-table-left">
+                <thead>
                 <tr>
                     <th><%= check_box_tag "", nil, nil, class: "selectall-checkbox select-all-box", :id=>"left-check-all"%></th>
                     <th>ID</th>
                     <th>Name</th>
                 </tr>
+                </thead>
+               <tbody></tbody>
+                
             </table>
         </div>
         

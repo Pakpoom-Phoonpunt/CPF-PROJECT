@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   get '/manage_factories/edit/:facId', to: "accounts#editFactory"
   post '/manage_factories/edit/:facId', to: "accounts#create_department"
   get '/manage_factories/:facId/add_department', to: "accounts#add_department"
+  get '/manage_factories/new/' , to: "accounts#new_factory"
+  post '/manage_factories/add/' , to: "accounts#add_factory"
   #Login Mechanic
   get '/login' , to: "session#index"
   post '/login', to: "session#create"

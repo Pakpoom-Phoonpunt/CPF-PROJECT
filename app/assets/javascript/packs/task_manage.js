@@ -15,13 +15,11 @@ $.ajax({
 
 $('#transfer-btn[name ="add"]').on("click", function() {
     let accId = collectSelected();
-    console.log(accId.length);
     ajaxCommu("add", accId, 0)
 });
 
 $('#transfer-btn[name ="delete"]').on("click", function() {
     let taskId = collectSelected();
-    console.log(taskId.length);
 
     ajaxCommu("delete", taskId, 0);
 })
@@ -62,9 +60,7 @@ $('.selectall-checkbox').on("click", function() {
 $('#search-input').on("change keyup", function() {
     $('.selectall-checkbox').prop('checked', false);
     let val = $(this).val()
-    console.log(val)
     let table = sessionStorage.getItem('freeTable');
-     console.log(table)
     $.ajax({
         type: "GET",
         url: window.location.href,

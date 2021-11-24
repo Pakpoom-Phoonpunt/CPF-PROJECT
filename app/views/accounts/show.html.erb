@@ -4,20 +4,20 @@
             <section id="profile-details">
                 <div class="image"></div>
                 <div class="profile-body">
-                    <h2 class="topic">Name: <%=@current_user.name%></h2>
-                    <h2 class="topic">Role: <%=@current_user.role%></h2>
-                    <h2 class="topic">Factory: <%=@current_user.factory.name%></h2>
+                    <h2 class="topic">Name: <br> <%=@current_user.name%></h2>
+                    <h2 class="topic">Role: <br><%=@current_user.role%></h2>
+                    <h2 class="topic">Factory: <br><%=@current_user.factory.name%></h2>
                 </div>
             </section>
             <%if @current_user.role === "Worker"%>
                 <table id="task-view">
                     <tr>
-                    <th>ลำดับ</th>
-                    <th>วันที่ (วันเดือนปี)</th>
-                    <th>กะทำงาน</th>
-                    <th>เวลาลงชื่อเข้า</th>
-                    <th>เวลาลงชื่อออก</th>
-                    <th>ทำงานล่วงเวลา (ชั่วโมง)</th>
+                    <th>No.</th>
+                    <th>Date</th>
+                    <th>Shift</th>
+                    <th>Enter</th>
+                    <th>Exit</th>
+                    <th>OT</th>
                     <th></th>
                     </tr>
                         <% @tasks.each_with_index do |task,index| %>
@@ -30,11 +30,11 @@
                             <td><%= task.get_time(task.exitTime) %></td>
                             <td><%= task.ot %></td>
                             <% if task.active %>
-                                <td><%= link_to "ออกงาน", edit_tasks_manage_path(task) %></td>
+                                <td><%= link_to "check out", edit_tasks_manage_path(task) %></td>
                             <% elsif task.exitTime %>
                                 <td>✔️</td>
                             <% elsif !task.active %>
-                                <td><%= link_to "เข้างาน", edit_tasks_manage_path(task) %></td>
+                                <td><%= link_to "check in", edit_tasks_manage_path(task) %></td>
                             <% end %>
                     </tr>
                     <% end %>   

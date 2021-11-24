@@ -1,14 +1,20 @@
-<h1>Register</h1>
-
+<div style="display:flex; flex-direction: column; align-items: center;color: white;justify-content: center;">    
+<h1 style="color: white; margin: 2rem;font-size: 2rem;">Register</h1>
 <%= form_with url: "/accounts" , method: :post do |f| %>
-    <%= f.label :username , "Username" %>
-    <%= f.text_field  :username %>
-    <%= f.label :password , "Password"%>
-    <%= f.password_field  :password %>
-    <%= f.label :telephone , "Telephone"%><br>
-    <%= f.text_field  :telephone %><br>
-    <%= f.label :factory , "Factory"%>
-    <%= f.select  :factory , @factorysNameList%><br>
-    <%= f.submit "Create Account"%>
-
-<% end %>
+        <%= f.label :username , "Username", :style => "margin-bottom: 1rem;" %>
+        <%= f.text_field  :username , :style => "margin-bottom: 1rem;"%>
+        <%= f.label :password , "Password"%>
+        <%= f.password_field  :password, :style => "margin-bottom: 1rem;" %>
+        <%= f.label :telephone , "Telephone"%><br>
+        <%= f.text_field  :telephone , :style => "margin-bottom: 1rem;"%><br>
+        <%= f.label :factory , "Factory"%>
+        <%= f.select  :factory , @factorysNameList%><br>
+        <div style="display:flex;flex-direction:row;justify-content:space-between;">
+            <%= f.submit "Create", :id=>"manage-shift-btn", :style=>"padding:0;margin: 1rem;"%>
+            <%= button_to "Back", :back, :id=>"manage-shift-btn", :style=>"padding:0;margin: 1rem;background-color: rgba(255, 86, 122, 0.5);    
+                border: 2px solid rgba(255, 86, 122, 0.8);
+                color: rgba(250, 250, 250, 0.8);
+                transition: ease .3s all;"%>
+        </div>
+    <% end %>   
+</div>

@@ -1,13 +1,23 @@
-<%if @tasks %>
-<% @tasks.each do |t|%>
-    <tr class="data">
-        <td><%= t.account_id%></td>
-        <td><%=t.get_owner_name%></td>
-        <td><%= t.get_time(t.enterTime)%></td>
-        <td><%= t.get_time(t.startTime)%></td>
-        <td><%= t.get_time(t.endTime)%></td>
-        <td><%= t.get_time(t.exitTime)%></td>
-        <td><button class="detail-btn" value = "<%= t.account_id%>">Details<button></td>
-    </tr>
-<%end%>
+<%if @tasks%>
+    <% if params[:mobile] == "true"%>
+        <% @tasks.each do |t|%>
+            <tr class="data">
+                <td><%= t.account_id%></td>
+                <td><%=t.get_owner_name%></td>
+                <td><button class="detail-btn" value = "<%= t.account_id%>">Details<button></td>
+            </tr>
+        <%end%>
+    <%else%>
+        <% @tasks.each do |t|%>
+            <tr class="data">
+                <td><%= t.account_id%></td>
+                <td><%=t.get_owner_name%></td>
+                <td><%= t.get_time(t.enterTime)%></td>
+                <td><%= t.get_time(t.startTime)%></td>
+                <td><%= t.get_time(t.endTime)%></td>
+                <td><%= t.get_time(t.exitTime)%></td>
+                <td><button class="detail-btn" value = "<%= t.account_id%>">Details<button></td>
+            </tr>
+        <%end%>
+    <%end%>
 <%end%>
