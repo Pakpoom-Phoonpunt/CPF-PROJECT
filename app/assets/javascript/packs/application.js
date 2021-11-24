@@ -21,4 +21,4 @@ require("channels")
 require('jquery') //Add this
 
 
-
+import "./task_manage"
